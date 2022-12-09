@@ -47,6 +47,10 @@ public:
     void update(float dt);
     void clear();
 
+    inline GLFWwindow* getWindow() {
+        return this->window;
+    }
+
     inline float getLastX() {
         return this->lastX;
     }

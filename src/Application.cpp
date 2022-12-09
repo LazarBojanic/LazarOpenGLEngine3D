@@ -54,7 +54,7 @@ void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
     Game::getInstance()->setLastX(xpos);
     Game::getInstance()->setLastY(ypos);
 
-    Game::getInstance()->getCamera()->processMouseMovement(xoffset, yoffset, true);
+    Game::getInstance()->getCamera()->processMouseMovement(xoffset, yoffset, true, Game::getInstance()->getWindow(), Game::getInstance()->getWidth(), Game::getInstance()->getHeight());
 }
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset){
     Game::getInstance()->getCamera()->processMouseScroll(static_cast<float>(yoffset));
@@ -85,7 +85,8 @@ void Application::initWindow() {
     glfwSetCursorPosCallback(this->window, mouse_callback);
     glfwSetScrollCallback(this->window, scroll_callback);
     glfwSwapInterval(1);
-    glfwSetWindowPos(this->window, 600, 300);
+    glfwSetWindowPos(this->window, 200, 200);
+    glfwSetInputMode(this->window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

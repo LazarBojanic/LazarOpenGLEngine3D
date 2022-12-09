@@ -7,7 +7,7 @@ Camera::Camera(glm::vec3 position) {
     this->pitch = 0.0f;
     this->front = glm::vec3(0.0f, 0.0f, -1.0f);
     this->movementSpeed = 2.5f;
-    this->mouseSensitivity = 0.1f;
+    this->mouseSensitivity = 0.5f;
     this->zoom = 45.0f;
     this->updateCameraVectors();
 }
@@ -18,13 +18,13 @@ Camera::Camera(float positionX, float positionY, float positionZ) {
     this->pitch = 0.0f;
     this->front = glm::vec3(0.0f, 0.0f, -1.0f);
     this->movementSpeed = 2.5f;
-    this->mouseSensitivity = 0.1f;
+    this->mouseSensitivity = 0.5f;
     this->zoom = 45.0f;
     this->updateCameraVectors();
 }
 Camera::~Camera(){
 }
-void Camera::processMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch) {
+void Camera::processMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch, GLFWwindow* window, float width, float height) {
     xoffset *= this->mouseSensitivity;
     yoffset *= this->mouseSensitivity;
     this->yaw += xoffset;
@@ -38,6 +38,15 @@ void Camera::processMouseMovement(float xoffset, float yoffset, GLboolean constr
         }
     }
     updateCameraVectors();
+    double currentCursorX;
+    double currentCursorY;
+    glfwGetCursorPos(window, &currentCursorX, &currentCursorY);
+    if (currentCursorX >= width - 5.0f) {
+        glfwSetCursorPos(window, width - 5.0f, currentCursorY);
+    }
+    if (currentCursorX <= 5.0f) {
+        glfwSetCursorPos(window, 5.0f, currentCursorY);
+    }
 }
 void Camera::updateCameraVectors() {
     glm::vec3 front;

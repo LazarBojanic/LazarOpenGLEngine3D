@@ -28,7 +28,7 @@ public:
     Camera(glm::vec3 position);
     Camera(float positionX, float positionY, float positionZ);
     ~Camera();
-    void processMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch);
+    void processMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch, GLFWwindow* window, float width, float height);
     void updateCameraVectors();
     void processKeyboard(CameraMovement direction, float deltaTime);
     void processMouseScroll(float yoffset);

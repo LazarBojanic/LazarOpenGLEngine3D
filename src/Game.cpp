@@ -61,10 +61,27 @@ void Game::initResources() {
 	cubeShader->setMatrix4f("uView", view, true);
 	cubeShader->setMatrix4f("uProjection", projection, true);
 	
-	Texture2D* texture = ResourceManager::getInstance()->addTexture2D(workingDirectory + "\\assets\\textures\\dvdLogo.png", true, "texture");
+	Texture2D* cubeTexture = ResourceManager::getInstance()->addTexture2D(workingDirectory + "\\assets\\textures\\dvdLogo.png", true, "cubeTexture");
 
-	GameObjectManager::getInstance()->addGameObject3D("cubeGameObject", "cube", *cubeMesh, *cubeShader, *texture, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 45.0f, 45.0f, 45.0f, 0.0f, 0.0f, 0.0f, false);
+	ResourceManager::getInstance()->addDrawData("cubeDrawData", *cubeMesh, *cubeShader, *cubeTexture);
+
 	
+	glm::vec3 cubePositions[10] = {
+		glm::vec3(0.0f,  0.0f,  0.0f),
+		glm::vec3(2.0f,  5.0f, -15.0f),
+		glm::vec3(-1.5f, -2.2f, -2.5f),
+		glm::vec3(-3.8f, -2.0f, -12.3f),
+		glm::vec3(2.4f, -0.4f, -3.5f),
+		glm::vec3(-1.7f,  3.0f, -7.5f),
+		glm::vec3(1.3f, -2.0f, -2.5f),
+		glm::vec3(1.5f,  2.0f, -2.5f),
+		glm::vec3(1.5f,  0.2f, -1.5f),
+		glm::vec3(-1.3f,  1.0f, -1.5f)
+	};
+
+	for (int i = 0; i < 10; i++) {
+		GameObjectManager::getInstance()->addGameObject3D("cubeGameObject", "cube", *cubeMesh, *cubeShader, *cubeTexture, cubePositions[i].x, cubePositions[i].z, cubePositions[i].z, 1.0f, 1.0f, 1.0f, 1.0f, 45.0f, 45.0f, 45.0f, 0.0f, 0.0f, 0.0f, false);
+	}
 }
 void Game::start() {
 	initVariables();
@@ -88,11 +105,17 @@ void Game::update(float dt) {
 	Renderer::getInstance()->colorBackground(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
 
 
-	GameObject3D* cubeGameObject = GameObjectManager::getInstance()->getGameObject3DByName("cubeGameObject");
+	/*GameObject3D* cubeGameObject = GameObjectManager::getInstance()->getGameObject3DByName("cubeGameObject");
 	cubeGameObject->setRotationX(cubeGameObject->getRotationX() + glm::sin(glfwGetTime()));
 	cubeGameObject->setRotationY(cubeGameObject->getRotationY() + glm::sin(glfwGetTime()));
-	cubeGameObject->setRotationZ(cubeGameObject->getRotationZ() + glm::sin(glfwGetTime()));
-	Renderer::getInstance()->draw3DUntextured(*cubeGameObject, *this->camera, this->width, this->height, true);
+	cubeGameObject->setRotationZ(cubeGameObject->getRotationZ() + glm::sin(glfwGetTime()));*/
+	
+	std::vector<GameObject3D*>* cubes = GameObjectManager::getInstance()->getGameObjects3DByTag("cube");
+
+	for (int i = 0; i < cubes->size(); i++) {
+		Renderer::getInstance()->draw3DUntextured(*cubes->at(i), *this->camera, this->width, this->height, true);
+	}
+	delete cubes;
 }
 void Game::clear() {
 	delete[] this->keys;
