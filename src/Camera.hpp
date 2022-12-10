@@ -18,12 +18,9 @@ private:
     glm::vec3 worldUp;
     float yaw;
     float pitch;
-    
     float movementSpeed;
     float mouseSensitivity;
     float zoom;
-    
-
 public:
     Camera(glm::vec3 position);
     Camera(float positionX, float positionY, float positionZ);

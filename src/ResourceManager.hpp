@@ -20,7 +20,7 @@ private:
 public:
 	static ResourceManager* getInstance();
 
-	Mesh* addMesh(Primitive& primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions);
+	Mesh* addMesh(Primitive& primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions);
 	Shader* addShader(std::string vertexShaderPath, std::string fragmentShaderPath, std::string name);
 	Texture2D* addTexture2D(std::string texture2DPath, bool alpha, std::string name);
 	DrawData* addDrawData(std::string name, Mesh& mesh, Shader& shader, Texture2D& texture2D);

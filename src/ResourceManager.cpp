@@ -21,8 +21,8 @@ ResourceManager* ResourceManager::getInstance() {
     return instance;
 }
 
-Mesh* ResourceManager::addMesh(Primitive& primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions){
-    Mesh* mesh = new Mesh(primitive, name, positionAttributeNumber, positionDimensions, colorAttributeNumber, colorDimensions, textureAttributeNumber, textureDimensions);
+Mesh* ResourceManager::addMesh(Primitive& primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions){
+    Mesh* mesh = new Mesh(primitive, name, positionAttributeNumber, positionDimensions, colorAttributeNumber, colorDimensions, textureAttributeNumber, textureDimensions, normalAttributeNumber, normalDimensions);
     if (std::find(this->meshList->begin(), this->meshList->end(), mesh) == this->meshList->end()) {
         this->meshList->push_back(mesh);
         return mesh;

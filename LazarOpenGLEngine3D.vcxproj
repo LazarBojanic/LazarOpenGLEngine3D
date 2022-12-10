@@ -516,23 +516,10 @@
     <ClInclude Include="src\VertexBuffer.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\shaders\backgroundFragmentShader.glsl" />
-    <None Include="assets\shaders\backgroundVertexShader.glsl" />
-    <None Include="assets\shaders\bluRayFragmentShader.glsl" />
-    <None Include="assets\shaders\bluRayVertexShader.glsl" />
     <None Include="assets\shaders\cubeFragmentShader.glsl" />
     <None Include="assets\shaders\cubeVertexShader.glsl" />
-    <None Include="assets\shaders\dvdBurnFragmentShader.glsl" />
-    <None Include="assets\shaders\dvdFragmentShader.glsl" />
-    <None Include="assets\shaders\dvdVertexShader.glsl" />
-    <None Include="assets\shaders\fireFragmentShader.glsl" />
-    <None Include="assets\shaders\circleShader.glsl" />
-    <None Include="assets\shaders\genericFragmentShader.glsl" />
-    <None Include="assets\shaders\genericVertexShader.glsl" />
-    <None Include="assets\shaders\laserFragmentShader.glsl" />
-    <None Include="assets\shaders\laserVertexShader.glsl" />
-    <None Include="assets\shaders\triangleFragmentShader.glsl" />
-    <None Include="assets\shaders\triangleVertexShader.glsl" />
+    <None Include="assets\shaders\lightFragmentShader.glsl" />
+    <None Include="assets\shaders\lightVertexShader.glsl" />
     <None Include="libraries\include\glm\detail\func_common.inl" />
     <None Include="libraries\include\glm\detail\func_common_simd.inl" />
     <None Include="libraries\include\glm\detail\func_exponential.inl" />

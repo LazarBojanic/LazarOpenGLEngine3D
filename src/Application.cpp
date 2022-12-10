@@ -70,7 +70,7 @@ void GLAPIENTRY debugCallback(GLenum source,
 }
 void Application::initWindow() {
     initGlfw();
-    this->window = glfwCreateWindow(this->width, this->height, "DVD Game", NULL, NULL);
+    this->window = glfwCreateWindow(this->width, this->height, "3D Game", NULL, NULL);
     if (this->window == NULL) {
         std::cout << "Failed to create GLFW window." << std::endl;
         glfwTerminate();
@@ -87,6 +87,7 @@ void Application::initWindow() {
     glfwSwapInterval(1);
     glfwSetWindowPos(this->window, 200, 200);
     glfwSetInputMode(this->window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+    glEnable(GL_CULL_FACE);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
