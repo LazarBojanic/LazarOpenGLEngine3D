@@ -17,39 +17,7 @@ Renderer* Renderer::getInstance(){
     return instance;
 }
 
-void Renderer::draw(GameObject& gameObject, bool scaled) {
-    glm::mat4 modelView = glm::mat4(1.0f);
-    modelView = glm::translate(modelView, glm::vec3(glm::vec2(gameObject.getPositionX(), gameObject.getPositionY()), 0.0f));
-    modelView = glm::rotate(modelView, glm::radians(gameObject.getRotation()), glm::vec3(0.0f, 0.0f, 1.0f));
-    if (!scaled) {
-        modelView = glm::scale(modelView, glm::vec3(glm::vec2(gameObject.getSizeX(), gameObject.getSizeY()), 1.0f));
-    }
-    else {
-        modelView = glm::scale(modelView, glm::vec3(glm::vec2(gameObject.getScaledSizeX(), gameObject.getScaledSizeY()), 1.0f));
-    }
-    gameObject.getDrawData()->getMesh()->getVertexArray()->bind();
-    gameObject.getDrawData()->getTexture2D()->bind(0);
-    gameObject.getDrawData()->getShader()->setMatrix4f("uModelView", modelView, true);
-    glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getPrimitive()->getIndicesCount(), GL_UNSIGNED_INT, 0);
-    gameObject.getDrawData()->getMesh()->getVertexArray()->unbind();
-}
-void Renderer::drawUntextured(GameObject& gameObject, bool scaled) {
-    glm::mat4 modelView = glm::mat4(1.0f);
-    modelView = glm::translate(modelView, glm::vec3(glm::vec2(gameObject.getPositionX(), gameObject.getPositionY()), 0.0f));
-    modelView = glm::rotate(modelView, glm::radians(gameObject.getRotation()), glm::vec3(0.0f, 0.0f, 1.0f));
-    if (!scaled) {
-        modelView = glm::scale(modelView, glm::vec3(glm::vec2(gameObject.getSizeX(), gameObject.getSizeY()), 1.0f));
-    }
-    else {
-        modelView = glm::scale(modelView, glm::vec3(glm::vec2(gameObject.getScaledSizeX(), gameObject.getScaledSizeY()), 1.0f));
-    }
-    gameObject.getDrawData()->getMesh()->getVertexArray()->bind();
-    gameObject.getDrawData()->getShader()->setMatrix4f("uModelView", modelView, true);
-    glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getPrimitive()->getIndicesCount(), GL_UNSIGNED_INT, 0);
-    gameObject.getDrawData()->getMesh()->getVertexArray()->unbind();
-}
-
-void Renderer::draw3DUntextured(GameObject3D& gameObject3D, Camera& camera, float width, float height, bool scaled){
+void Renderer::draw(GameObject3D& gameObject3D, Camera& camera, float width, float height, bool scaled, bool indexed, bool textured){
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(gameObject3D.getPositionX(), gameObject3D.getPositionY(), gameObject3D.getPositionZ()));
 
@@ -67,10 +35,18 @@ void Renderer::draw3DUntextured(GameObject3D& gameObject3D, Camera& camera, floa
     glm::mat4 projection = glm::perspective(glm::radians(camera.getZoom()), width / height, 0.1f, 100.0f);
 
     gameObject3D.getDrawData()->getMesh()->getVertexArray()->bind();
+    if (textured) {
+        gameObject3D.getDrawData()->getTexture2D()->bind(0);
+    }
     gameObject3D.getDrawData()->getShader()->setMatrix4f("uModel", model, true);
     gameObject3D.getDrawData()->getShader()->setMatrix4f("uView", view, true);
     gameObject3D.getDrawData()->getShader()->setMatrix4f("uProjection", projection, true);
-    glDrawElements(GL_TRIANGLES, gameObject3D.getDrawData()->getMesh()->getPrimitive()->getIndicesCount(), GL_UNSIGNED_INT, 0);
+    if (indexed) {
+        glDrawElements(GL_TRIANGLES, gameObject3D.getDrawData()->getMesh()->getPrimitive()->getIndicesCount(), GL_UNSIGNED_INT, 0);
+    }
+    else {
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+    }
     gameObject3D.getDrawData()->getMesh()->getVertexArray()->unbind();
 
 }

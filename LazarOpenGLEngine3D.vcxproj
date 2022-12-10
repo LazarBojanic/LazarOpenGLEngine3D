@@ -215,6 +215,7 @@
     <ClInclude Include="src\Mesh.hpp" />
     <ClInclude Include="src\Application.hpp" />
     <ClInclude Include="src\Game.hpp" />
+    <ClInclude Include="src\OtherCube.hpp" />
     <ClInclude Include="src\Primitive.hpp" />
     <ClInclude Include="src\Quad.hpp" />
     <ClInclude Include="src\Shader.hpp" />
@@ -516,8 +517,10 @@
     <ClInclude Include="src\VertexBuffer.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\shaders\cubeFragmentShader.glsl" />
-    <None Include="assets\shaders\cubeVertexShader.glsl" />
+    <None Include="assets\shaders\cubeDiffuseFragmentShader.glsl" />
+    <None Include="assets\shaders\cubeDiffuseVertexShader.glsl" />
+    <None Include="assets\shaders\cubeSpecularFragmentShader.glsl" />
+    <None Include="assets\shaders\cubeSpecularVertexShader.glsl" />
     <None Include="assets\shaders\lightFragmentShader.glsl" />
     <None Include="assets\shaders\lightVertexShader.glsl" />
     <None Include="libraries\include\glm\detail\func_common.inl" />

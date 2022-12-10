@@ -11,7 +11,7 @@ Mesh::Mesh() {
 	this->vertexArray = nullptr;
 	this->vertexBuffer = nullptr;
 }
-Mesh::Mesh(Primitive& primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions) {
+Mesh::Mesh(Primitive& primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions, bool indexed) {
 	HRESULT guidResult = CoCreateGuid(&this->id);
 	this->name = name;
 	this->primitive = new Primitive(primitive);
@@ -26,7 +26,8 @@ Mesh::Mesh(Primitive& primitive, std::string name, int positionAttributeNumber, 
 		textureAttributeNumber,
 		textureDimensions,
 		normalAttributeNumber,
-		normalDimensions);
+		normalDimensions,
+		indexed);
 	this->vertexArray->unbind();
 }
 

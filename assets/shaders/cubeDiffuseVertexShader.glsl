@@ -16,7 +16,7 @@ uniform mat4 uProjection;
 void main(){
     vColor = vec4(iColor, 1.0);
     vTextureCoords = iTextureCoords;
-    vNormal = iNormal;
+    vNormal = mat3(transpose(inverse(uModel))) * iNormal; 
     vFragPos = vec3(uModel * vec4(iPos, 1.0));
 
     gl_Position = uProjection *  uView * vec4(vFragPos, 1.0);

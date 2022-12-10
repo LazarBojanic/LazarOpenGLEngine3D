@@ -44,7 +44,7 @@ void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
 
     if (Game::getInstance()->getFirstMouse()){
         Game::getInstance()->setLastX(xpos);
-        Game::getInstance()->setLastX(ypos);
+        Game::getInstance()->setLastY(ypos);
         Game::getInstance()->setFirstMouse(false);
     }
 
@@ -87,7 +87,7 @@ void Application::initWindow() {
     glfwSwapInterval(1);
     glfwSetWindowPos(this->window, 200, 200);
     glfwSetInputMode(this->window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

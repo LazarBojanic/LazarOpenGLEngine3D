@@ -7,6 +7,7 @@
 #include "Triangle.hpp"
 #include "Quad.hpp"
 #include "Cube.hpp"
+#include "OtherCube.hpp"
 #include "Camera.hpp"
 
 enum GameState {
@@ -37,6 +38,8 @@ private:
     glm::vec3* cubePos;
     glm::vec3* lightColor;
     glm::vec3* objectColor;
+
+    float cubeShininess;
     
 public:
     Game(GLFWwindow* window, unsigned int width, unsigned int height);
