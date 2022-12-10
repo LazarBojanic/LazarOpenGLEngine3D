@@ -210,7 +210,6 @@
     <ClInclude Include="src\Cube.hpp" />
     <ClInclude Include="src\DrawData.hpp" />
     <ClInclude Include="src\GameObject.hpp" />
-    <ClInclude Include="src\GameObject3D.hpp" />
     <ClInclude Include="src\IndexBuffer.hpp" />
     <ClInclude Include="src\Mesh.hpp" />
     <ClInclude Include="src\Application.hpp" />
@@ -665,7 +664,6 @@
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\DrawData.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
-    <ClCompile Include="src\GameObject3D.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Game.cpp" />

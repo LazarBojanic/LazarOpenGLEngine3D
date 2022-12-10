@@ -41,11 +41,17 @@ void Camera::processMouseMovement(float xoffset, float yoffset, GLboolean constr
     double currentCursorX;
     double currentCursorY;
     glfwGetCursorPos(window, &currentCursorX, &currentCursorY);
-    if (currentCursorX >= width - 5.0f) {
-        glfwSetCursorPos(window, width - 5.0f, currentCursorY);
+    if (currentCursorX >= width - 20.0f) {
+        glfwSetCursorPos(window, width - 20.0f, currentCursorY);
     }
-    if (currentCursorX <= 5.0f) {
-        glfwSetCursorPos(window, 5.0f, currentCursorY);
+    if (currentCursorX <= 20.0f) {
+        glfwSetCursorPos(window, 20.0f, currentCursorY);
+    }
+    if (currentCursorY >= height - 20.0f) {
+        glfwSetCursorPos(window, currentCursorX, height - 20.0f);
+    }
+    if (currentCursorY <= 20.0f) {
+        glfwSetCursorPos(window, currentCursorX, 20.0f);
     }
 }
 void Camera::updateCameraVectors() {

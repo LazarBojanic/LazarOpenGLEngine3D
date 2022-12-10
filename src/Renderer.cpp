@@ -17,37 +17,37 @@ Renderer* Renderer::getInstance(){
     return instance;
 }
 
-void Renderer::draw(GameObject3D& gameObject3D, Camera& camera, float width, float height, bool scaled, bool indexed, bool textured){
+void Renderer::draw(GameObject& gameObject, Camera& camera, float width, float height, bool scaled, bool indexed, bool textured){
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(gameObject3D.getPositionX(), gameObject3D.getPositionY(), gameObject3D.getPositionZ()));
+    model = glm::translate(model, glm::vec3(gameObject.getPositionX(), gameObject.getPositionY(), gameObject.getPositionZ()));
 
-    model = glm::rotate(model, glm::radians(gameObject3D.getRotationX()), glm::vec3(1.0f, 0.0f, 0.0f));
-    model = glm::rotate(model, glm::radians(gameObject3D.getRotationY()), glm::vec3(0.0f, 1.0f, 0.0f));
-    model = glm::rotate(model, glm::radians(gameObject3D.getRotationZ()), glm::vec3(0.0f, 0.0f, 1.0f));
+    model = glm::rotate(model, glm::radians(gameObject.getRotationX()), glm::vec3(1.0f, 0.0f, 0.0f));
+    model = glm::rotate(model, glm::radians(gameObject.getRotationY()), glm::vec3(0.0f, 1.0f, 0.0f));
+    model = glm::rotate(model, glm::radians(gameObject.getRotationZ()), glm::vec3(0.0f, 0.0f, 1.0f));
 
     if (!scaled) {
-        model = glm::scale(model, glm::vec3(gameObject3D.getSizeX(), gameObject3D.getSizeY(), gameObject3D.getSizeZ()));
+        model = glm::scale(model, glm::vec3(gameObject.getSizeX(), gameObject.getSizeY(), gameObject.getSizeZ()));
     }
     else {
-        model = glm::scale(model, glm::vec3(gameObject3D.getScaledSizeX(), gameObject3D.getScaledSizeY(), gameObject3D.getScaledSizeZ()));
+        model = glm::scale(model, glm::vec3(gameObject.getScaledSizeX(), gameObject.getScaledSizeY(), gameObject.getScaledSizeZ()));
     }
     glm::mat4 view = camera.getViewMatrix();
     glm::mat4 projection = glm::perspective(glm::radians(camera.getZoom()), width / height, 0.1f, 100.0f);
 
-    gameObject3D.getDrawData()->getMesh()->getVertexArray()->bind();
+    gameObject.getDrawData()->getMesh()->getVertexArray()->bind();
     if (textured) {
-        gameObject3D.getDrawData()->getTexture2D()->bind(0);
+        gameObject.getDrawData()->getTexture2D()->bind(0);
     }
-    gameObject3D.getDrawData()->getShader()->setMatrix4f("uModel", model, true);
-    gameObject3D.getDrawData()->getShader()->setMatrix4f("uView", view, true);
-    gameObject3D.getDrawData()->getShader()->setMatrix4f("uProjection", projection, true);
+    gameObject.getDrawData()->getShader()->setMatrix4f("uModel", model, true);
+    gameObject.getDrawData()->getShader()->setMatrix4f("uView", view, true);
+    gameObject.getDrawData()->getShader()->setMatrix4f("uProjection", projection, true);
     if (indexed) {
-        glDrawElements(GL_TRIANGLES, gameObject3D.getDrawData()->getMesh()->getPrimitive()->getIndicesCount(), GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getPrimitive()->getIndicesCount(), GL_UNSIGNED_INT, 0);
     }
     else {
         glDrawArrays(GL_TRIANGLES, 0, 36);
     }
-    gameObject3D.getDrawData()->getMesh()->getVertexArray()->unbind();
+    gameObject.getDrawData()->getMesh()->getVertexArray()->unbind();
 
 }
 

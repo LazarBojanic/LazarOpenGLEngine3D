@@ -34,11 +34,12 @@ private:
     float lastX, lastY;
     bool firstMouse;
 
-    glm::vec3* lightPos;
-    glm::vec3* cubePos;
+    glm::vec3* cubePosition;
+    glm::vec3* cubeColor;
+    glm::vec3* lightPosition;
     glm::vec3* lightColor;
-    glm::vec3* objectColor;
-
+    glm::vec3* groundPosition;
+    glm::vec3* groundColor;
     float cubeShininess;
     
 public:

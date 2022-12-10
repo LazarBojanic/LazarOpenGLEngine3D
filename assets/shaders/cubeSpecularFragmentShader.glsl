@@ -12,7 +12,7 @@ uniform float uShininess;
 uniform vec3 uViewPos;
 uniform vec3 uLightPos;
 uniform vec3 uLightColor;
-uniform vec3 uObjectColor;
+uniform vec3 uCubeColor;
 
 void main(){
     // ambient
@@ -32,6 +32,6 @@ void main(){
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), uShininess);
     vec3 specular = specularStrength * spec * uLightColor;  
         
-    vec3 result = (ambient + diffuse + specular) * uObjectColor;
+    vec3 result = (ambient + diffuse + specular) * uCubeColor;
     fragColor = vec4(result, 1.0);
 }
