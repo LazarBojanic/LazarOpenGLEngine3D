@@ -33,14 +33,6 @@ private:
     Camera* camera;
     float lastX, lastY;
     bool firstMouse;
-
-    glm::vec3* cubePosition;
-    glm::vec3* cubeColor;
-    glm::vec3* lightPosition;
-    glm::vec3* lightColor;
-    glm::vec3* groundPosition;
-    glm::vec3* groundColor;
-    float cubeShininess;
     
 public:
     Game(GLFWwindow* window, unsigned int width, unsigned int height);

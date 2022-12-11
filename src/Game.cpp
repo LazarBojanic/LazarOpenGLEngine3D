@@ -43,13 +43,6 @@ void Game::initVariables() {
 	float lastX = this->width / 2.0f;
 	float lastY = this->height / 2.0f;
 	bool firstMouse = true;
-	this->lightPosition = new glm::vec3(2.5f, 2.5f, 2.5f);
-	this->lightColor = new glm::vec3(1.0f, 1.0f, 1.0f);
-	this->cubePosition = new glm::vec3(0.0f, 0.0f, 0.0f);
-	this->cubeColor = new glm::vec3(1.0f, 0.5f, 0.31f);
-	this->cubeShininess = 32;
-	this->groundPosition = new glm::vec3(0.0f, -1.5f, 0.0f);
-	this->groundColor = new glm::vec3(0.2f, 0.2f, 0.6f);
 }
 void Game::initResources() {
 	this->camera = new Camera(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -59,39 +52,37 @@ void Game::initResources() {
 	Mesh* cubeMesh = ResourceManager::getInstance()->addMesh(*cube, "cubeMesh", 0, 3, 1, 3, 2, 2, 3, 3, false);
 	Mesh* groundMesh = ResourceManager::getInstance()->addMesh(*cube, "groundMesh", 0, 3, 1, 3, 2, 2, 3, 3, false);
 
-
 	Shader* lightShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\lightVertexShader.glsl", workingDirectory + "\\assets\\shaders\\lightFragmentShader.glsl", "lightShader");
-	Shader* cubeShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\cubeSpecularVertexShader.glsl", workingDirectory + "\\assets\\shaders\\cubeSpecularFragmentShader.glsl", "cubeShader");
-	Shader* groundShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\cubeSpecularVertexShader.glsl", workingDirectory + "\\assets\\shaders\\cubeSpecularFragmentShader.glsl", "groundShader");
+	Shader* cubeShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\cubeLightingVertexShader.glsl", workingDirectory + "\\assets\\shaders\\cubeLightingFragmentShader.glsl", "cubeShader");
+	Shader* groundShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\cubeLightingVertexShader.glsl", workingDirectory + "\\assets\\shaders\\cubeLightingFragmentShader.glsl", "groundShader");
 
+	Material* cubeMaterial = ResourceManager::getInstance()->addMaterial("cubeMaterial", glm::vec3(0.6f, 0.6f, 0.6f), glm::vec3(0.6f, 0.6f, 0.6f), glm::vec3(0.5f, 0.5f, 0.5f), 32);
+	Material* groundMaterial = ResourceManager::getInstance()->addMaterial("groundMaterial", glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.6f, 0.6f, 0.6f), glm::vec3(0.5f, 0.5f, 0.5f), 32);
+
+	Light* light = ResourceManager::getInstance()->addLight("light", glm::vec3(2.5f, 2.5f, 2.5f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f));
 
 	glm::mat4 view = this->camera->getViewMatrix();
 	glm::mat4 projection = glm::perspective(glm::radians(this->camera->getZoom()), (float)this->width / (float)this->height, 0.1f, 100.0f);
 	
-	lightShader->setVector3f("uLightColor", *this->lightColor, true);
+	lightShader->setVector3f("uLightColor", glm::vec3(1.0f, 1.0f, 1.0f), true);
 
-	cubeShader->setFloat("uShininess", this->cubeShininess, true);
 	cubeShader->setVector3f("uViewPos", this->camera->getPosition(), true);
-	cubeShader->setVector3f("uLightPos", *this->lightPosition, true);
-	cubeShader->setVector3f("uLightColor", *this->lightColor, true);
-	cubeShader->setVector3f("uCubeColor", *this->cubeColor, true);
 
-	groundShader->setFloat("uShininess", this->cubeShininess, true);
+	cubeShader->setVector3f("uCubeColor", glm::vec3(1.0f, 0.5f, 0.31f), true);
+
 	groundShader->setVector3f("uViewPos", this->camera->getPosition(), true);
-	groundShader->setVector3f("uLightPos", *this->lightPosition, true);
-	groundShader->setVector3f("uLightColor", *this->lightColor, true);
-	groundShader->setVector3f("uCubeColor", *this->groundColor, true);
+
+	groundShader->setVector3f("uCubeColor", glm::vec3(0.2f, 0.2f, 0.6f), true);
 	
 	Texture2D* cubeTexture = ResourceManager::getInstance()->addTexture2D(workingDirectory + "\\assets\\textures\\dvdLogo.png", true, "cubeTexture");
 
-	ResourceManager::getInstance()->addDrawData("lightDrawData", *lightMesh, *lightShader, *cubeTexture);
-	ResourceManager::getInstance()->addDrawData("cubeDrawData", *cubeMesh, *cubeShader, *cubeTexture);
-	ResourceManager::getInstance()->addDrawData("groundDrawData", *groundMesh, *groundShader, *cubeTexture);
+	ResourceManager::getInstance()->addDrawData("lightDrawData", *lightMesh, *lightShader, *cubeMaterial, *light, *cubeTexture);
+	ResourceManager::getInstance()->addDrawData("cubeDrawData", *cubeMesh, *cubeShader, *cubeMaterial, *light, *cubeTexture);
+	ResourceManager::getInstance()->addDrawData("groundDrawData", *groundMesh, *groundShader, *groundMaterial, *light, *cubeTexture);
 
-
-	GameObjectManager::getInstance()->addGameObject("lightGameObject", "light", *lightMesh, *lightShader, *cubeTexture, this->lightPosition->x, this->lightPosition->y, this->lightPosition->z, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
-	GameObjectManager::getInstance()->addGameObject("cubeGameObject", "cube", *cubeMesh, *cubeShader, *cubeTexture, this->cubePosition->x, this->cubePosition->y, this->cubePosition->z, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
-	GameObjectManager::getInstance()->addGameObject("groundGameObject", "ground", *groundMesh, *groundShader, *cubeTexture, this->groundPosition->x, this->groundPosition->y, this->groundPosition->z, 1.0f, 1.0f, 1.0f, 200.0f, 1.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+	GameObjectManager::getInstance()->addGameObject("lightGameObject", "light", *lightMesh, *lightShader, *cubeMaterial, *light, *cubeTexture, 2.5f, 2.5f, 2.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+	GameObjectManager::getInstance()->addGameObject("cubeGameObject", "cube", *cubeMesh, *cubeShader, *cubeMaterial, *light, *cubeTexture, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+	GameObjectManager::getInstance()->addGameObject("groundGameObject", "ground", *groundMesh, *groundShader, *groundMaterial, *light, *cubeTexture, 0.0f, -1.5f, 0.0f, 1.0f, 1.0f, 1.0f, 200.0f, 1.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
 
 }
 void Game::start() {
@@ -123,19 +114,17 @@ void Game::update(float dt) {
 
 	GameObject* cube = GameObjectManager::getInstance()->getGameObjectByTag("cube");
 	cube->getDrawData()->getShader()->setVector3f("uViewPos", this->camera->getPosition(), true);
+	cube->updateDrawData();
+
 	Renderer::getInstance()->draw(*cube, *this->camera, this->width, this->height, true, false, false);
 
 	GameObject* ground = GameObjectManager::getInstance()->getGameObjectByTag("ground");
 	ground->getDrawData()->getShader()->setVector3f("uViewPos", this->camera->getPosition(), true);
+	ground->updateDrawData();
+
 	Renderer::getInstance()->draw(*ground, *this->camera, this->width, this->height, true, false, false);
 }
 void Game::clear() {
 	delete[] this->keys;
 	delete this->soundEngine;
-	delete this->lightPosition;
-	delete this->lightColor;
-	delete this->cubePosition;
-	delete this->cubeColor;
-	delete this->groundPosition;
-	delete this->groundColor;
 }

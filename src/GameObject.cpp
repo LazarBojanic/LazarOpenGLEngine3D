@@ -55,3 +55,17 @@ GameObject::GameObject(std::string name, std::string tag, DrawData& drawData, fl
 GameObject::~GameObject(){
 	delete this->drawData;
 }
+
+void GameObject::updateDrawData() {
+	if (this->drawData->getLight() != nullptr) {
+		this->drawData->getShader()->setVector3f("uMaterial.ambient", this->drawData->getMaterial()->ambient, true);
+		this->drawData->getShader()->setVector3f("uMaterial.diffuse", this->drawData->getMaterial()->diffuse, true);
+		this->drawData->getShader()->setVector3f("uMaterial.specular", this->drawData->getMaterial()->specular, true);
+		this->drawData->getShader()->setFloat("uMaterial.shininess", this->drawData->getMaterial()->shininess, true);
+
+		this->drawData->getShader()->setVector3f("uLight.position", this->drawData->getLight()->position, true);
+		this->drawData->getShader()->setVector3f("uLight.ambient", this->drawData->getLight()->ambient, true);
+		this->drawData->getShader()->setVector3f("uLight.diffuse", this->drawData->getLight()->diffuse, true);
+		this->drawData->getShader()->setVector3f("uLight.specular", this->drawData->getLight()->specular, true);
+	}
+}
