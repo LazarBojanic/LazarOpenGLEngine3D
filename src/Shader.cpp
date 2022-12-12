@@ -32,7 +32,7 @@ std::string Shader::loadShaderSource(std::string shaderPath) {
 		shaderStream.clear();
 	}
 	catch (std::ifstream::failure e) {
-		std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
+		std::cout << "Error: Shader file not succesfully read -> " << shaderPath << std::endl;
 	}
 	return shaderSource;
 }
