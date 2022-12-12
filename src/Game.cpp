@@ -74,7 +74,7 @@ void Game::initResources() {
 
 	groundShader->setVector3f("uCubeColor", glm::vec3(0.2f, 0.2f, 0.6f), true);
 	
-	Texture2D* cubeTexture = ResourceManager::getInstance()->addTexture2D(workingDirectory + "\\assets\\textures\\dvdLogo.png", true, "cubeTexture");
+	Texture* cubeTexture = ResourceManager::getInstance()->addTexture(workingDirectory + "\\assets\\textures\\dvdLogo.png", true, "cubeTexture");
 
 	ResourceManager::getInstance()->addDrawData("lightDrawData", *lightMesh, *lightShader, *cubeMaterial, *light, *cubeTexture);
 	ResourceManager::getInstance()->addDrawData("cubeDrawData", *cubeMesh, *cubeShader, *cubeMaterial, *light, *cubeTexture);
@@ -113,8 +113,12 @@ void Game::update(float dt) {
 	Renderer::getInstance()->draw(*light, *this->camera, this->width, this->height, true, false, false);
 
 	GameObject* cube = GameObjectManager::getInstance()->getGameObjectByTag("cube");
+	cube->setRotationY(glm::pow(glfwGetTime(), 3.0f));
+	cube->setRotationZ(45.0f);
+
 	cube->getDrawData()->getShader()->setVector3f("uViewPos", this->camera->getPosition(), true);
 	cube->updateDrawData();
+	
 
 	Renderer::getInstance()->draw(*cube, *this->camera, this->width, this->height, true, false, false);
 

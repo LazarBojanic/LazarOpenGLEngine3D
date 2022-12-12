@@ -6,7 +6,7 @@
 #include "Shader.hpp"
 #include "Material.hpp"
 #include "Light.hpp"
-#include "Texture2D.hpp"
+#include "Texture.hpp"
 
 class ResourceManager{
 private:
@@ -18,7 +18,7 @@ private:
 	std::vector<Shader*>* shaderList;
 	std::vector<Material*>* materialList;
 	std::vector<Light*>* lightList;
-	std::vector<Texture2D*>* texture2DList;
+	std::vector<Texture*>* textureList;
 	std::vector<DrawData*>* drawDataList;
 
 public:
@@ -28,14 +28,14 @@ public:
 	Shader* addShader(std::string vertexShaderPath, std::string fragmentShaderPath, std::string name);
 	Material* addMaterial(std::string name, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, float shininess);
 	Light* addLight(std::string name, glm::vec3 position, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular);
-	Texture2D* addTexture2D(std::string texture2DPath, bool alpha, std::string name);
-	DrawData* addDrawData(std::string name, Mesh& mesh, Shader& shader, Material& material, Light& light, Texture2D& texture2D);
+	Texture* addTexture(std::string texturePath, bool alpha, std::string name);
+	DrawData* addDrawData(std::string name, Mesh& mesh, Shader& shader, Material& material, Light& light, Texture& texture);
 	
 	Mesh* getMeshByName(std::string name);
 	Shader* getShaderByName(std::string name);
 	Material* getMaterialByName(std::string name);
 	Light* getLightByName(std::string name);
-	Texture2D* getTexture2DByName(std::string name);
+	Texture* getTextureByName(std::string name);
 	DrawData* getDrawDataByName(std::string name);
 
 	inline std::vector<Mesh*>* getMeshList() {
@@ -50,8 +50,8 @@ public:
 	inline std::vector<Light*>* getLightList() {
 		return this->lightList;
 	}
-	inline std::vector<Texture2D*>* getTexture2DList() {
-		return this->texture2DList;
+	inline std::vector<Texture*>* getTextureList() {
+		return this->textureList;
 	}
 	inline std::vector<DrawData*>* getDrawDataList() {
 		return this->drawDataList;

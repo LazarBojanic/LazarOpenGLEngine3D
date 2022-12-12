@@ -7,7 +7,7 @@ Mesh::Mesh() {
 	this->vertexCount = 0;
 	this->name = "";
 	this->textureChannel = 0;
-	this->texture2D = nullptr;
+	this->texture = nullptr;
 	this->vertexArray = nullptr;
 	this->vertexBuffer = nullptr;
 }
@@ -33,7 +33,7 @@ Mesh::Mesh(Primitive& primitive, std::string name, int positionAttributeNumber, 
 
 Mesh::~Mesh(){
 	delete this->primitive;
-	delete this->texture2D;
+	delete this->texture;
 	delete this->vertexArray;
 	delete this->vertexBuffer;
 	delete[] this->data;

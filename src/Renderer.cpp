@@ -32,11 +32,13 @@ void Renderer::draw(GameObject& gameObject, Camera& camera, float width, float h
         model = glm::scale(model, glm::vec3(gameObject.getScaledSizeX(), gameObject.getScaledSizeY(), gameObject.getScaledSizeZ()));
     }
     glm::mat4 view = camera.getViewMatrix();
+
     glm::mat4 projection = glm::perspective(glm::radians(camera.getZoom()), width / height, 0.1f, 100.0f);
 
     gameObject.getDrawData()->getMesh()->getVertexArray()->bind();
     if (textured) {
-        gameObject.getDrawData()->getTexture2D()->bind(0);
+        gameObject.getDrawData()->getShader()->setInt("uMaterial.diffuse", 0, true);
+        gameObject.getDrawData()->getTexture()->bind(0);
     }
     gameObject.getDrawData()->getShader()->setMatrix4f("uModel", model, true);
     gameObject.getDrawData()->getShader()->setMatrix4f("uView", view, true);

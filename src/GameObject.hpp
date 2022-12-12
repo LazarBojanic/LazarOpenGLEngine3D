@@ -118,15 +118,15 @@ public:
 		this->sizeZ = sizeZ;
 		this->scaledSizeZ = this->sizeZ * this->scaleZ;
 	}
-	inline float setScaleX(float scaleX) {
+	inline void setScaleX(float scaleX) {
 		this->scaleX = scaleX;
 		this->scaledSizeX = this->sizeX * this->scaleX;
 	}
-	inline float setScaleY(float scaleY) {
+	inline void setScaleY(float scaleY) {
 		this->scaleY = scaleY;
 		this->scaledSizeY = this->sizeY * this->scaleY;
 	}
-	inline float setScaleZ(float scaleZ) {
+	inline void setScaleZ(float scaleZ) {
 		this->scaleZ = scaleZ;
 		this->scaledSizeZ = this->sizeZ * this->scaleZ;
 	}

@@ -2,7 +2,7 @@
 
 #include "GLData.hpp"
 
-class Texture2D{
+class Texture{
 private:
 	GUID id;
     std::string name;
@@ -15,10 +15,9 @@ private:
     unsigned int filterMax;
     unsigned int imageFormat;
 public:
-    Texture2D();
-    //Texture2D(Texture2D* other);
-    Texture2D(std::string textureFilePath, bool alpha, std::string name);
-    ~Texture2D();
+    Texture();
+    Texture(std::string textureFilePath, bool alpha, std::string name);
+    ~Texture();
     void generate(unsigned char* data);
     void bind(unsigned int textureChannel);
     void unbind();

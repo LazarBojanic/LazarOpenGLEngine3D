@@ -1,11 +1,11 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image/stb_image.h>
-#include "Texture2D.hpp"
+#include "Texture.hpp"
 
-Texture2D::Texture2D() {
+Texture::Texture() {
 }
 
-Texture2D::Texture2D(std::string textureFilePath, bool alpha, std::string name) {
+Texture::Texture(std::string textureFilePath, bool alpha, std::string name) {
     HRESULT guidResult = CoCreateGuid(&this->id);
     this->name = name;
     this->wrap_S = GL_REPEAT;
@@ -25,9 +25,9 @@ Texture2D::Texture2D(std::string textureFilePath, bool alpha, std::string name) 
     generate(data);
     stbi_image_free(data);
 }
-Texture2D::~Texture2D() {
+Texture::~Texture() {
 }
-void Texture2D::generate(unsigned char* data) {
+void Texture::generate(unsigned char* data) {
     bind(0);
     glTexImage2D(GL_TEXTURE_2D, 0, this->imageFormat, this->width, this->height, 0, this->imageFormat, GL_UNSIGNED_BYTE, data);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, this->wrap_S);
@@ -36,10 +36,10 @@ void Texture2D::generate(unsigned char* data) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, this->filterMax);
     unbind();
 }
-void Texture2D::bind(unsigned int textureChannel) {
+void Texture::bind(unsigned int textureChannel) {
     glActiveTexture(GL_TEXTURE0 + textureChannel);
     glBindTexture(GL_TEXTURE_2D, this->textureID);
 }
-void Texture2D::unbind() {
+void Texture::unbind() {
     glBindTexture(GL_TEXTURE_2D, 0);
 }

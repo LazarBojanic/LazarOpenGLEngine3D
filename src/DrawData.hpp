@@ -5,7 +5,7 @@
 #include "Shader.hpp"
 #include "Material.hpp"
 #include "Light.hpp"
-#include "Texture2D.hpp"
+#include "Texture.hpp"
 
 class DrawData {
 private:
@@ -14,9 +14,9 @@ private:
 	Shader* shader;
 	Material* material;
 	Light* light;
-	Texture2D* texture2D;
+	Texture* texture;
 public:
-	DrawData(std::string name, Mesh& mesh, Shader& shader, Material& material, Light& light, Texture2D& texture2D);
+	DrawData(std::string name, Mesh& mesh, Shader& shader, Material& material, Light& light, Texture& texture);
 	~DrawData();
 	std::string getName() {
 		return this->name;
@@ -33,8 +33,8 @@ public:
 	Light* getLight() {
 		return this->light;
 	}
-	Texture2D* getTexture2D() {
-		return this->texture2D;
+	Texture* getTexture() {
+		return this->texture;
 	}
 	void setShader(const Shader& shader);
 };

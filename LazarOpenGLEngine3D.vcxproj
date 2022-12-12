@@ -512,13 +512,14 @@
     <ClInclude Include="src\ResourceManager.hpp" />
     <ClInclude Include="src\GLData.hpp" />
     <ClInclude Include="src\Renderer.hpp" />
-    <ClInclude Include="src\Texture2D.hpp" />
+    <ClInclude Include="src\Texture.hpp" />
     <ClInclude Include="src\Triangle.hpp" />
     <ClInclude Include="src\VertexArray.hpp" />
     <ClInclude Include="src\VertexBuffer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shaders\cubeLightingFragmentShader.glsl" />
+    <None Include="assets\shaders\cubeLightingTexturedFragmentShader.glsl" />
     <None Include="assets\shaders\cubeLightingVertexShader.glsl" />
     <None Include="assets\shaders\lightFragmentShader.glsl" />
     <None Include="assets\shaders\lightVertexShader.glsl" />
@@ -677,7 +678,7 @@
     <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
-    <ClCompile Include="src\Texture2D.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
   </ItemGroup>

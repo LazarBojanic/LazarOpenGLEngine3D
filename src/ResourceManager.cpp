@@ -7,7 +7,7 @@ ResourceManager::ResourceManager() {
     this->shaderList = new std::vector<Shader*>();
     this->materialList = new std::vector<Material*>();
     this->lightList = new std::vector<Light*>();
-    this->texture2DList = new std::vector<Texture2D*>();
+    this->textureList = new std::vector<Texture*>();
     this->drawDataList = new std::vector<DrawData*>();
 }
 ResourceManager::~ResourceManager() {
@@ -56,17 +56,17 @@ Light* ResourceManager::addLight(std::string name, glm::vec3 position, glm::vec3
     return nullptr;
 }
 
-Texture2D* ResourceManager::addTexture2D(std::string texture2DPath, bool alpha, std::string name){
-    Texture2D* texture2D = new Texture2D(texture2DPath, alpha, name);
-    if (std::find(this->texture2DList->begin(), this->texture2DList->end(), texture2D) == this->texture2DList->end()) {
-        this->texture2DList->push_back(texture2D);
-        return texture2D;
+Texture* ResourceManager::addTexture(std::string texturePath, bool alpha, std::string name){
+    Texture* texture = new Texture(texturePath, alpha, name);
+    if (std::find(this->textureList->begin(), this->textureList->end(), texture) == this->textureList->end()) {
+        this->textureList->push_back(texture);
+        return texture;
     }
     return nullptr;
 }
 
-DrawData* ResourceManager::addDrawData(std::string name, Mesh& mesh, Shader& shader, Material& material, Light& light, Texture2D& texture2D){
-    DrawData* drawData = new DrawData(name, mesh, shader, material, light, texture2D);
+DrawData* ResourceManager::addDrawData(std::string name, Mesh& mesh, Shader& shader, Material& material, Light& light, Texture& texture){
+    DrawData* drawData = new DrawData(name, mesh, shader, material, light, texture);
     if (std::find(this->drawDataList->begin(), this->drawDataList->end(), drawData) == this->drawDataList->end()) {
         this->drawDataList->push_back(drawData);
         return drawData;
@@ -107,10 +107,10 @@ Light* ResourceManager::getLightByName(std::string name) {
     }
     return nullptr;
 }
-Texture2D* ResourceManager::getTexture2DByName(std::string name) {
-    for (int i = 0; i < this->texture2DList->size(); i++) {
-        if (this->texture2DList->at(i)->getName() == name) {
-            return this->texture2DList->at(i);
+Texture* ResourceManager::getTextureByName(std::string name) {
+    for (int i = 0; i < this->textureList->size(); i++) {
+        if (this->textureList->at(i)->getName() == name) {
+            return this->textureList->at(i);
         }
     }
     return nullptr;
@@ -128,14 +128,14 @@ void ResourceManager::clear(bool reinitialize) {
     delete this->shaderList;
     delete this->materialList;
     delete this->lightList;
-    delete this->texture2DList;
+    delete this->textureList;
     delete this->drawDataList;
     if (reinitialize) {
         this->meshList = new std::vector<Mesh*>();
         this->shaderList = new std::vector<Shader*>();
         this->materialList = new std::vector<Material*>();
         this->lightList = new std::vector<Light*>();
-        this->texture2DList = new std::vector<Texture2D*>();
+        this->textureList = new std::vector<Texture*>();
         this->drawDataList = new std::vector<DrawData*>();
     }
 }
