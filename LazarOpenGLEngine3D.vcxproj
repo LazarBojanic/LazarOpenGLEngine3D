@@ -14,7 +14,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{3ad642ad-3a8e-44fc-b421-2ff77d896b74}</ProjectGuid>
-    <RootNamespace>LazarOpenGLEngineOOP</RootNamespace>
+    <RootNamespace>LazarOpenGLEngine3D</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

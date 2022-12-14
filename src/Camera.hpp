@@ -11,6 +11,9 @@ enum CameraMovement {
 
 class Camera {
 private:
+    glm::mat4 model;
+    glm::mat4 view;
+    glm::mat4 projection;
     glm::vec3 position;
     glm::vec3 front;
     glm::vec3 up;
@@ -22,15 +25,21 @@ private:
     float mouseSensitivity;
     float zoom;
 public:
-    Camera(glm::vec3 position);
-    Camera(float positionX, float positionY, float positionZ);
+    Camera(glm::vec3 position, float width, float height, float nearPlane, float farPlane);
+    Camera(float positionX, float positionY, float positionZ, float width, float height, float nearPlane, float farPlane);
     ~Camera();
     void processMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch, GLFWwindow* window, float width, float height);
-    void updateCameraVectors();
+    void updateView();
     void processKeyboard(CameraMovement direction, float deltaTime);
     void processMouseScroll(float yoffset);
-    inline glm::mat4 getViewMatrix(){
-        return glm::lookAt(this->position, this->position + this->front, this->up);
+    inline glm::mat4 getModel() {
+        return this->model;
+    }
+    inline glm::mat4 getView(){
+        return this->view;
+    }
+    inline glm::mat4 getProjection() {
+        return this->projection;
     }
     inline glm::vec3 getPosition() {
         return this->position;

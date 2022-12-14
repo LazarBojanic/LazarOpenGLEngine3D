@@ -4,7 +4,6 @@
 #include "VertexArray.hpp"
 #include "VertexBuffer.hpp"
 #include "IndexBuffer.hpp"
-#include "Texture.hpp"
 #include "Primitive.hpp"
 
 class Mesh {
@@ -14,8 +13,6 @@ private:
 	VertexArray* vertexArray;
 	VertexBuffer* vertexBuffer;
 	Primitive* primitive;
-	unsigned int textureChannel;
-	Texture* texture;
 	float* data;
 	unsigned int* indices;
 	unsigned int vertexCount;
@@ -37,12 +34,6 @@ public:
 	}
 	inline Primitive* getPrimitive() {
 		return this->primitive;
-	}
-	inline unsigned int getTextureChannel() {
-		return this->textureChannel;
-	}
-	inline Texture* getTexture() {
-		return this->texture;
 	}
 	inline float* getData() {
 		return this->data;

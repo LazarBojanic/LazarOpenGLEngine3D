@@ -10,22 +10,22 @@ public:
 	unsigned int* indices;
 	unsigned int indicesCount;
 	unsigned int indicesSize;
-	float* getData() {
+	inline float* getData() {
 		return this->data;
 	}
-	unsigned int getDataCount() {
+	inline unsigned int getDataCount() {
 		return this->dataCount;
 	}
-	unsigned int getDataSize() {
+	inline unsigned int getDataSize() {
 		return this->dataSize;
 	}
-	unsigned int* getIndices() {
+	inline unsigned int* getIndices() {
 		return this->indices;
 	}
-	unsigned int getIndicesCount() {
+	inline unsigned int getIndicesCount() {
 		return this->indicesCount;
 	}
-	unsigned int getIndicesSize() {
+	inline unsigned int getIndicesSize() {
 		return this->indicesSize;
 	}
 };

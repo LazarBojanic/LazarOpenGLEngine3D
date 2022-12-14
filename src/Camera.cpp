@@ -1,6 +1,6 @@
 #include "Camera.hpp"
 
-Camera::Camera(glm::vec3 position) {
+Camera::Camera(glm::vec3 position, float width, float height, float nearPlane, float farPlane) {
     this->position = position;
     this->worldUp = glm::vec3(0.0f, 1.0f, 0.0f);
     this->yaw = -90.0f;
@@ -9,9 +9,10 @@ Camera::Camera(glm::vec3 position) {
     this->movementSpeed = 2.5f;
     this->mouseSensitivity = 0.5f;
     this->zoom = 45.0f;
-    this->updateCameraVectors();
+    this->projection = glm::perspective(glm::radians(this->zoom), width / height, nearPlane, farPlane);
+    this->updateView();
 }
-Camera::Camera(float positionX, float positionY, float positionZ) {
+Camera::Camera(float positionX, float positionY, float positionZ, float width, float height, float nearPlane, float farPlane) {
     this->position = glm::vec3(positionX, positionY, positionZ);
     this->worldUp = glm::vec3(0.0f, 1.0f, 0.0f);
     this->yaw = -90.0f;
@@ -20,7 +21,8 @@ Camera::Camera(float positionX, float positionY, float positionZ) {
     this->movementSpeed = 2.5f;
     this->mouseSensitivity = 0.5f;
     this->zoom = 45.0f;
-    this->updateCameraVectors();
+    this->projection = glm::perspective(glm::radians(this->zoom), width / height, nearPlane, farPlane);
+    this->updateView();
 }
 Camera::~Camera(){
 }
@@ -37,7 +39,7 @@ void Camera::processMouseMovement(float xoffset, float yoffset, GLboolean constr
             this->pitch = -89.0f;
         }
     }
-    updateCameraVectors();
+    updateView();
     double currentCursorX;
     double currentCursorY;
     glfwGetCursorPos(window, &currentCursorX, &currentCursorY);
@@ -54,7 +56,7 @@ void Camera::processMouseMovement(float xoffset, float yoffset, GLboolean constr
         glfwSetCursorPos(window, currentCursorX, 20.0f);
     }
 }
-void Camera::updateCameraVectors() {
+void Camera::updateView() {
     glm::vec3 front;
     front.x = cos(glm::radians(this->yaw)) * cos(glm::radians(this->pitch));
     front.y = sin(glm::radians(this->pitch));
@@ -62,6 +64,7 @@ void Camera::updateCameraVectors() {
     this->front = glm::normalize(front);
     this->right = glm::normalize(glm::cross(this->front, this->worldUp));
     this->up = glm::normalize(glm::cross(this->right, this->front));
+    this->view = glm::lookAt(this->position, this->position + this->front, this->up);
 }
 void Camera::processKeyboard(CameraMovement direction, float deltaTime){
     float velocity = this->movementSpeed * deltaTime;
@@ -77,6 +80,7 @@ void Camera::processKeyboard(CameraMovement direction, float deltaTime){
     if (direction == RIGHT) {
         this->position += this->right * velocity;
     }
+    updateView();
 }
 void Camera::processMouseScroll(float yoffset){
     this->zoom -= (float)yoffset;
@@ -85,5 +89,6 @@ void Camera::processMouseScroll(float yoffset){
     }      
     if (this->zoom > 45.0f) {
         this->zoom = 45.0f;
-    }  
+    }
+    updateView();
 }

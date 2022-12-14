@@ -45,7 +45,7 @@ void Game::initVariables() {
 	bool firstMouse = true;
 }
 void Game::initResources() {
-	this->camera = new Camera(glm::vec3(0.0f, 0.0f, 3.0f));
+	this->camera = new Camera(glm::vec3(0.0f, 0.0f, 3.0f), this->width, this->height, 0.1f, 100.0f);
 	OtherCube* cube = new OtherCube();
 
 	Mesh* lightMesh = ResourceManager::getInstance()->addMesh(*cube, "lightMesh", 0, 3, 1, 3, 2, 2, 3, 3, false);
@@ -61,9 +61,6 @@ void Game::initResources() {
 
 	Light* light = ResourceManager::getInstance()->addLight("light", glm::vec3(2.5f, 2.5f, 2.5f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f));
 
-	glm::mat4 view = this->camera->getViewMatrix();
-	glm::mat4 projection = glm::perspective(glm::radians(this->camera->getZoom()), (float)this->width / (float)this->height, 0.1f, 100.0f);
-	
 	lightShader->setVector3f("uLightColor", glm::vec3(1.0f, 1.0f, 1.0f), true);
 
 	cubeShader->setVector3f("uViewPos", this->camera->getPosition(), true);
@@ -108,25 +105,7 @@ void Game::processInput(float dt) {
 }
 void Game::update(float dt) {
 	Renderer::getInstance()->colorBackground(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
-	
-	GameObject* light = GameObjectManager::getInstance()->getGameObjectByTag("light");
-	Renderer::getInstance()->draw(*light, *this->camera, this->width, this->height, true, false, false);
-
-	GameObject* cube = GameObjectManager::getInstance()->getGameObjectByTag("cube");
-	cube->setRotationY(glm::pow(glfwGetTime(), 3.0f));
-	cube->setRotationZ(45.0f);
-
-	cube->getDrawData()->getShader()->setVector3f("uViewPos", this->camera->getPosition(), true);
-	cube->updateDrawData();
-	
-
-	Renderer::getInstance()->draw(*cube, *this->camera, this->width, this->height, true, false, false);
-
-	GameObject* ground = GameObjectManager::getInstance()->getGameObjectByTag("ground");
-	ground->getDrawData()->getShader()->setVector3f("uViewPos", this->camera->getPosition(), true);
-	ground->updateDrawData();
-
-	Renderer::getInstance()->draw(*ground, *this->camera, this->width, this->height, true, false, false);
+	Renderer::getInstance()->drawAll(*this->camera, true, true, false);
 }
 void Game::clear() {
 	delete[] this->keys;

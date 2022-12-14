@@ -2,6 +2,7 @@
 
 #include "GLData.hpp"
 #include "GameObject.hpp"
+#include "GameObjectManager.hpp"
 #include "ResourceManager.hpp"
 #include "Camera.hpp"
 
@@ -13,6 +14,7 @@ private:
 
 public:
 	static Renderer* getInstance();
-	void draw(GameObject& gameObject, Camera& camera, float width, float height, bool scaled, bool indexed, bool textured);
+	void draw(GameObject& gameObject, Camera& camera, bool scaled, bool indexed, bool textured);
+	void drawAll(Camera& camera, bool scaled, bool indexed, bool textured);
 	void colorBackground(glm::vec4 color);
 };
