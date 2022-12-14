@@ -105,7 +105,7 @@ void Game::processInput(float dt) {
 }
 void Game::update(float dt) {
 	Renderer::getInstance()->colorBackground(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
-	Renderer::getInstance()->drawAll(*this->camera, true, true, false);
+	Renderer::getInstance()->drawAll(*this->camera, true, false, false);
 }
 void Game::clear() {
 	delete[] this->keys;
