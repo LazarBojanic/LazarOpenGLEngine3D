@@ -18,7 +18,7 @@ private:
 	bool isHit;
 public:
 	GameObject();
-	GameObject(std::string name, std::string tag, DrawData& drawData, float positionX, float positionY, float positionZ, float sizeX, float sizeY, float sizeZ, float scaleX, float scaleY, float scaleZ, float rotationX, float rotationY, float rotationZ, float speedX, float speedY, float speedZ, bool isHit);
+	GameObject(std::string name, std::string tag, DrawData* drawData, float positionX, float positionY, float positionZ, float sizeX, float sizeY, float sizeZ, float scaleX, float scaleY, float scaleZ, float rotationX, float rotationY, float rotationZ, float speedX, float speedY, float speedZ, bool isHit);
 	~GameObject();
 	void updateDrawData();
 	inline GUID getId() {

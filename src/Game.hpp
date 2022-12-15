@@ -7,7 +7,6 @@
 #include "Triangle.hpp"
 #include "Quad.hpp"
 #include "Cube.hpp"
-#include "OtherCube.hpp"
 #include "Camera.hpp"
 
 enum GameState {

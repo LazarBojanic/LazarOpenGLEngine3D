@@ -14,11 +14,13 @@ private:
 	VertexBuffer* vertexBuffer;
 	Primitive* primitive;
 	float* data;
+	float unindexedVertexCount;
 	unsigned int* indices;
-	unsigned int vertexCount;
+	unsigned int indicesCount;
+	bool indexed;
 public:
 	Mesh();
-	Mesh(Primitive& primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions, bool indexed);
+	Mesh(Primitive* primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions);
 	~Mesh();
 	inline GUID getId() {
 		return this->id;
@@ -41,7 +43,13 @@ public:
 	inline unsigned int* getIndices() {
 		return this->indices;
 	}
-	inline unsigned int getVertexCount() {
-		return this->vertexCount;
+	inline unsigned int getIndicesCount() {
+		return this->indicesCount;
+	}
+	inline float getUnindexedVertexCount() {
+		return this->unindexedVertexCount;
+	}
+	inline float getIsIndexed() {
+		return this->indexed;
 	}
 };

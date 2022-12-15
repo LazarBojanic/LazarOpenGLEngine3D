@@ -14,7 +14,7 @@ private:
 
 public:
 	static Renderer* getInstance();
-	void draw(GameObject& gameObject, Camera& camera, bool scaled, bool indexed, bool textured);
-	void drawAll(Camera& camera, bool scaled, bool indexed, bool textured);
+	void draw(GameObject& gameObject, Camera& camera, bool scaled);
+	void drawAll(Camera& camera, bool scaled);
 	void colorBackground(glm::vec4 color);
 };

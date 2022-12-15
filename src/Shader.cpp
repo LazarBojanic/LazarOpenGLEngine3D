@@ -16,6 +16,8 @@ Shader::Shader(std::string vertexShaderPath, std::string fragmentShaderPath, std
 	compile(this->fragmentShaderID, this->fragmentShaderSource);
 
 	createProgramAndAttachShaders(this->vertexShaderID, this->fragmentShaderID);
+
+	std::cout << "Created New Shader" << std::endl;
 }
 Shader::~Shader() {
 }

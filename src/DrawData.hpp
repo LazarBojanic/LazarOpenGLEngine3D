@@ -16,24 +16,25 @@ private:
 	Light* light;
 	Texture* texture;
 public:
-	DrawData(std::string name, Mesh& mesh, Shader& shader, Material& material, Light& light, Texture& texture);
+	DrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture);
+	DrawData(DrawData& drawData);
 	~DrawData();
-	std::string getName() {
+	inline std::string getName() {
 		return this->name;
 	}
-	Mesh* getMesh() {
+	inline Mesh* getMesh() {
 		return this->mesh;
 	}
-	Shader* getShader() {
+	inline Shader* getShader() {
 		return this->shader;
 	}
-	Material* getMaterial() {
+	inline Material* getMaterial() {
 		return this->material;
 	}
-	Light* getLight() {
+	inline Light* getLight() {
 		return this->light;
 	}
-	Texture* getTexture() {
+	inline Texture* getTexture() {
 		return this->texture;
 	}
 	void setShader(const Shader& shader);

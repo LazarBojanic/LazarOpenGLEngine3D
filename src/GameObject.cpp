@@ -26,11 +26,11 @@ GameObject::GameObject(){
 	this->isHit = false;
 }
 
-GameObject::GameObject(std::string name, std::string tag, DrawData& drawData, float positionX, float positionY, float positionZ, float sizeX, float sizeY, float sizeZ, float scaleX, float scaleY, float scaleZ, float rotationX, float rotationY, float rotationZ, float speedX, float speedY, float speedZ, bool isHit){
+GameObject::GameObject(std::string name, std::string tag, DrawData* drawData, float positionX, float positionY, float positionZ, float sizeX, float sizeY, float sizeZ, float scaleX, float scaleY, float scaleZ, float rotationX, float rotationY, float rotationZ, float speedX, float speedY, float speedZ, bool isHit){
 	HRESULT guidResult = CoCreateGuid(&this->id);
 	this->name = name;
 	this->tag = tag;
-	this->drawData = new DrawData(drawData);
+	this->drawData = new DrawData(*drawData);
 	this->positionX = positionX;
 	this->positionY = positionY;
 	this->positionZ = positionZ;

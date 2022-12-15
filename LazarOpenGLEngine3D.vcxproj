@@ -209,14 +209,13 @@
     <ClInclude Include="src\Light.hpp" />
     <ClInclude Include="src\Material.hpp" />
     <ClInclude Include="src\Camera.hpp" />
-    <ClInclude Include="src\Cube.hpp" />
     <ClInclude Include="src\DrawData.hpp" />
     <ClInclude Include="src\GameObject.hpp" />
     <ClInclude Include="src\IndexBuffer.hpp" />
     <ClInclude Include="src\Mesh.hpp" />
     <ClInclude Include="src\Application.hpp" />
     <ClInclude Include="src\Game.hpp" />
-    <ClInclude Include="src\OtherCube.hpp" />
+    <ClInclude Include="src\Cube.hpp" />
     <ClInclude Include="src\Primitive.hpp" />
     <ClInclude Include="src\Quad.hpp" />
     <ClInclude Include="src\Shader.hpp" />

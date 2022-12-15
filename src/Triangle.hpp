@@ -11,6 +11,7 @@ public:
 				0.0f,  0.5f, 0.0f,	  0.0f, 1.0f, 0.0f,	   0.5f, 1.0f, //top middle
 				0.5f, -0.5f, 0.0f,	  0.0f, 0.0f, 1.0f,	   1.0f, 0.0f  //bottom right
 		};
+		this->unindexedVertexCount = 3;
 		this->dataCount = 24;
 		this->dataSize = 24 * sizeof(float);
 		this->indices = new unsigned int[3] {

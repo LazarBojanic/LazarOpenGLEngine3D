@@ -37,8 +37,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         }
     }
 }
-void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
-{
+void mouse_callback(GLFWwindow* window, double xposIn, double yposIn){
     float xpos = static_cast<float>(xposIn);
     float ypos = static_cast<float>(yposIn);
 
@@ -54,7 +53,7 @@ void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
     Game::getInstance()->setLastX(xpos);
     Game::getInstance()->setLastY(ypos);
 
-    Game::getInstance()->getCamera()->processMouseMovement(xoffset, yoffset, true, Game::getInstance()->getWindow(), Game::getInstance()->getWidth(), Game::getInstance()->getHeight());
+    Game::getInstance()->getCamera()->processMouseMovement(xoffset, yoffset, false, Game::getInstance()->getWindow(), Game::getInstance()->getWidth(), Game::getInstance()->getHeight());
 }
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset){
     Game::getInstance()->getCamera()->processMouseScroll(static_cast<float>(yoffset));

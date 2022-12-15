@@ -4,17 +4,18 @@ Mesh::Mesh() {
 	HRESULT guidResult = CoCreateGuid(&this->id);
 	this->data = nullptr;
 	this->indices = nullptr;
-	this->vertexCount = 0;
 	this->name = "";
 	this->vertexArray = nullptr;
 	this->vertexBuffer = nullptr;
 	this->indices = nullptr;
-	this->vertexCount = 0;
+	this->indexed = true;
+	this->indicesCount = 0;
+	this->unindexedVertexCount = 0;
 }
-Mesh::Mesh(Primitive& primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions, bool indexed) {
+Mesh::Mesh(Primitive* primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions) {
 	HRESULT guidResult = CoCreateGuid(&this->id);
 	this->name = name;
-	this->primitive = new Primitive(primitive);
+	this->primitive = new Primitive(*primitive);
 	this->vertexArray = new VertexArray();
 	this->vertexArray->bind();
 	this->vertexBuffer = new VertexBuffer(
@@ -29,8 +30,10 @@ Mesh::Mesh(Primitive& primitive, std::string name, int positionAttributeNumber, 
 		normalDimensions,
 		indexed);
 	this->vertexArray->unbind();
-	this->indices = primitive.getIndices();
-	this->vertexCount = primitive.getIndicesCount();
+	this->indices = primitive->getIndices();
+	this->indexed = primitive->getIsIndexed();
+	this->indicesCount = primitive->getIndicesCount();
+	this->unindexedVertexCount = primitive->getUnindexedVertexCount();
 }
 
 Mesh::~Mesh(){

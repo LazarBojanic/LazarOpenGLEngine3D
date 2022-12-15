@@ -12,6 +12,7 @@ public:
 			 0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,    1.0f, 1.0f, //top right
 			-0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 0.0f,	0.0f, 1.0f  //top left
 		};
+		this->unindexedVertexCount = 6;
 		this->dataCount = 32;
 		this->dataSize = 32 * sizeof(float);
 		this->indices = new unsigned int[6] {

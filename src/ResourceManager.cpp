@@ -20,8 +20,8 @@ ResourceManager* ResourceManager::getInstance() {
     return instance;
 }
 
-Mesh* ResourceManager::addMesh(Primitive& primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions, bool indexed){
-    Mesh* mesh = new Mesh(primitive, name, positionAttributeNumber, positionDimensions, colorAttributeNumber, colorDimensions, textureAttributeNumber, textureDimensions, normalAttributeNumber, normalDimensions, indexed);
+Mesh* ResourceManager::addMesh(Primitive* primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions){
+    Mesh* mesh = new Mesh(primitive, name, positionAttributeNumber, positionDimensions, colorAttributeNumber, colorDimensions, textureAttributeNumber, textureDimensions, normalAttributeNumber, normalDimensions);
     if (std::find(this->meshList->begin(), this->meshList->end(), mesh) == this->meshList->end()) {
         this->meshList->push_back(mesh);
         return mesh;
@@ -65,7 +65,7 @@ Texture* ResourceManager::addTexture(std::string texturePath, bool alpha, std::s
     return nullptr;
 }
 
-DrawData* ResourceManager::addDrawData(std::string name, Mesh& mesh, Shader& shader, Material& material, Light& light, Texture& texture){
+DrawData* ResourceManager::addDrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture){
     DrawData* drawData = new DrawData(name, mesh, shader, material, light, texture);
     if (std::find(this->drawDataList->begin(), this->drawDataList->end(), drawData) == this->drawDataList->end()) {
         this->drawDataList->push_back(drawData);
