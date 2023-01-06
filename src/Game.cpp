@@ -74,9 +74,8 @@ void Game::initResources() {
 
 	GameObjectManager::getInstance()->addGameObject("lightGameObject", "light", lightDrawData, 2.5f, 2.5f, 2.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
 	
-	for (float i = 0.0f; i < 360.0f; i += 0.1f) {
-		GameObject* cube = GameObjectManager::getInstance()->addGameObject("cubeGameObject", "cube", cubeDrawData, glm::cos(i), (int)i % 360, glm::sin(i), 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
-	}
+	GameObject* cubeGameObject = GameObjectManager::getInstance()->addGameObject("cubeGameObject", "cube", cubeDrawData, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+
 	
 	GameObjectManager::getInstance()->addGameObject("groundGameObject", "ground", groundDrawData, 0.0f, -1.5f, 0.0f, 1.0f, 1.0f, 1.0f, 200.0f, 1.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
 
@@ -101,13 +100,12 @@ void Game::processInput(float dt) {
 }
 void Game::update(float dt) {
 	Renderer::getInstance()->colorBackground(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
-	std::vector<GameObject*>* gameObjects = GameObjectManager::getInstance()->getGameObjectsByTag("cube");
-	float t = 0.0f;
-	for (int i = 0; i < gameObjects->size(); i++) {
-		gameObjects->at(i)->getDrawData()->getShader()->setVector3f("uCubeColor", glm::vec3(glm::sin(t), 0.0f, glm::sin(t)), true);
-		Renderer::getInstance()->draw(*gameObjects->at(i), *this->camera, true);
-		t += 0.1f;
-	}
+	GameObject* cubeGameObject = GameObjectManager::getInstance()->getGameObjectByTag("cube");
+	GameObject* groundGameObject = GameObjectManager::getInstance()->getGameObjectByTag("ground");
+	GameObject* lightGameObject = GameObjectManager::getInstance()->getGameObjectByTag("light");
+	Renderer::getInstance()->draw(*cubeGameObject, *this->camera, true);
+	Renderer::getInstance()->draw(*groundGameObject, *this->camera, true);
+	Renderer::getInstance()->draw(*lightGameObject, *this->camera, true);
 }
 void Game::clear() {
 	delete[] this->keys;
