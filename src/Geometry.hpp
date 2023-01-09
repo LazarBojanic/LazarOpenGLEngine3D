@@ -8,7 +8,7 @@
 
 class Geometry {
 private:
-    std::vector<GeometryVertex*>* vertices;
+    std::vector<GeometryVertex> vertices;
     std::vector<unsigned int>* indices;
     std::vector<Texture*>* textures;
 
@@ -16,10 +16,10 @@ private:
     VertexBuffer* vertexBuffer;
 
 public:
-    Geometry(std::vector<GeometryVertex*>* vertices, std::vector<unsigned int>* indices, std::vector<Texture*>* textures);
+    Geometry(std::vector<GeometryVertex> vertices, std::vector<unsigned int>* indices, std::vector<Texture*>* textures);
     ~Geometry();
     void generate();
-    inline std::vector<GeometryVertex*>* getVertices() {
+    inline std::vector<GeometryVertex> getVertices() {
         return this->vertices;
     }
     inline std::vector<unsigned int>* getIndices() {

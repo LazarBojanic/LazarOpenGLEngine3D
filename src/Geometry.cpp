@@ -1,6 +1,6 @@
 #include "Geometry.hpp"
 
-Geometry::Geometry(std::vector<GeometryVertex*>* vertices, std::vector<unsigned int>* indices, std::vector<Texture*>* textures) {
+Geometry::Geometry(std::vector<GeometryVertex> vertices, std::vector<unsigned int>* indices, std::vector<Texture*>* textures) {
     this->vertices = vertices;
     this->indices = indices;
     this->textures = textures;
@@ -9,7 +9,6 @@ Geometry::Geometry(std::vector<GeometryVertex*>* vertices, std::vector<unsigned 
 }
 
 Geometry::~Geometry() {
-    delete this->vertices;
     delete this->indices;
     delete this->textures;
     delete this->vertexArray;

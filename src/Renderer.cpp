@@ -129,10 +129,15 @@ void Renderer::drawModel(GameObject& gameObject, Camera& camera, bool scaled) {
                 number = std::to_string(heightNr++);
             }
             gameObject.getDrawData()->getShader()->setInt((name + number).c_str(), i, true);
+            gameObject.getDrawData()->getShader()->setMatrix4f("uModel", model, true);
+            gameObject.getDrawData()->getShader()->setMatrix4f("uView", view, true);
+            gameObject.getDrawData()->getShader()->setMatrix4f("uProjection", projection, true);
+            gameObject.getDrawData()->getShader()->setVector3f("uViewPos", camera.getPosition(), true);
+            gameObject.updateShaderLighting();
             gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getTextures()->at(j)->bind(j);
             gameObject.updateShaderLighting();
 
-            glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(j)->getIndices()->size(), GL_UNSIGNED_INT, 0);
+            glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getIndices()->size(), GL_UNSIGNED_INT, 0);
         }
     }
 }

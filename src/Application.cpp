@@ -65,7 +65,7 @@ void GLAPIENTRY debugCallback(GLenum source,
     GLsizei length,
     const GLchar* message,
     const void* userParam){
-    std::cout << "GL CALLBACK-> Type: " << type << "Severity: " << severity << "Message: " << message << std::endl;
+    std::cout << "GL CALLBACK-> Type: " << type << " Severity: " << severity << " Message: " << message << std::endl;
 }
 void Application::initWindow() {
     initGlfw();

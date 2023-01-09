@@ -34,30 +34,30 @@ void Model::processNode(aiNode* node, const aiScene* scene) {
 }
 
 Geometry* Model::processMesh(aiMesh* mesh, const aiScene* scene) {
-    std::vector<GeometryVertex*>* vertices = new std::vector<GeometryVertex*>();
+    std::vector<GeometryVertex> vertices;
     std::vector<unsigned int>* indices = new std::vector<unsigned int>();
     std::vector<Texture*>* textures = new std::vector<Texture*>();
     for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
-        GeometryVertex* vertex = new GeometryVertex();
+        GeometryVertex vertex;
         glm::vec3 vector;
         vector.x = mesh->mVertices[i].x;
         vector.y = mesh->mVertices[i].y;
         vector.z = mesh->mVertices[i].z;
-        vertex->position = vector;
+        vertex.position = vector;
         if (mesh->HasNormals()) {
             vector.x = mesh->mNormals[i].x;
             vector.y = mesh->mNormals[i].y;
             vector.z = mesh->mNormals[i].z;
-            vertex->normal = vector;
+            vertex.normal = vector;
         }
         if (mesh->mTextureCoords[0]){
             glm::vec2 vec;
 
             vec.x = mesh->mTextureCoords[0][i].x;
             vec.y = mesh->mTextureCoords[0][i].y;
-            vertex->textureCoords = vec;
+            vertex.textureCoords = vec;
 
-            vector.x = mesh->mTangents[i].x;
+            /*vector.x = mesh->mTangents[i].x;
             vector.y = mesh->mTangents[i].y;
             vector.z = mesh->mTangents[i].z;
             vertex->tangent = vector;
@@ -65,13 +65,13 @@ Geometry* Model::processMesh(aiMesh* mesh, const aiScene* scene) {
             vector.x = mesh->mBitangents[i].x;
             vector.y = mesh->mBitangents[i].y;
             vector.z = mesh->mBitangents[i].z;
-            vertex->bitangent = vector;
+            vertex->bitangent = vector;*/
         }
         else {
-            vertex->textureCoords = glm::vec2(0.0f, 0.0f);
+            vertex.textureCoords = glm::vec2(0.0f, 0.0f);
         }
         
-        vertices->push_back(vertex);
+        vertices.push_back(vertex);
     }
     for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
         aiFace face = mesh->mFaces[i];
