@@ -3,6 +3,7 @@
 ResourceManager* ResourceManager::instance;
 
 ResourceManager::ResourceManager() {
+    this->modelList = new std::vector<Model*>();
     this->meshList = new std::vector<Mesh*>();
     this->shaderList = new std::vector<Shader*>();
     this->materialList = new std::vector<Material*>();
@@ -19,9 +20,16 @@ ResourceManager* ResourceManager::getInstance() {
     }
     return instance;
 }
-
-Mesh* ResourceManager::addMesh(Primitive* primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions){
-    Mesh* mesh = new Mesh(primitive, name, positionAttributeNumber, positionDimensions, colorAttributeNumber, colorDimensions, textureAttributeNumber, textureDimensions, normalAttributeNumber, normalDimensions);
+Model* ResourceManager::addModel(std::string path, std::string name) {
+    Model* model = new Model(name, path);
+    if (std::find(this->modelList->begin(), this->modelList->end(), model) == this->modelList->end()) {
+        this->modelList->push_back(model);
+        return model;
+    }
+    return nullptr;
+}
+Mesh* ResourceManager::addMesh(Primitive* primitive, Model* model, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions){
+    Mesh* mesh = new Mesh(primitive, model, name, positionAttributeNumber, positionDimensions, colorAttributeNumber, colorDimensions, textureAttributeNumber, textureDimensions, normalAttributeNumber, normalDimensions);
     if (std::find(this->meshList->begin(), this->meshList->end(), mesh) == this->meshList->end()) {
         this->meshList->push_back(mesh);
         return mesh;
@@ -56,8 +64,8 @@ Light* ResourceManager::addLight(std::string name, glm::vec3 position, glm::vec3
     return nullptr;
 }
 
-Texture* ResourceManager::addTexture(std::string texturePath, bool alpha, std::string name){
-    Texture* texture = new Texture(texturePath, alpha, name);
+Texture* ResourceManager::addTexture(std::string texturePath, bool alpha, std::string name, std::string type){
+    Texture* texture = new Texture(texturePath, name, type);
     if (std::find(this->textureList->begin(), this->textureList->end(), texture) == this->textureList->end()) {
         this->textureList->push_back(texture);
         return texture;
@@ -70,6 +78,15 @@ DrawData* ResourceManager::addDrawData(std::string name, Mesh* mesh, Shader* sha
     if (std::find(this->drawDataList->begin(), this->drawDataList->end(), drawData) == this->drawDataList->end()) {
         this->drawDataList->push_back(drawData);
         return drawData;
+    }
+    return nullptr;
+}
+
+Model* ResourceManager::getModelByName(std::string name) {
+    for (int i = 0; i < this->modelList->size(); i++) {
+        if (this->modelList->at(i)->getName() == name) {
+            return this->modelList->at(i);
+        }
     }
     return nullptr;
 }

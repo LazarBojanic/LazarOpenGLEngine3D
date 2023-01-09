@@ -62,7 +62,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;irrKlang.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -80,10 +80,12 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;irrKlang.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Geometry.hpp" />
+    <ClInclude Include="libraries\include\assimp\config.h" />
     <ClInclude Include="libraries\include\dlg\dlg.h" />
     <ClInclude Include="libraries\include\dlg\output.h" />
     <ClInclude Include="libraries\include\freetype\config\ftconfig.h" />
@@ -206,6 +208,8 @@
     <ClInclude Include="libraries\include\irrKlang\ik_SAudioStreamFormat.h" />
     <ClInclude Include="libraries\include\irrKlang\ik_vec3d.h" />
     <ClInclude Include="libraries\include\irrKlang\irrKlang.h" />
+    <ClInclude Include="src\GeometryVertex.hpp" />
+    <ClInclude Include="src\Model.hpp" />
     <ClInclude Include="src\Light.hpp" />
     <ClInclude Include="src\Material.hpp" />
     <ClInclude Include="src\Camera.hpp" />
@@ -520,8 +524,10 @@
     <None Include="assets\shaders\cubeLightingFragmentShader.glsl" />
     <None Include="assets\shaders\cubeLightingTexturedFragmentShader.glsl" />
     <None Include="assets\shaders\cubeLightingVertexShader.glsl" />
+    <None Include="assets\shaders\genericVertexShader.glsl" />
     <None Include="assets\shaders\lightFragmentShader.glsl" />
     <None Include="assets\shaders\lightVertexShader.glsl" />
+    <None Include="assets\shaders\backpackFragmentShader.glsl" />
     <None Include="libraries\include\glm\detail\func_common.inl" />
     <None Include="libraries\include\glm\detail\func_common_simd.inl" />
     <None Include="libraries\include\glm\detail\func_exponential.inl" />
@@ -661,6 +667,9 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Geometry.cpp" />
+    <ClCompile Include="src\GeometryVertex.cpp" />
+    <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Light.cpp" />
     <ClCompile Include="src\Material.cpp" />
     <ClCompile Include="src\Camera.cpp" />

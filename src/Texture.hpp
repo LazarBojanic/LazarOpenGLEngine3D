@@ -5,18 +5,20 @@
 class Texture{
 private:
 	GUID id;
+	std::string path;
     std::string name;
+	std::string type;
 	unsigned int textureID;
 	unsigned int width;
 	unsigned int height;
     unsigned int wrap_S;
     unsigned int wrap_T;
     unsigned int filterMin;
-    unsigned int filterMax;
-    unsigned int imageFormat;
+    unsigned int filterMag;
+    GLenum format;
 public:
     Texture();
-    Texture(std::string textureFilePath, bool alpha, std::string name);
+    Texture(std::string textureFilePath, std::string name, std::string type);
     ~Texture();
     void generate(unsigned char* data);
     void bind(unsigned int textureChannel);
@@ -24,8 +26,14 @@ public:
 	inline GUID getId() {
 		return this->id;
 	}
+	inline std::string getPath() {
+		return this->path;
+	}
 	inline std::string getName() {
 		return this->name;
+	}
+	inline std::string getType() {
+		return this->type;
 	}
 	inline unsigned int getTextureID() {
 		return this->textureID;
@@ -45,10 +53,10 @@ public:
 	inline unsigned int getFilterMin() {
 		return this->filterMin;
 	}
-	inline unsigned int getFilterMax() {
-		return this->filterMax;
+	inline unsigned int getFilterMag() {
+		return this->filterMag;
 	}
-	inline unsigned int getImageFormat() {
-		return this->imageFormat;
+	inline GLenum getFormat() {
+		return this->format;
 	}
 };

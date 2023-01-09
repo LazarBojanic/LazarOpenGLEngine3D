@@ -34,6 +34,29 @@ VertexBuffer::VertexBuffer(Primitive* primitive, unsigned int positionAttributeN
 	glEnableVertexAttribArray(normalAttributeNumber);
 	glVertexAttribPointer(normalAttributeNumber, normalDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)((positionDimensions + colorDimensions + textureDimensions) * sizeof(float)));
 }
+
+
+VertexBuffer::VertexBuffer(std::vector<GeometryVertex*>* vertices, std::vector<unsigned int>* indices) {
+	glGenBuffers(1, &this->vboID);
+	bind();
+	glBufferData(GL_ARRAY_BUFFER, vertices->size() * sizeof(GeometryVertex), &vertices->at(0), GL_STATIC_DRAW);
+	this->indexBuffer = new IndexBuffer(indices);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GeometryVertex), (void*)0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(GeometryVertex), (void*)offsetof(GeometryVertex, normal));
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(GeometryVertex), (void*)offsetof(GeometryVertex, textureCoords));
+	glEnableVertexAttribArray(3);
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(GeometryVertex), (void*)offsetof(GeometryVertex, tangent));
+	glEnableVertexAttribArray(4);
+	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(GeometryVertex), (void*)offsetof(GeometryVertex, bitangent));
+	glEnableVertexAttribArray(5);
+	glVertexAttribIPointer(5, 4, GL_INT, sizeof(GeometryVertex), (void*)offsetof(GeometryVertex, boneIds));
+	glEnableVertexAttribArray(6);
+	glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(GeometryVertex), (void*)offsetof(GeometryVertex, weights));
+}
+
 VertexBuffer::~VertexBuffer() {
 	delete this->indexBuffer;
 }

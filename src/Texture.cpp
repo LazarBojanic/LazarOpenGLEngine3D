@@ -5,21 +5,28 @@
 Texture::Texture() {
 }
 
-Texture::Texture(std::string textureFilePath, bool alpha, std::string name) {
+Texture::Texture(std::string textureFilePath, std::string name, std::string type) {
     HRESULT guidResult = CoCreateGuid(&this->id);
     this->name = name;
+    this->path = textureFilePath;
+    this->type = type;
     this->wrap_S = GL_REPEAT;
     this->wrap_T = GL_REPEAT;
-    this->filterMin = GL_LINEAR;
-    this->filterMax = GL_LINEAR;
-    this->imageFormat = GL_RGB;
-    if (alpha) {
-        this->imageFormat = GL_RGBA;
-    }
+    this->filterMin = GL_LINEAR_MIPMAP_LINEAR;
+    this->filterMag = GL_LINEAR;
     glGenTextures(1, &this->textureID);
     int tempWidth, tempHeight, tempNumberOfChannels;
     stbi_set_flip_vertically_on_load(true);
     unsigned char* data = stbi_load(textureFilePath.c_str(), &tempWidth, &tempHeight, &tempNumberOfChannels, STBI_rgb_alpha);
+    if (tempNumberOfChannels == 1) {
+        this->format = GL_RED;
+    }
+    else if (tempNumberOfChannels == 3) {
+        this->format = GL_RGB;
+    }
+    else if (tempNumberOfChannels == 4) {
+        this->format = GL_RGBA;
+    }
     this->width = tempWidth;
     this->height = tempHeight;
     generate(data);
@@ -29,11 +36,12 @@ Texture::~Texture() {
 }
 void Texture::generate(unsigned char* data) {
     bind(0);
-    glTexImage2D(GL_TEXTURE_2D, 0, this->imageFormat, this->width, this->height, 0, this->imageFormat, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, this->format, this->width, this->height, 0, this->format, GL_UNSIGNED_BYTE, data);
+    glGenerateMipmap(GL_TEXTURE_2D);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, this->wrap_S);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, this->wrap_T);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, this->filterMin);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, this->filterMax);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, this->filterMag);
     unbind();
 }
 void Texture::bind(unsigned int textureChannel) {

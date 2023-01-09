@@ -1,10 +1,8 @@
 #pragma once
 
 #include "GLData.hpp"
-#include "VertexArray.hpp"
-#include "VertexBuffer.hpp"
-#include "IndexBuffer.hpp"
 #include "Primitive.hpp"
+#include "Model.hpp"
 
 class Mesh {
 private:
@@ -13,6 +11,7 @@ private:
 	VertexArray* vertexArray;
 	VertexBuffer* vertexBuffer;
 	Primitive* primitive;
+	Model* model;
 	float* data;
 	float unindexedVertexCount;
 	unsigned int* indices;
@@ -20,7 +19,7 @@ private:
 	bool indexed;
 public:
 	Mesh();
-	Mesh(Primitive* primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions);
+	Mesh(Primitive* primitive, Model* model, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions);
 	~Mesh();
 	inline GUID getId() {
 		return this->id;
@@ -36,6 +35,9 @@ public:
 	}
 	inline Primitive* getPrimitive() {
 		return this->primitive;
+	}
+	inline Model* getModel() {
+		return this->model;
 	}
 	inline float* getData() {
 		return this->data;

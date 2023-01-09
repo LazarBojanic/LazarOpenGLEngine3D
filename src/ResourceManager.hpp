@@ -4,6 +4,7 @@
 #include "DrawData.hpp"
 #include "Mesh.hpp"
 #include "Shader.hpp"
+#include "Model.hpp"
 #include "Material.hpp"
 #include "Light.hpp"
 #include "Texture.hpp"
@@ -14,6 +15,7 @@ private:
 	~ResourceManager();
 	static ResourceManager* instance;
 
+	std::vector<Model*>* modelList;
 	std::vector<Mesh*>* meshList;
 	std::vector<Shader*>* shaderList;
 	std::vector<Material*>* materialList;
@@ -23,14 +25,15 @@ private:
 
 public:
 	static ResourceManager* getInstance();
-
-	Mesh* addMesh(Primitive* primitive, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions);
+	Model* addModel(std::string path, std::string name);
+	Mesh* addMesh(Primitive* primitive, Model* model, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions);
 	Shader* addShader(std::string vertexShaderPath, std::string fragmentShaderPath, std::string name);
 	Material* addMaterial(std::string name, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, float shininess);
 	Light* addLight(std::string name, glm::vec3 position, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular);
-	Texture* addTexture(std::string texturePath, bool alpha, std::string name);
+	Texture* addTexture(std::string texturePath, bool alpha, std::string name, std::string type);
 	DrawData* addDrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture, Texture* specular);
 	
+	Model* getModelByName(std::string name);
 	Mesh* getMeshByName(std::string name);
 	Shader* getShaderByName(std::string name);
 	Material* getMaterialByName(std::string name);
@@ -38,6 +41,9 @@ public:
 	Texture* getTextureByName(std::string name);
 	DrawData* getDrawDataByName(std::string name);
 
+	inline std::vector<Model*>* getModelList() {
+		return this->modelList;
+	}
 	inline std::vector<Mesh*>* getMeshList() {
 		return this->meshList;
 	}
