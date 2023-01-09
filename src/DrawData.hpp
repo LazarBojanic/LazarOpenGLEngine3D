@@ -15,8 +15,9 @@ private:
 	Material* material;
 	Light* light;
 	Texture* texture;
+	Texture* specular;
 public:
-	DrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture);
+	DrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture, Texture* specular);
 	DrawData(DrawData& drawData);
 	~DrawData();
 	inline std::string getName() {
@@ -36,6 +37,9 @@ public:
 	}
 	inline Texture* getTexture() {
 		return this->texture;
+	}
+	inline Texture* getSpecular() {
+		return this->specular;
 	}
 	void setShader(const Shader& shader);
 };

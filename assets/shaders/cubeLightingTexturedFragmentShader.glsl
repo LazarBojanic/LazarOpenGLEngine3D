@@ -13,7 +13,7 @@ uniform vec3 uCubeColor;
 
 struct Material {
     sampler2D diffuse;
-    vec3      specular;
+    sampler2D specular;
     float     shininess;
 }; 
 
@@ -29,21 +29,18 @@ uniform Material uMaterial;
 uniform Light uLight;
 
 void main(){
-    // ambient
-    vec3 ambient = uLight.ambient;
+    vec3 ambient = uLight.ambient * texture(uMaterial.diffuse, vTextureCoords).rgb;
   	
-    // diffuse 
     vec3 norm = normalize(vNormal);
     vec3 lightDir = normalize(uLight.position - vFragPos);
     float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = uLight.diffuse * (diff * uMaterial.diffuse);
+    vec3 diffuse = uLight.diffuse * diff * texture(uMaterial.diffuse, vTextureCoords).rgb;  
     
-    // specular
-    /*vec3 viewDir = normalize(uViewPos - vFragPos);
-    vec3 reflectDir = reflect(-lightDir, norm);
+    vec3 viewDir = normalize(uViewPos - vFragPos);
+    vec3 reflectDir = reflect(-lightDir, norm);  
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), uMaterial.shininess);
-    vec3 specular = uLight.specular * (spec * uMaterial.specular);*/
+    vec3 specular = uLight.specular * spec * texture(uMaterial.specular, vTextureCoords).rgb;  
         
-    vec3 result = diffuse * uCubeColor;
+    vec3 result = ambient + diffuse + specular;
     fragColor = vec4(result, 1.0);
 }

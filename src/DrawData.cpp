@@ -1,7 +1,7 @@
 #include "DrawData.hpp"
 
 
-DrawData::DrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture) {
+DrawData::DrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture, Texture* specular) {
 	this->name = name;
 	this->mesh = new Mesh(*mesh);
 	this->shader = new Shader(*shader);
@@ -12,6 +12,12 @@ DrawData::DrawData(std::string name, Mesh* mesh, Shader* shader, Material* mater
 	}
 	else {
 		this->texture = nullptr;
+	}
+	if (specular != nullptr) {
+		this->specular = new Texture(*specular);
+	}
+	else {
+		this->specular = nullptr;
 	}
 }
 DrawData::DrawData(DrawData& drawData) {
@@ -26,6 +32,12 @@ DrawData::DrawData(DrawData& drawData) {
 	else {
 		this->texture = nullptr;
 	}
+	if (drawData.specular != nullptr) {
+		this->specular = new Texture(*drawData.getSpecular());
+	}
+	else {
+		this->specular = nullptr;
+	}
 }
 DrawData::~DrawData() {
 	delete this->mesh;
@@ -33,6 +45,7 @@ DrawData::~DrawData() {
 	delete this->material;
 	delete this->light;
 	delete this->texture;
+	delete this->specular;
 }
 
 void DrawData::setShader(const Shader& shader){

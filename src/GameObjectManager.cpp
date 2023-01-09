@@ -29,8 +29,8 @@ GameObject* GameObjectManager::addGameObject(std::string name, std::string tag, 
     return gameObject;
 }
 
-GameObject* GameObjectManager::addGameObject(std::string name, std::string tag, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture, float positionX, float positionY, float positionZ, float sizeX, float sizeY, float sizeZ, float scaleX, float scaleY, float scaleZ, float rotationX, float rotationY, float rotationZ, float speedX, float speedY, float speedZ, bool isHit) {
-    DrawData* drawData = new DrawData(name + "DrawData", mesh, shader, material, light, texture);
+GameObject* GameObjectManager::addGameObject(std::string name, std::string tag, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture, Texture* specular, float positionX, float positionY, float positionZ, float sizeX, float sizeY, float sizeZ, float scaleX, float scaleY, float scaleZ, float rotationX, float rotationY, float rotationZ, float speedX, float speedY, float speedZ, bool isHit) {
+    DrawData* drawData = new DrawData(name + "DrawData", mesh, shader, material, light, texture, specular);
     GameObject* gameObject = new GameObject(name, tag, drawData, positionX, positionY, positionZ, sizeX, sizeY, sizeZ, scaleX, scaleY, scaleZ, rotationX, rotationY, rotationZ, speedX, speedY, speedZ, isHit);
     this->gameObjectList->push_back(gameObject);
     return gameObject;

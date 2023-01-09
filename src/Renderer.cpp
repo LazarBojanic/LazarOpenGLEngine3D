@@ -32,15 +32,18 @@ void Renderer::draw(GameObject& gameObject, Camera& camera, bool scaled){
     glm::mat4 view = camera.getView();
     glm::mat4 projection = camera.getProjection();
     gameObject.getDrawData()->getMesh()->getVertexArray()->bind();
+
     if (gameObject.getDrawData()->getTexture() != nullptr) {
-        gameObject.getDrawData()->getShader()->setInt("uMaterial.diffuse", 0, true);
         gameObject.getDrawData()->getTexture()->bind(0);
+    }
+    if (gameObject.getDrawData()->getSpecular() != nullptr) {
+        gameObject.getDrawData()->getSpecular()->bind(1);
     }
     gameObject.getDrawData()->getShader()->setMatrix4f("uModel", model, true);
     gameObject.getDrawData()->getShader()->setMatrix4f("uView", view, true);
     gameObject.getDrawData()->getShader()->setMatrix4f("uProjection", projection, true);
     gameObject.getDrawData()->getShader()->setVector3f("uViewPos", camera.getPosition(), true);
-    gameObject.updateDrawData();
+    gameObject.updateShaderLighting();
     if (gameObject.getDrawData()->getMesh()->getIsIndexed()) {
         glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getIndicesCount(), GL_UNSIGNED_INT, 0);
     }
@@ -49,6 +52,7 @@ void Renderer::draw(GameObject& gameObject, Camera& camera, bool scaled){
     }
     gameObject.getDrawData()->getMesh()->getVertexArray()->unbind();
 }
+
 void Renderer::drawAll(Camera& camera, bool scaled) {
     std::vector<GameObject*>* gameObjectList = GameObjectManager::getInstance()->getGameObjectList();
     for (int i = 0; i < gameObjectList->size(); i++) {
@@ -74,7 +78,7 @@ void Renderer::drawAll(Camera& camera, bool scaled) {
         gameObjectList->at(i)->getDrawData()->getShader()->setMatrix4f("uView", view, true);
         gameObjectList->at(i)->getDrawData()->getShader()->setMatrix4f("uProjection", projection, true);
         gameObjectList->at(i)->getDrawData()->getShader()->setVector3f("uViewPos", camera.getPosition(), true);
-        gameObjectList->at(i)->updateDrawData();
+        gameObjectList->at(i)->updateShaderLighting();
         if (gameObjectList->at(i)->getDrawData()->getMesh()->getIsIndexed()) {
             glDrawElements(GL_TRIANGLES, gameObjectList->at(i)->getDrawData()->getMesh()->getIndicesCount(), GL_UNSIGNED_INT, 0);
         }

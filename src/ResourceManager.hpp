@@ -29,7 +29,7 @@ public:
 	Material* addMaterial(std::string name, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, float shininess);
 	Light* addLight(std::string name, glm::vec3 position, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular);
 	Texture* addTexture(std::string texturePath, bool alpha, std::string name);
-	DrawData* addDrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture);
+	DrawData* addDrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture, Texture* specular);
 	
 	Mesh* getMeshByName(std::string name);
 	Shader* getShaderByName(std::string name);

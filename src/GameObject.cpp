@@ -56,8 +56,8 @@ GameObject::~GameObject(){
 	delete this->drawData;
 }
 
-void GameObject::updateDrawData() {
-	if (this->drawData->getLight() != nullptr) {
+void GameObject::updateShaderLighting() {
+	if (this->drawData->getShader() != nullptr && this->drawData->getLight() != nullptr && this->drawData->getMaterial() != nullptr) {
 		this->drawData->getShader()->setVector3f("uMaterial.ambient", this->drawData->getMaterial()->ambient, true);
 		this->drawData->getShader()->setVector3f("uMaterial.diffuse", this->drawData->getMaterial()->diffuse, true);
 		this->drawData->getShader()->setVector3f("uMaterial.specular", this->drawData->getMaterial()->specular, true);

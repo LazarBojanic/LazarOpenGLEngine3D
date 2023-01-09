@@ -65,8 +65,8 @@ Texture* ResourceManager::addTexture(std::string texturePath, bool alpha, std::s
     return nullptr;
 }
 
-DrawData* ResourceManager::addDrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture){
-    DrawData* drawData = new DrawData(name, mesh, shader, material, light, texture);
+DrawData* ResourceManager::addDrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture, Texture* specular){
+    DrawData* drawData = new DrawData(name, mesh, shader, material, light, texture, specular);
     if (std::find(this->drawDataList->begin(), this->drawDataList->end(), drawData) == this->drawDataList->end()) {
         this->drawDataList->push_back(drawData);
         return drawData;
