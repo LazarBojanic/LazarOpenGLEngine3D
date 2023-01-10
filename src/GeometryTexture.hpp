@@ -2,7 +2,8 @@
 
 #include "GLData.hpp"
 
-struct Texture {
+struct GeometryTexture {
     unsigned int id;
     std::string type;
+    std::string path;
 };

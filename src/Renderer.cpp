@@ -120,9 +120,9 @@ void Renderer::drawModel(GameObject& gameObject, Camera& camera, bool scaled) {
         unsigned int heightNr = 1;
 
         std::cout << gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->size() << std::endl;
-        for (int j = 0; j < gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getTextures()->size(); j++) {
+        for (int j = 0; j < gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getTextures().size(); j++) {
             std::string number;
-            std::string name = gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getTextures()->at(j)->getType();
+            std::string name = gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getTextures().at(j).type;
             std::cout << name << std::endl;
             if (name == "texture_diffuse") {
                 number = std::to_string(diffuseNr++);
@@ -137,10 +137,11 @@ void Renderer::drawModel(GameObject& gameObject, Camera& camera, bool scaled) {
                 number = std::to_string(heightNr++);
             }
             gameObject.getDrawData()->getShader()->setInt((name + number).c_str(), i, true);
-            
-            gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getTextures()->at(j)->bind(j);
 
-            glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getIndices()->size(), GL_UNSIGNED_INT, 0);
+            glActiveTexture(GL_TEXTURE0 + j);
+            glBindTexture(GL_TEXTURE_2D, gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getTextures().at(j).id);
+
+            glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getIndices().size(), GL_UNSIGNED_INT, 0);
         }
     }
 }

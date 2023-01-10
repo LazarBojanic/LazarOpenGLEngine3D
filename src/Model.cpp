@@ -3,7 +3,6 @@
 Model::Model(std::string name, std::string path) {
     this->name = name;
     this->geometries = new std::vector<Geometry*>();
-    this->texturesLoaded = new std::vector<Texture*>();
 	loadModel(path);
 }
 
@@ -35,8 +34,8 @@ void Model::processNode(aiNode* node, const aiScene* scene) {
 
 Geometry* Model::processMesh(aiMesh* mesh, const aiScene* scene) {
     std::vector<GeometryVertex> vertices;
-    std::vector<unsigned int>* indices = new std::vector<unsigned int>();
-    std::vector<Texture*>* textures = new std::vector<Texture*>();
+    std::vector<unsigned int> indices;
+    std::vector<GeometryTexture> textures;
     for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
         GeometryVertex vertex;
         glm::vec3 vector;
@@ -76,41 +75,44 @@ Geometry* Model::processMesh(aiMesh* mesh, const aiScene* scene) {
     for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
         aiFace face = mesh->mFaces[i];
         for (unsigned int j = 0; j < face.mNumIndices; j++) {
-            indices->push_back(face.mIndices[j]);
+            indices.push_back(face.mIndices[j]);
         }
     }
     aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
-    std::vector<Texture*>* diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
-    textures->insert(textures->end(), diffuseMaps->begin(), diffuseMaps->end());
+    std::vector<GeometryTexture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+    textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 
-    std::vector<Texture*>* specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
-    textures->insert(textures->end(), specularMaps->begin(), specularMaps->end());
+    std::vector<GeometryTexture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+    textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
 
-    std::vector<Texture*>* normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
-    textures->insert(textures->end(), normalMaps->begin(), normalMaps->end());
+    std::vector<GeometryTexture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
+    textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
 
-    std::vector<Texture*>* heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
-    textures->insert(textures->end(), heightMaps->begin(), heightMaps->end());
+    std::vector<GeometryTexture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
+    textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
     return new Geometry(vertices, indices, textures);
 }
-std::vector<Texture*>* Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName) {
-    std::vector<Texture*>* textures = new std::vector<Texture*>();
+std::vector<GeometryTexture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName) {
+    std::vector<GeometryTexture> textures;
     for (unsigned int i = 0; i < mat->GetTextureCount(type); i++) {
         aiString path;
         mat->GetTexture(type, i, &path);
         bool skip = false;
-        for (unsigned int j = 0; j < this->texturesLoaded->size(); j++) {
-            if (std::strcmp(this->texturesLoaded->at(j)->getPath().c_str(), path.C_Str()) == 0) {
-                textures->push_back(this->texturesLoaded->at(j));
+        for (unsigned int j = 0; j < this->texturesLoaded.size(); j++) {
+            if (std::strcmp(this->texturesLoaded.at(j).path.data(), path.C_Str()) == 0) {
+                textures.push_back(this->texturesLoaded.at(j));
                 skip = true;
                 break;
             }
         }
         if (!skip) {
-            Texture* texture = new Texture(path.C_Str(), "texture" + i, typeName);
-            textures->push_back(texture);
-            this->texturesLoaded->push_back(texture);
+            GeometryTexture texture;
+            texture.id = Texture::loadTextureFromFile(path.C_Str(), this->directory, true);
+            texture.type = typeName;
+            texture.path = path.C_Str();
+            textures.push_back(texture);
+            this->texturesLoaded.push_back(texture);
         }
     }
     return textures;

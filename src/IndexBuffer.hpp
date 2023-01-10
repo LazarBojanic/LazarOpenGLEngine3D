@@ -7,7 +7,7 @@ private:
 	unsigned int iboID;
 public:
 	IndexBuffer(unsigned int* data, unsigned int dataSize);
-	IndexBuffer(std::vector<unsigned int>* indices);
+	IndexBuffer(std::vector<unsigned int> indices);
 	~IndexBuffer();
 	void bind();
 	void unbind();

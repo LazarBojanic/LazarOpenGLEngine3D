@@ -19,6 +19,7 @@ private:
 public:
     Texture();
     Texture(std::string textureFilePath, std::string name, std::string type);
+	static unsigned int loadTextureFromFile(const char* path, const std::string& directory, bool gamma);
     ~Texture();
     void generate(unsigned char* data);
     void bind(unsigned int textureChannel);
