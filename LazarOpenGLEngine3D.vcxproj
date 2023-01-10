@@ -525,7 +525,7 @@
     <None Include="assets\shaders\cubeLightingFragmentShader.glsl" />
     <None Include="assets\shaders\cubeLightingTexturedFragmentShader.glsl" />
     <None Include="assets\shaders\cubeLightingVertexShader.glsl" />
-    <None Include="assets\shaders\genericVertexShader.glsl" />
+    <None Include="assets\shaders\backpackVertexShader.glsl" />
     <None Include="assets\shaders\lightFragmentShader.glsl" />
     <None Include="assets\shaders\lightVertexShader.glsl" />
     <None Include="assets\shaders\backpackFragmentShader.glsl" />
@@ -669,6 +669,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Geometry.cpp" />
+    <ClCompile Include="src\GeometryTexture.hpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Light.cpp" />
     <ClCompile Include="src\Material.cpp" />

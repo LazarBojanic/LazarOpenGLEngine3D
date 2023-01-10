@@ -55,6 +55,11 @@ VertexBuffer::VertexBuffer(std::vector<GeometryVertex> vertices, std::vector<uns
 	glVertexAttribIPointer(5, 4, GL_INT, sizeof(GeometryVertex), (void*)offsetof(GeometryVertex, boneIds));
 	glEnableVertexAttribArray(6);
 	glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(GeometryVertex), (void*)offsetof(GeometryVertex, weights));
+
+
+
+	
+
 }
 
 VertexBuffer::~VertexBuffer() {

@@ -104,6 +104,11 @@ void Renderer::drawModel(GameObject& gameObject, Camera& camera, bool scaled) {
     glm::mat4 view = camera.getView();
     glm::mat4 projection = camera.getProjection();
 
+    gameObject.getDrawData()->getShader()->setMatrix4f("uModel", model, true);
+    gameObject.getDrawData()->getShader()->setMatrix4f("uView", view, true);
+    gameObject.getDrawData()->getShader()->setMatrix4f("uProjection", projection, true);
+    gameObject.getDrawData()->getShader()->setVector3f("uViewPos", camera.getPosition(), true);
+    gameObject.updateShaderLighting();
 
     for (int i = 0; i < gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->size(); i++) {
 
@@ -113,9 +118,12 @@ void Renderer::drawModel(GameObject& gameObject, Camera& camera, bool scaled) {
         unsigned int specularNr = 1;
         unsigned int normalNr = 1;
         unsigned int heightNr = 1;
+
+        std::cout << gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->size() << std::endl;
         for (int j = 0; j < gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getTextures()->size(); j++) {
             std::string number;
             std::string name = gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getTextures()->at(j)->getType();
+            std::cout << name << std::endl;
             if (name == "texture_diffuse") {
                 number = std::to_string(diffuseNr++);
             }
@@ -129,13 +137,8 @@ void Renderer::drawModel(GameObject& gameObject, Camera& camera, bool scaled) {
                 number = std::to_string(heightNr++);
             }
             gameObject.getDrawData()->getShader()->setInt((name + number).c_str(), i, true);
-            gameObject.getDrawData()->getShader()->setMatrix4f("uModel", model, true);
-            gameObject.getDrawData()->getShader()->setMatrix4f("uView", view, true);
-            gameObject.getDrawData()->getShader()->setMatrix4f("uProjection", projection, true);
-            gameObject.getDrawData()->getShader()->setVector3f("uViewPos", camera.getPosition(), true);
-            gameObject.updateShaderLighting();
+            
             gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getTextures()->at(j)->bind(j);
-            gameObject.updateShaderLighting();
 
             glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getIndices()->size(), GL_UNSIGNED_INT, 0);
         }

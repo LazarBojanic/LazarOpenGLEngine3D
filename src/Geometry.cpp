@@ -5,6 +5,10 @@ Geometry::Geometry(std::vector<GeometryVertex> vertices, std::vector<unsigned in
     this->indices = indices;
     this->textures = textures;
 
+    for (int i = 0; i < textures->size(); i++) {
+        std::cout << textures->at(i)->getPath() << std::endl;
+    }
+
     generate();
 }
 
