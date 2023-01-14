@@ -49,18 +49,21 @@ void Game::initResources() {
 	this->camera = new Camera(glm::vec3(0.0f, 0.0f, 3.0f), this->width, this->height, 0.1f, 100.0f);
 	Cube* cube = new Cube(false);
 
+	//Mesh* blockMesh = ResourceManager::getInstance()->addMesh(cube, nullptr, "blockMesh", 0, 3, 1, 3, 2, 2, 3, 3);
 	Mesh* lightMesh = ResourceManager::getInstance()->addMesh(cube, nullptr, "lightMesh", 0, 3, 1, 3, 2, 2, 3, 3);
 	Mesh* cubeMesh = ResourceManager::getInstance()->addMesh(cube, nullptr, "cubeMesh", 0, 3, 1, 3, 2, 2, 3, 3);
 	Mesh* groundMesh = ResourceManager::getInstance()->addMesh(cube, nullptr, "groundMesh", 0, 3, 1, 3, 2, 2, 3, 3);
 
 	Shader* lightShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\lightVertexShader.glsl", workingDirectory + "\\assets\\shaders\\lightFragmentShader.glsl", "lightShader");
-	Shader* cubeShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\cubeLightingVertexShader.glsl", workingDirectory + "\\assets\\shaders\\cubeLightingTexturedFragmentShader.glsl", "cubeShader");
+	Shader* cubeShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\cubeLightingVertexShader.glsl", workingDirectory + "\\assets\\shaders\\cubeLightingFragmentShader.glsl", "cubeShader");
 	Shader* groundShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\cubeLightingVertexShader.glsl", workingDirectory + "\\assets\\shaders\\cubeLightingFragmentShader.glsl", "groundShader");
+	Shader* boxShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\cubeLightingVertexShader.glsl", workingDirectory + "\\assets\\shaders\\cubeLightingTexturedFragmentShader.glsl", "boxShader");
 
-	Material* cubeMaterial = ResourceManager::getInstance()->addMaterial("cubeMaterial", glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.2f, 0.2f, 0.2f), 16);
+
+	Material* cubeMaterial = ResourceManager::getInstance()->addMaterial("cubeMaterial", glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(0.8f, 0.8f, 0.8f), 32);
 	Material* groundMaterial = ResourceManager::getInstance()->addMaterial("groundMaterial", glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.6f, 0.6f, 0.6f), glm::vec3(0.5f, 0.5f, 0.5f), 32);
 
-	Light* light = ResourceManager::getInstance()->addLight("light", glm::vec3(2.5f, 2.5f, 2.5f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(1.0f, 1.0f, 1.0f));
+	Light* light = ResourceManager::getInstance()->addLight("light", glm::vec3(40.0f, 40.0f, 40.0f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(0.5f, 0.5f, 0.5f));
 
 	lightShader->setVector3f("uLightColor", glm::vec3(1.0f, 1.0f, 1.0f), true);
 	lightShader->setVector3f("uLightPos", light->position, true);
@@ -68,21 +71,22 @@ void Game::initResources() {
 	cubeShader->setVector3f("uCubeColor", glm::vec3(1.0f, 0.5f, 0.31f), true);
 	groundShader->setVector3f("uCubeColor", glm::vec3(0.2f, 0.2f, 0.6f), true);
 	
-	Texture* cubeDiffuse = ResourceManager::getInstance()->addTexture(workingDirectory + "\\assets\\textures\\cubeDiffuse.png", "cubeDiffuse", "diffuse");
-	Texture* cubeSpecular = ResourceManager::getInstance()->addTexture(workingDirectory + "\\assets\\textures\\cubeSpecular.png", "cubeSpecular", "specular");
+	Texture* boxDiffuse = ResourceManager::getInstance()->addTexture(workingDirectory + "\\assets\\textures\\boxDiffuse.png", "boxDiffuse", "diffuse");
+	Texture* boxSpecular = ResourceManager::getInstance()->addTexture(workingDirectory + "\\assets\\textures\\boxSpecular.png", "boxSpecular", "specular");
 
-	std::vector<Texture*>* cubeTextureList = new std::vector<Texture*>();
-	cubeTextureList->push_back(cubeDiffuse);
-	cubeTextureList->push_back(cubeSpecular);
+	std::vector<Texture*>* boxTextureList = new std::vector<Texture*>();
+	boxTextureList->push_back(boxDiffuse);
+	boxTextureList->push_back(boxSpecular);
 	
 	DrawData* lightDrawData = ResourceManager::getInstance()->addDrawData("lightDrawData", lightMesh, lightShader, cubeMaterial, light, nullptr);
-	DrawData* cubeDrawData = ResourceManager::getInstance()->addDrawData("cubeDrawData", cubeMesh, cubeShader, cubeMaterial, light, cubeTextureList);
+	DrawData* cubeDrawData = ResourceManager::getInstance()->addDrawData("cubeDrawData", cubeMesh, cubeShader, cubeMaterial, light, nullptr);
 	DrawData* groundDrawData = ResourceManager::getInstance()->addDrawData("groundDrawData", groundMesh, groundShader, groundMaterial, light, nullptr);
+	DrawData* boxDrawData = ResourceManager::getInstance()->addDrawData("boxDrawData", cubeMesh, boxShader, cubeMaterial, light, boxTextureList);
 
 
-	GameObjectManager::getInstance()->addGameObject("lightGameObject", "light", lightDrawData, 2.5f, 2.5f, 2.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
-	GameObjectManager::getInstance()->addGameObject("cubeGameObject", "cube", cubeDrawData, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
-	GameObjectManager::getInstance()->addGameObject("groundGameObject", "ground", groundDrawData, 0.0f, -1.5f, 0.0f, 1.0f, 1.0f, 1.0f, 200.0f, 1.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+	GameObjectManager::getInstance()->addGameObject("lightGameObject", "light", lightDrawData, 2.5f, 35.0f, 2.5f, 1.0f, 1.0f, 1.0f, 10.0f, 10.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+	GameObjectManager::getInstance()->addGameObject("boxGameObject", "box", boxDrawData, -10.0f, 0.0f, -10.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+	//GameObjectManager::getInstance()->addGameObject("groundGameObject", "ground", groundDrawData, 0.0f, -1.5f, 0.0f, 1.0f, 1.0f, 1.0f, 200.0f, 1.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
 
 	Model* backpackModel = ResourceManager::getInstance()->addModel(workingDirectory + "\\assets\\models\\backpack\\backpack.obj", "backpackModel");
 	Mesh* backpackMesh = ResourceManager::getInstance()->addMesh(nullptr, backpackModel, "backpackMesh", 0, 3, 1, 3, 2, 2, 3, 3);
@@ -98,15 +102,8 @@ void Game::initResources() {
 	backpackTextureList->push_back(backpackNormal);
 	backpackTextureList->push_back(backpackRoughness);
 	backpackTextureList->push_back(backpackSpecular);
-
 	DrawData* backpackDrawData = ResourceManager::getInstance()->addDrawData("backpackDrawData", backpackMesh, backpackShader, cubeMaterial, light, backpackTextureList);
-	GameObjectManager::getInstance()->addGameObject("backpackGameObject", "backpack", backpackDrawData, 5.0f, 2.5f, 5.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
-
-	/*Model* ironManModel = ResourceManager::getInstance()->addModel(workingDirectory + "\\assets\\models\\ironMan\\ironMan.obj", "ironManModel");
-	Mesh* ironManMesh = ResourceManager::getInstance()->addMesh(nullptr, ironManModel, "ironManMesh", 0, 3, 1, 3, 2, 2, 3, 3);
-	Shader* ironManShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\ironManVertexShader.glsl", workingDirectory + "\\assets\\shaders\\ironManFragmentShader.glsl", "ironManShader");
-	DrawData* ironManDrawData = ResourceManager::getInstance()->addDrawData("ironManDrawData", ironManMesh, ironManShader, cubeMaterial, light, nullptr);
-	GameObjectManager::getInstance()->addGameObject("ironManGameObject", "ironMan", ironManDrawData, -10.0f, 5.0f, -10.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);*/
+	GameObjectManager::getInstance()->addGameObject("backpackGameObject", "backpack", backpackDrawData, -5.0f, 2.5f, -5.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
 
 	SkyboxPrimitive* skyboxPrimitive = new SkyboxPrimitive(false);
 	Mesh* skyboxMesh = ResourceManager::getInstance()->addSkyboxMesh(skyboxPrimitive, "skyboxMesh", 0, 3);
@@ -120,6 +117,46 @@ void Game::initResources() {
 	skyboxFacePaths->push_back(workingDirectory + "\\assets\\textures\\skybox\\back.jpg");
 	CubeMap* skyboxCubeMap = ResourceManager::getInstance()->addCubeMap(skyboxFacePaths, "skyboxCubeMap");
 	Skybox* skybox = ResourceManager::getInstance()->addSkybox(skyboxMesh, skyboxShader, skyboxCubeMap, "skybox");
+
+	
+	const int lengthX = 100, lengthZ = 100;
+	float cubeSizeX = 1.0f;
+	float cubeSizeY = 10.0f;
+	float cubeSizeZ = 1.0f;
+	float minHeight = 1.0f;
+	float maxHeight = 25.0f;
+	float height;
+	float heightMultiplier = 50.0f;
+	float posX = 0.0f, posZ = 0.0f;
+	auto node = FastNoise::New<FastNoise::FractalFBm>();
+
+	//std::cout << node->GetSIMDLevel() << std::endl;
+
+	node->SetSource(FastNoise::New<FastNoise::Simplex>());
+	node->SetGain(FastNoise::New<FastNoise::Value>());
+
+	float noise[lengthX * lengthZ];
+
+	node->GenUniformGrid2D(noise, 0, 0, lengthX, lengthZ, 0.02f, 1337);
+
+	for (int i = 0; i < sizeof(noise) / sizeof(float); i++) {
+		//std::cout << noise[i] << ", ";
+		glm::vec3 color = GLData::colorIntToVec3(GLData::interpolate(0x633310, 0x06c238, noise[i]));
+		std::cout << color.r << " : " << color.g << " : " << color.b << std::endl;
+		Shader* tempShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\cubeLightingVertexShader.glsl", workingDirectory + "\\assets\\shaders\\cubeLightingFragmentShader.glsl", "cubeShader" + i);
+		cubeDrawData->setShader(*tempShader);
+		cubeDrawData->getShader()->setVector3f("uCubeColor", color, true);
+		height = noise[i];
+		height += 1.0;
+		height /= 2.0;
+		height *= heightMultiplier;
+		GameObjectManager::getInstance()->addGameObject("blockGameObject", "block", cubeDrawData, posX, height, posZ, 1.0f, 1.0f, 1.0f, cubeSizeX, cubeSizeY, cubeSizeZ, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+		posX += cubeSizeX;
+		if (i % lengthZ == 0) {
+			posX = 0.0f;
+			posZ += cubeSizeZ;
+		}
+	}
 }
 void Game::start() {
 	initVariables();
@@ -140,8 +177,8 @@ void Game::processInput(float dt) {
 	}
 }
 void Game::update(float dt) {
-	GameObject* backpackGameObject = GameObjectManager::getInstance()->getGameObjectByTag("backpack");
-	backpackGameObject->setRotationX(backpackGameObject->getRotationX() + 10.0f);
+	/*GameObject* backpackGameObject = GameObjectManager::getInstance()->getGameObjectByTag("backpack");
+	backpackGameObject->setRotationX(backpackGameObject->getRotationX() + 10.0f);*/
 }
 void Game::render(float dt) {
 	Renderer::getInstance()->colorBackground(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));

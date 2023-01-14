@@ -9,6 +9,7 @@
 #include "Cube.hpp"
 #include "SkyboxPrimitive.hpp"
 #include "Camera.hpp"
+#include <FastNoise/FastNoise.h>
 
 enum GameState {
     SCREEN_SAVER,

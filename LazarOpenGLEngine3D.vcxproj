@@ -62,7 +62,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;irrKlang.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;irrKlang.lib;assimp-vc143-mtd.lib;FastNoise.lib;FastNoiseD.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -80,10 +80,33 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;irrKlang.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;irrKlang.lib;assimp-vc143-mtd.lib;FastNoise.lib;FastNoiseD.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="libraries\include\FastNoise\FastNoise.h" />
+    <ClInclude Include="libraries\include\FastNoise\FastNoise_C.h" />
+    <ClInclude Include="libraries\include\FastNoise\FastNoise_Config.h" />
+    <ClInclude Include="libraries\include\FastNoise\FastNoise_Export.h" />
+    <ClInclude Include="libraries\include\FastNoise\Generators\BasicGenerators.h" />
+    <ClInclude Include="libraries\include\FastNoise\Generators\Blends.h" />
+    <ClInclude Include="libraries\include\FastNoise\Generators\Cellular.h" />
+    <ClInclude Include="libraries\include\FastNoise\Generators\DomainWarp.h" />
+    <ClInclude Include="libraries\include\FastNoise\Generators\DomainWarpFractal.h" />
+    <ClInclude Include="libraries\include\FastNoise\Generators\Fractal.h" />
+    <ClInclude Include="libraries\include\FastNoise\Generators\Generator.h" />
+    <ClInclude Include="libraries\include\FastNoise\Generators\Modifiers.h" />
+    <ClInclude Include="libraries\include\FastNoise\Generators\Perlin.h" />
+    <ClInclude Include="libraries\include\FastNoise\Generators\Simplex.h" />
+    <ClInclude Include="libraries\include\FastNoise\Generators\Value.h" />
+    <ClInclude Include="libraries\include\FastNoise\Metadata.h" />
+    <ClInclude Include="libraries\include\FastNoise\SmartNode.h" />
+    <ClInclude Include="libraries\include\FastSIMD\FastSIMD.h" />
+    <ClInclude Include="libraries\include\FastSIMD\FastSIMD_Config.h" />
+    <ClInclude Include="libraries\include\FastSIMD\FastSIMD_Export.h" />
+    <ClInclude Include="libraries\include\FastSIMD\FunctionList.h" />
+    <ClInclude Include="libraries\include\FastSIMD\InlInclude.h" />
+    <ClInclude Include="libraries\include\FastSIMD\SIMDTypeList.h" />
     <ClInclude Include="src\Skybox.hpp" />
     <ClInclude Include="src\CubeMap.hpp" />
     <ClInclude Include="src\Geometry.hpp" />
@@ -400,7 +423,6 @@
     <ClInclude Include="libraries\include\glm\ext\vector_ulp.hpp" />
     <ClInclude Include="libraries\include\glm\fwd.hpp" />
     <ClInclude Include="libraries\include\glm\geometric.hpp" />
-    <ClInclude Include="libraries\include\glm\GLData.hpp" />
     <ClInclude Include="libraries\include\glm\glm.hpp" />
     <ClInclude Include="libraries\include\glm\gtc\bitfield.hpp" />
     <ClInclude Include="libraries\include\glm\gtc\color_space.hpp" />
@@ -709,8 +731,8 @@
     <Image Include="assets\models\backpack\backpackRoughness.jpg" />
     <Image Include="assets\models\backpack\backpackSpecular.jpg" />
     <Image Include="assets\textures\awesomeface.png" />
-    <Image Include="assets\textures\cubeDiffuse.png" />
-    <Image Include="assets\textures\cubeSpecular.png" />
+    <Image Include="assets\textures\boxDiffuse.png" />
+    <Image Include="assets\textures\boxSpecular.png" />
     <Image Include="assets\textures\skybox\back.jpg" />
     <Image Include="assets\textures\skybox\bottom.jpg" />
     <Image Include="assets\textures\skybox\front.jpg" />

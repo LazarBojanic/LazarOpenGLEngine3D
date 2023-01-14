@@ -3,6 +3,7 @@
 #define MIN_RAND 100
 #define MAX_RAND 256
 
+#include <cstddef>
 #include <map>
 #include <string>
 #include <fstream>
@@ -25,6 +26,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/random.hpp>
 
 
 #define PI 3.141592
@@ -52,4 +54,23 @@ public:
 		}
 		return result;
 	}
+	static int interpolate(int color1, int color2, float fraction) {
+		unsigned char   r1 = (color1 >> 16) & 0xff;
+		unsigned char   r2 = (color2 >> 16) & 0xff;
+		unsigned char   g1 = (color1 >> 8) & 0xff;
+		unsigned char   g2 = (color2 >> 8) & 0xff;
+		unsigned char   b1 = color1 & 0xff;
+		unsigned char   b2 = color2 & 0xff;
+
+		return (int)((r2 - r1) * fraction + r1) << 16 |
+			(int)((g2 - g1) * fraction + g1) << 8 |
+			(int)((b2 - b1) * fraction + b1);
+	}
+	static glm::vec3 colorIntToVec3(int color) {
+		float r = ((color >> 16) & 0xff) / 255.0f;
+		float g = ((color >> 8) & 0xff) / 255.0f;
+		float b = ((color) & 0xff) / 255.0f;
+		return glm::vec3(r, g, b);
+	}
+	
 };
