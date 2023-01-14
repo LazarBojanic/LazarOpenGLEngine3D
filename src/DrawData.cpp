@@ -1,24 +1,13 @@
 #include "DrawData.hpp"
 
 
-DrawData::DrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture, Texture* specular) {
+DrawData::DrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, std::vector<Texture*>* textureList) {
 	this->name = name;
 	this->mesh = new Mesh(*mesh);
 	this->shader = new Shader(*shader);
 	this->material = new Material(*material);
 	this->light = new Light(*light);
-	if (texture != nullptr) {
-		this->texture = new Texture(*texture);
-	}
-	else {
-		this->texture = nullptr;
-	}
-	if (specular != nullptr) {
-		this->specular = new Texture(*specular);
-	}
-	else {
-		this->specular = nullptr;
-	}
+	this->textureList = textureList;
 }
 DrawData::DrawData(DrawData& drawData) {
 	this->name = drawData.getName();
@@ -26,26 +15,14 @@ DrawData::DrawData(DrawData& drawData) {
 	this->shader = new Shader(*drawData.getShader());
 	this->material = new Material(*drawData.getMaterial());
 	this->light = new Light(*drawData.getLight());
-	if (drawData.texture != nullptr) {
-		this->texture = new Texture(*drawData.getTexture());
-	}
-	else {
-		this->texture = nullptr;
-	}
-	if (drawData.specular != nullptr) {
-		this->specular = new Texture(*drawData.getSpecular());
-	}
-	else {
-		this->specular = nullptr;
-	}
+	this->textureList = drawData.getTextureList();
 }
 DrawData::~DrawData() {
 	delete this->mesh;
 	delete this->shader;
 	delete this->material;
 	delete this->light;
-	delete this->texture;
-	delete this->specular;
+	delete this->textureList;
 }
 
 void DrawData::setShader(const Shader& shader){

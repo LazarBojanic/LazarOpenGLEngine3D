@@ -8,10 +8,13 @@ in vec3 vFragPos;
 out vec4 fragColor;
 
 uniform vec3 uViewPos;
+uniform vec3 uCubeColor;
 
-uniform sampler2D texture_diffuse1;
-uniform sampler2D texture_normal1;
-uniform sampler2D texture_specular1;
+uniform sampler2D backpackAo;
+uniform sampler2D backpackDiffuse;
+uniform sampler2D backpackNormal;
+uniform sampler2D backpackRoughness;
+uniform sampler2D backpackSpecular;
 
 
 struct Material {
@@ -22,7 +25,6 @@ struct Material {
 
 struct Light {
     vec3 position;
-
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
@@ -32,5 +34,5 @@ uniform Material uMaterial;
 uniform Light uLight;
 
 void main(){
-    fragColor = texture(texture_diffuse1, vTextureCoords);
+    fragColor = texture(backpackDiffuse, vTextureCoords);
 }

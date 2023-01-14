@@ -17,9 +17,12 @@ Texture::Texture(std::string textureFilePath, std::string name, std::string type
     glGenTextures(1, &this->textureID);
     int tempWidth, tempHeight, tempNumberOfChannels;
     stbi_set_flip_vertically_on_load(true);
-    unsigned char* data = stbi_load(textureFilePath.c_str(), &tempWidth, &tempHeight, &tempNumberOfChannels, STBI_rgb_alpha);
+    unsigned char* data = stbi_load(textureFilePath.c_str(), &tempWidth, &tempHeight, &tempNumberOfChannels, 0);
     if (tempNumberOfChannels == 1) {
         this->format = GL_RED;
+    }
+    else if (tempNumberOfChannels == 2) {
+        this->format = GL_RG;
     }
     else if (tempNumberOfChannels == 3) {
         this->format = GL_RGB;
@@ -72,7 +75,7 @@ unsigned int Texture::loadTextureFromFile(const char* path, const std::string& d
 Texture::~Texture() {
 }
 void Texture::generate(unsigned char* data) {
-    bind(0);
+    glBindTexture(GL_TEXTURE_2D, this->textureID);
     glTexImage2D(GL_TEXTURE_2D, 0, this->format, this->width, this->height, 0, this->format, GL_UNSIGNED_BYTE, data);
     glGenerateMipmap(GL_TEXTURE_2D);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, this->wrap_S);
@@ -80,6 +83,7 @@ void Texture::generate(unsigned char* data) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, this->filterMin);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, this->filterMag);
     unbind();
+    
 }
 void Texture::bind(unsigned int textureChannel) {
     glActiveTexture(GL_TEXTURE0 + textureChannel);

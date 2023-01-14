@@ -30,8 +30,8 @@ public:
 	Shader* addShader(std::string vertexShaderPath, std::string fragmentShaderPath, std::string name);
 	Material* addMaterial(std::string name, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, float shininess);
 	Light* addLight(std::string name, glm::vec3 position, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular);
-	Texture* addTexture(std::string texturePath, bool alpha, std::string name, std::string type);
-	DrawData* addDrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture, Texture* specular);
+	Texture* addTexture(std::string texturePath, std::string name, std::string type);
+	DrawData* addDrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, std::vector<Texture*>* textureList);
 	
 	Model* getModelByName(std::string name);
 	Mesh* getMeshByName(std::string name);

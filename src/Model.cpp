@@ -79,7 +79,7 @@ Geometry* Model::processMesh(aiMesh* mesh, const aiScene* scene) {
         }
     }
     aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
-    std::vector<GeometryTexture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+    /*std::vector<GeometryTexture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
     textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 
     std::vector<GeometryTexture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
@@ -89,7 +89,7 @@ Geometry* Model::processMesh(aiMesh* mesh, const aiScene* scene) {
     textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
 
     std::vector<GeometryTexture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
-    textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
+    textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());*/
 
     return new Geometry(vertices, indices, textures);
 }

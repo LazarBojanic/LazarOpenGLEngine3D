@@ -692,11 +692,11 @@
     <ClCompile Include="src\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\models\backpack\ao.jpg" />
-    <Image Include="assets\models\backpack\diffuse.jpg" />
-    <Image Include="assets\models\backpack\normal.png" />
-    <Image Include="assets\models\backpack\roughness.jpg" />
-    <Image Include="assets\models\backpack\specular.jpg" />
+    <Image Include="assets\models\backpack\backpackAo.jpg" />
+    <Image Include="assets\models\backpack\backpackDiffuse.jpg" />
+    <Image Include="assets\models\backpack\backpackNormal.png" />
+    <Image Include="assets\models\backpack\backpackRoughness.jpg" />
+    <Image Include="assets\models\backpack\backpackSpecular.jpg" />
     <Image Include="assets\textures\awesomeface.png" />
     <Image Include="assets\textures\bluRayLogo.png" />
     <Image Include="assets\textures\dvdLogo.png" />

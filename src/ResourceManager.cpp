@@ -64,7 +64,7 @@ Light* ResourceManager::addLight(std::string name, glm::vec3 position, glm::vec3
     return nullptr;
 }
 
-Texture* ResourceManager::addTexture(std::string texturePath, bool alpha, std::string name, std::string type){
+Texture* ResourceManager::addTexture(std::string texturePath, std::string name, std::string type){
     Texture* texture = new Texture(texturePath, name, type);
     if (std::find(this->textureList->begin(), this->textureList->end(), texture) == this->textureList->end()) {
         this->textureList->push_back(texture);
@@ -73,8 +73,8 @@ Texture* ResourceManager::addTexture(std::string texturePath, bool alpha, std::s
     return nullptr;
 }
 
-DrawData* ResourceManager::addDrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, Texture* texture, Texture* specular){
-    DrawData* drawData = new DrawData(name, mesh, shader, material, light, texture, specular);
+DrawData* ResourceManager::addDrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, std::vector<Texture*>* textureList){
+    DrawData* drawData = new DrawData(name, mesh, shader, material, light, textureList);
     if (std::find(this->drawDataList->begin(), this->drawDataList->end(), drawData) == this->drawDataList->end()) {
         this->drawDataList->push_back(drawData);
         return drawData;

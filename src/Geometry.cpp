@@ -18,4 +18,5 @@ void Geometry::generate() {
 	this->vertexArray->bind(); 
     this->vertexBuffer = new VertexBuffer(this->vertices, this->indices);
 	this->vertexArray->unbind();
+    
 }

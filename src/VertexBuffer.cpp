@@ -37,6 +37,7 @@ VertexBuffer::VertexBuffer(Primitive* primitive, unsigned int positionAttributeN
 
 
 VertexBuffer::VertexBuffer(std::vector<GeometryVertex> vertices, std::vector<unsigned int> indices) {
+	
 	glGenBuffers(1, &this->vboID);
 	bind();
 	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(GeometryVertex), &vertices.at(0), GL_STATIC_DRAW);
@@ -55,6 +56,7 @@ VertexBuffer::VertexBuffer(std::vector<GeometryVertex> vertices, std::vector<uns
 	glVertexAttribIPointer(5, 4, GL_INT, sizeof(GeometryVertex), (void*)offsetof(GeometryVertex, boneIds));
 	glEnableVertexAttribArray(6);
 	glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(GeometryVertex), (void*)offsetof(GeometryVertex, weights));
+	
 
 
 
