@@ -19,6 +19,10 @@ Mesh::Mesh(Primitive* primitive, Model* model, std::string name, int positionAtt
 		HRESULT guidResult = CoCreateGuid(&this->id);
 		this->name = name;
 		this->primitive = new Primitive(*primitive);
+		this->indices = primitive->getIndices();
+		this->indexed = primitive->getIsIndexed();
+		this->indicesCount = primitive->getIndicesCount();
+		this->unindexedVertexCount = primitive->getUnindexedVertexCount();
 		this->model = nullptr;
 		this->vertexArray = new VertexArray();
 		this->vertexArray->bind();
@@ -32,12 +36,10 @@ Mesh::Mesh(Primitive* primitive, Model* model, std::string name, int positionAtt
 			textureDimensions,
 			normalAttributeNumber,
 			normalDimensions,
-			indexed);
+			this->indexed);
+		
 		this->vertexArray->unbind();
-		this->indices = primitive->getIndices();
-		this->indexed = primitive->getIsIndexed();
-		this->indicesCount = primitive->getIndicesCount();
-		this->unindexedVertexCount = primitive->getUnindexedVertexCount();
+		
 	}
 	else if (primitive == nullptr && model != nullptr) {
 		HRESULT guidResult = CoCreateGuid(&this->id);
@@ -64,6 +66,24 @@ Mesh::Mesh(Primitive* primitive, Model* model, std::string name, int positionAtt
 		this->indicesCount = 0;
 		this->unindexedVertexCount = 0;
 	}
+}
+
+Mesh::Mesh(Primitive* primitive, std::string name, int positionAttributeNumber, int positionDimensions) {
+	HRESULT guidResult = CoCreateGuid(&this->id);
+	this->name = name;
+	this->primitive = new Primitive(*primitive);
+	this->indices = primitive->getIndices();
+	this->indexed = primitive->getIsIndexed();
+	this->indicesCount = primitive->getIndicesCount();
+	this->unindexedVertexCount = primitive->getUnindexedVertexCount();
+	this->model = nullptr;
+	this->vertexArray = new VertexArray();
+	this->vertexArray->bind();
+	this->vertexBuffer = new VertexBuffer(
+		primitive,
+		positionAttributeNumber,
+		positionDimensions);
+	this->vertexArray->unbind();
 }
 
 Mesh::~Mesh(){

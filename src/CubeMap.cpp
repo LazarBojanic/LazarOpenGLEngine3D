@@ -1,5 +1,5 @@
+
 #include "CubeMap.hpp"
-#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image/stb_image.h>
 
 CubeMap::CubeMap(std::vector<std::string>* facePaths, std::string name) {
@@ -29,6 +29,7 @@ void CubeMap::unbind() {
 void CubeMap::generate(std::vector<std::string>* facePaths) {
     int tempWidth, tempHeight, tempNumberOfChannels;
     for (unsigned int i = 0; i < facePaths->size(); i++) {
+        stbi_set_flip_vertically_on_load(false);
         unsigned char* data = stbi_load(facePaths->at(i).c_str(), &tempWidth, &tempHeight, &tempNumberOfChannels, 0);
         if (data) {
             if (tempNumberOfChannels == 1) {
@@ -45,12 +46,12 @@ void CubeMap::generate(std::vector<std::string>* facePaths) {
             }
             this->width = tempWidth;
             this->height = tempHeight;
-            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, this->format, width, height, 0, this->format, GL_UNSIGNED_BYTE, data);
-            glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-            glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-            glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, this->format, this->width, this->height, 0, this->format, GL_UNSIGNED_BYTE, data);
+            glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, this->filterMin);
+            glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, this->filterMag);
+            glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, this->wrap_S);
+            glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, this->wrap_T);
+            glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, this->wrap_R);
             stbi_image_free(data);
         }
         else {

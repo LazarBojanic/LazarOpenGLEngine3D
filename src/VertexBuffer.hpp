@@ -14,6 +14,7 @@ private:
 public:
 	VertexBuffer(float* data, unsigned int dataSize, unsigned int* indices, unsigned int indicesSize, unsigned int positionAttributeNumber, unsigned int positionDimensions, unsigned int colorAttributeNumber, unsigned int colorDimensions, unsigned int textureAttributeNumber, unsigned int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions, bool indexed);
 	VertexBuffer(Primitive* primitive, unsigned int positionAttributeNumber, unsigned int positionDimensions, unsigned int colorAttributeNumber, unsigned int colorDimensions, unsigned int textureAttributeNumber, unsigned int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions, bool indexed);
+	VertexBuffer(Primitive* primitive, unsigned int positionAttributeNumber, unsigned int positionDimensions);
 	VertexBuffer(std::vector<GeometryVertex> vertices, std::vector<unsigned int> indices);
 	~VertexBuffer();
 

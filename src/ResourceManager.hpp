@@ -30,6 +30,7 @@ public:
 	static ResourceManager* getInstance();
 	Model* addModel(std::string path, std::string name);
 	Mesh* addMesh(Primitive* primitive, Model* model, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions);
+	Mesh* addSkyboxMesh(Primitive* primitive, std::string name, int positionAttributeNumber, int positionDimensions);
 	Shader* addShader(std::string vertexShaderPath, std::string fragmentShaderPath, std::string name);
 	Material* addMaterial(std::string name, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, float shininess);
 	Light* addLight(std::string name, glm::vec3 position, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular);

@@ -109,7 +109,7 @@ void Game::initResources() {
 	GameObjectManager::getInstance()->addGameObject("ironManGameObject", "ironMan", ironManDrawData, -10.0f, 5.0f, -10.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);*/
 
 	SkyboxPrimitive* skyboxPrimitive = new SkyboxPrimitive(false);
-	Mesh* skyboxMesh = ResourceManager::getInstance()->addMesh(skyboxPrimitive, nullptr, "skyboxMesh", 0, 3, -1, 0, -1, 0, -1, 0);
+	Mesh* skyboxMesh = ResourceManager::getInstance()->addSkyboxMesh(skyboxPrimitive, "skyboxMesh", 0, 3);
 	Shader* skyboxShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\skyboxVertexShader.glsl", workingDirectory + "\\assets\\shaders\\skyboxFragmentShader.glsl", "skyboxShader");
 	std::vector<std::string>* skyboxFacePaths = new std::vector<std::string>();
 	skyboxFacePaths->push_back(workingDirectory + "\\assets\\textures\\skybox\\right.jpg");
@@ -145,8 +145,9 @@ void Game::update(float dt) {
 }
 void Game::render(float dt) {
 	Renderer::getInstance()->colorBackground(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
-	Renderer::getInstance()->drawSkybox("skybox");
+	
 	Renderer::getInstance()->drawAll(*this->camera, true);
+	Renderer::getInstance()->drawSkybox(*this->camera, "skybox");
 }
 void Game::clear() {
 	delete[] this->keys;

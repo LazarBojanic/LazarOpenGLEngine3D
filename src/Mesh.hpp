@@ -20,6 +20,7 @@ private:
 public:
 	Mesh();
 	Mesh(Primitive* primitive, Model* model, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions);
+	Mesh(Primitive* primitive, std::string name, int positionAttributeNumber, int positionDimensions);
 	~Mesh();
 	inline GUID getId() {
 		return this->id;
@@ -51,7 +52,7 @@ public:
 	inline float getUnindexedVertexCount() {
 		return this->unindexedVertexCount;
 	}
-	inline float getIsIndexed() {
+	inline bool getIsIndexed() {
 		return this->indexed;
 	}
 };

@@ -2,6 +2,7 @@
 
 #include "GLData.hpp"
 
+
 class Texture{
 private:
 	GUID id;

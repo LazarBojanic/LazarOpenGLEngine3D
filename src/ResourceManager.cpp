@@ -11,6 +11,7 @@ ResourceManager::ResourceManager() {
     this->textureList = new std::vector<Texture*>();
     this->drawDataList = new std::vector<DrawData*>();
     this->cubeMapList = new std::vector<CubeMap*>();
+    this->skyboxList = new std::vector<Skybox*>();
 }
 ResourceManager::~ResourceManager() {
     
@@ -31,6 +32,14 @@ Model* ResourceManager::addModel(std::string path, std::string name) {
 }
 Mesh* ResourceManager::addMesh(Primitive* primitive, Model* model, std::string name, int positionAttributeNumber, int positionDimensions, int colorAttributeNumber, int colorDimensions, int textureAttributeNumber, int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions){
     Mesh* mesh = new Mesh(primitive, model, name, positionAttributeNumber, positionDimensions, colorAttributeNumber, colorDimensions, textureAttributeNumber, textureDimensions, normalAttributeNumber, normalDimensions);
+    if (std::find(this->meshList->begin(), this->meshList->end(), mesh) == this->meshList->end()) {
+        this->meshList->push_back(mesh);
+        return mesh;
+    }
+    return nullptr;
+}
+Mesh* ResourceManager::addSkyboxMesh(Primitive* primitive, std::string name, int positionAttributeNumber, int positionDimensions) {
+    Mesh* mesh = new Mesh(primitive, name, positionAttributeNumber, positionDimensions);
     if (std::find(this->meshList->begin(), this->meshList->end(), mesh) == this->meshList->end()) {
         this->meshList->push_back(mesh);
         return mesh;
@@ -85,7 +94,7 @@ CubeMap* ResourceManager::addCubeMap(std::vector<std::string>* facePaths, std::s
 
 Skybox* ResourceManager::addSkybox(Mesh* mesh, Shader* shader, CubeMap* cubeMap, std::string name) {
     Skybox* skybox = new Skybox(mesh, shader, cubeMap, name);
-    if (std::find(this->skyboxList->begin(), this->skyboxList->end(), cubeMap) == this->skyboxList->end()) {
+    if (std::find(this->skyboxList->begin(), this->skyboxList->end(), skybox) == this->skyboxList->end()) {
         this->skyboxList->push_back(skybox);
         return skybox;
     }

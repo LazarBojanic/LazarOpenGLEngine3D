@@ -7,7 +7,7 @@ Skybox::Skybox(Mesh* mesh, Shader* shader, CubeMap* cubeMap, std::string name) {
 	this->cubeMap = cubeMap;
 }
 
-Skybox::Skybox() {
+Skybox::~Skybox() {
 	delete this->mesh;
 	delete this->shader;
 	delete this->cubeMap;

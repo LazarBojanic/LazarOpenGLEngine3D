@@ -13,7 +13,7 @@ private:
 	CubeMap* cubeMap;
 public:
 	Skybox(Mesh* mesh, Shader* shader, CubeMap* cubeMap, std::string name);
-	Skybox();
+	~Skybox();
 	inline std::string getName() {
 		return this->name;
 	}
