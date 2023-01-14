@@ -125,7 +125,7 @@ void Game::initResources() {
 	Skybox* skybox = ResourceManager::getInstance()->addSkybox(skyboxMesh, skyboxShader, skyboxCubeMap, "skybox");
 
 	
-	const int lengthX = 200, lengthZ = 200;
+	const int lengthX = 75, lengthZ = 75;
 	float cubeSizeX = 0.5f;
 	float cubeSizeY = 10.0f;
 	float cubeSizeZ = 0.5f;
@@ -184,8 +184,19 @@ void Game::processInput(float dt) {
 	}
 }
 void Game::update(float dt) {
-	/*GameObject* backpackGameObject = GameObjectManager::getInstance()->getGameObjectByTag("backpack");
-	backpackGameObject->setRotationX(backpackGameObject->getRotationX() + 10.0f);*/
+	float r = 50.0f;
+	float lightX = r * glm::cos(t);
+	float lightZ = r * glm::sin(t);
+	GameObject* lightGameObject = GameObjectManager::getInstance()->getGameObjectByTag("light");
+	float oldLightY = lightGameObject->getDrawData()->getLight()->position.y;
+;	glm::vec3 newLightPos = glm::vec3(lightX, oldLightY, lightZ);
+	std::vector<GameObject*>* gameObjectList = GameObjectManager::getInstance()->getGameObjectList();
+	for (int i = 0; i < gameObjectList->size(); i++) {
+		gameObjectList->at(i)->getDrawData()->getLight()->position = newLightPos;
+	}
+	lightGameObject->setPositionX(lightX);
+	lightGameObject->setPositionZ(lightZ);
+	this->t += dt;
 }
 void Game::render(float dt) {
 	Renderer::getInstance()->colorBackground(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
