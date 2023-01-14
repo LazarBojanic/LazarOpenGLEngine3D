@@ -6,7 +6,7 @@ Camera::Camera(glm::vec3 position, float width, float height, float nearPlane, f
     this->yaw = -90.0f;
     this->pitch = 0.0f;
     this->front = glm::vec3(0.0f, 0.0f, -1.0f);
-    this->movementSpeed = 2.5f;
+    this->movementSpeed = 10.0f;
     this->mouseSensitivity = 0.5f;
     this->zoom = 45.0f;
     this->projection = glm::perspective(glm::radians(this->zoom), width / height, nearPlane, farPlane);
@@ -18,7 +18,7 @@ Camera::Camera(float positionX, float positionY, float positionZ, float width, f
     this->yaw = -90.0f;
     this->pitch = 0.0f;
     this->front = glm::vec3(0.0f, 0.0f, -1.0f);
-    this->movementSpeed = 2.5f;
+    this->movementSpeed = 10.0f;
     this->mouseSensitivity = 0.5f;
     this->zoom = 45.0f;
     this->projection = glm::perspective(glm::radians(this->zoom), width / height, nearPlane, farPlane);

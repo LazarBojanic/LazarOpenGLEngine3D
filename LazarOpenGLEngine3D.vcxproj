@@ -526,6 +526,8 @@
     <None Include="assets\shaders\cubeLightingTexturedFragmentShader.glsl" />
     <None Include="assets\shaders\cubeLightingVertexShader.glsl" />
     <None Include="assets\shaders\backpackVertexShader.glsl" />
+    <None Include="assets\shaders\ironManFragmentShader.glsl" />
+    <None Include="assets\shaders\ironManVertexShader.glsl" />
     <None Include="assets\shaders\lightFragmentShader.glsl" />
     <None Include="assets\shaders\lightVertexShader.glsl" />
     <None Include="assets\shaders\backpackFragmentShader.glsl" />

@@ -88,13 +88,11 @@ void Game::initResources() {
 	Model* backpackModel = ResourceManager::getInstance()->addModel(workingDirectory + "\\assets\\models\\backpack\\backpack.obj", "backpackModel");
 	Mesh* backpackMesh = ResourceManager::getInstance()->addMesh(nullptr, backpackModel, "backpackMesh", 0, 3, 1, 3, 2, 2, 3, 3);
 	Shader* backpackShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\backpackVertexShader.glsl", workingDirectory + "\\assets\\shaders\\backpackFragmentShader.glsl", "backpackShader");
-
 	Texture* backpackAo = ResourceManager::getInstance()->addTexture(workingDirectory + "\\assets\\models\\backpack\\backpackAo.jpg", "backpackAo", "ao");
 	Texture* backpackDiffuse = ResourceManager::getInstance()->addTexture(workingDirectory + "\\assets\\models\\backpack\\backpackDiffuse.jpg", "backpackDiffuse", "diffuse");
 	Texture* backpackNormal = ResourceManager::getInstance()->addTexture(workingDirectory + "\\assets\\models\\backpack\\backpackNormal.png", "backpackNormal", "normal");
 	Texture* backpackRoughness = ResourceManager::getInstance()->addTexture(workingDirectory + "\\assets\\models\\backpack\\backpackRoughness.jpg", "backpackRoughness", "roughness");
 	Texture* backpackSpecular = ResourceManager::getInstance()->addTexture(workingDirectory + "\\assets\\models\\backpack\\backpackSpecular.jpg", "backpackSpecular", "specular");
-
 	std::vector<Texture*>* backpackTextureList = new std::vector<Texture*>();
 	//backpackTextureList->push_back(backpackAo);
 	backpackTextureList->push_back(backpackDiffuse);
@@ -104,6 +102,14 @@ void Game::initResources() {
 
 	DrawData* backpackDrawData = ResourceManager::getInstance()->addDrawData("backpackDrawData", backpackMesh, backpackShader, cubeMaterial, light, backpackTextureList);
 	GameObjectManager::getInstance()->addGameObject("backpackGameObject", "backpack", backpackDrawData, 5.0f, 2.5f, 5.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+
+
+	/*Model* ironManModel = ResourceManager::getInstance()->addModel(workingDirectory + "\\assets\\models\\ironMan\\ironMan.obj", "ironManModel");
+	Mesh* ironManMesh = ResourceManager::getInstance()->addMesh(nullptr, ironManModel, "ironManMesh", 0, 3, 1, 3, 2, 2, 3, 3);
+	Shader* ironManShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\ironManVertexShader.glsl", workingDirectory + "\\assets\\shaders\\ironManFragmentShader.glsl", "ironManShader");
+	DrawData* ironManDrawData = ResourceManager::getInstance()->addDrawData("ironManDrawData", ironManMesh, ironManShader, cubeMaterial, light, nullptr);
+	GameObjectManager::getInstance()->addGameObject("ironManGameObject", "ironMan", ironManDrawData, -10.0f, 5.0f, -10.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);*/
+
 
 }
 void Game::start() {
