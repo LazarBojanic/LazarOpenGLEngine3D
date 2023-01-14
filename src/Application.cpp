@@ -78,7 +78,7 @@ void Application::initWindow() {
     glfwMakeContextCurrent(this->window);
     initGlad();
     glEnable(GL_DEBUG_OUTPUT);
-    //glDebugMessageCallback(debugCallback, 0);
+    glDebugMessageCallback(debugCallback, 0);
     glfwSetKeyCallback(this->window, key_callback);
     glfwSetFramebufferSizeCallback(this->window, framebuffer_size_callback);
     glfwSetCursorPosCallback(this->window, mouse_callback);

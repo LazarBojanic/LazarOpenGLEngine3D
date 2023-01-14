@@ -100,12 +100,11 @@ void Game::initResources() {
 	backpackTextureList->push_back(backpackDiffuse);
 	//backpackTextureList->push_back(backpackNormal);
 	//backpackTextureList->push_back(backpackRoughness);
-	//backpackTextureList->push_back(backpackSpecular);
+	backpackTextureList->push_back(backpackSpecular);
 
 	DrawData* backpackDrawData = ResourceManager::getInstance()->addDrawData("backpackDrawData", backpackMesh, backpackShader, cubeMaterial, light, backpackTextureList);
 	GameObjectManager::getInstance()->addGameObject("backpackGameObject", "backpack", backpackDrawData, 5.0f, 2.5f, 5.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
 
-	//std::cout << glGetError() << std::endl;
 }
 void Game::start() {
 	initVariables();
@@ -126,16 +125,16 @@ void Game::processInput(float dt) {
 	}
 }
 void Game::update(float dt) {
-	//std::cout << glGetError() << std::endl;
 	Renderer::getInstance()->colorBackground(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
-	GameObject* cubeGameObject = GameObjectManager::getInstance()->getGameObjectByTag("cube");
+	/*GameObject* cubeGameObject = GameObjectManager::getInstance()->getGameObjectByTag("cube");
 	GameObject* groundGameObject = GameObjectManager::getInstance()->getGameObjectByTag("ground");
 	GameObject* lightGameObject = GameObjectManager::getInstance()->getGameObjectByTag("light");
 	GameObject* backpackGameObject = GameObjectManager::getInstance()->getGameObjectByTag("backpack");
 	Renderer::getInstance()->draw(*cubeGameObject, *this->camera, true);
 	Renderer::getInstance()->draw(*groundGameObject, *this->camera, true);
 	Renderer::getInstance()->draw(*lightGameObject, *this->camera, true);
-	Renderer::getInstance()->draw(*backpackGameObject, *this->camera, true);
+	Renderer::getInstance()->draw(*backpackGameObject, *this->camera, true);*/
+	Renderer::getInstance()->drawAll(*this->camera, true); 
 }
 void Game::clear() {
 	delete[] this->keys;

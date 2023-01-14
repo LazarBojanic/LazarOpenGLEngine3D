@@ -669,7 +669,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Geometry.cpp" />
-    <ClCompile Include="src\GeometryTexture.hpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Light.cpp" />
     <ClCompile Include="src\Material.cpp" />

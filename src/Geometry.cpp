@@ -1,10 +1,8 @@
 #include "Geometry.hpp"
 
-Geometry::Geometry(std::vector<GeometryVertex> vertices, std::vector<unsigned int> indices, std::vector<GeometryTexture> textures) {
+Geometry::Geometry(std::vector<GeometryVertex> vertices, std::vector<unsigned int> indices) {
     this->vertices = vertices;
     this->indices = indices;
-    this->textures = textures;
-
     generate();
 }
 

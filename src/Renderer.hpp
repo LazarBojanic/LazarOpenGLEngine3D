@@ -16,6 +16,5 @@ public:
 	static Renderer* getInstance();
 	void draw(GameObject& gameObject, Camera& camera, bool scaled);
 	void drawAll(Camera& camera, bool scaled);
-	void drawModel(GameObject& gameObject, Camera& camera, bool scaled);
 	void colorBackground(glm::vec4 color);
 };
