@@ -38,38 +38,39 @@ void Renderer::draw(GameObject& gameObject, Camera& camera, bool scaled){
     gameObject.updateShader();
     if (gameObject.getDrawData()->getMesh()->getPrimitive() != nullptr && gameObject.getDrawData()->getMesh()->getModel() == nullptr) {
         gameObject.getDrawData()->getMesh()->getVertexArray()->bind();
-        if (gameObject.getDrawData()->getTextureList() == nullptr) {
-            if (gameObject.getDrawData()->getMesh()->getIsIndexed()) {
-                glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getIndicesCount(), GL_UNSIGNED_INT, 0);
-            }
-            else {
-                glDrawArrays(GL_TRIANGLES, 0, gameObject.getDrawData()->getMesh()->getUnindexedVertexCount());
-            }
-        }
-        else {
+        if (gameObject.getDrawData()->getTextureList() != nullptr) {
             for (int i = 0; i < gameObject.getDrawData()->getTextureList()->size(); i++) {
                 gameObject.getDrawData()->getTextureList()->at(i)->bind(i);
-                if (gameObject.getDrawData()->getMesh()->getIsIndexed()) {
-                    glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getIndicesCount(), GL_UNSIGNED_INT, 0);
-                }
-                else {
-                    glDrawArrays(GL_TRIANGLES, 0, gameObject.getDrawData()->getMesh()->getUnindexedVertexCount());
-                }
+            }
+        }
+        if (gameObject.getDrawData()->getMesh()->getIsIndexed()) {
+            glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getIndicesCount(), GL_UNSIGNED_INT, 0);
+        }
+        else {
+            glDrawArrays(GL_TRIANGLES, 0, gameObject.getDrawData()->getMesh()->getUnindexedVertexCount());
+        }
+        gameObject.getDrawData()->getMesh()->getVertexArray()->unbind();
+        if (gameObject.getDrawData()->getTextureList() != nullptr) {
+            for (int i = 0; i < gameObject.getDrawData()->getTextureList()->size(); i++) {
+                gameObject.getDrawData()->getTextureList()->at(i)->bind(i);
             }
         }
     }
     else if (gameObject.getDrawData()->getMesh()->getPrimitive() == nullptr && gameObject.getDrawData()->getMesh()->getModel() != nullptr) {
         for (int i = 0; i < gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->size(); i++) {
             gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getVertexArray()->bind();
-            if (gameObject.getDrawData()->getTextureList() == nullptr) {
-                glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getIndices().size(), GL_UNSIGNED_INT, 0);
-            }
-            else {
+            if (gameObject.getDrawData()->getTextureList() != nullptr) {
                 for (int j = 0; j < gameObject.getDrawData()->getTextureList()->size(); j++) {
                     gameObject.getDrawData()->getTextureList()->at(j)->bind(j);
-                    glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getIndices().size(), GL_UNSIGNED_INT, 0);
                 }
             }
+            glDrawElements(GL_TRIANGLES, gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getIndices().size(), GL_UNSIGNED_INT, 0);
+            if (gameObject.getDrawData()->getTextureList() != nullptr) {
+                for (int j = 0; j < gameObject.getDrawData()->getTextureList()->size(); j++) {
+                    gameObject.getDrawData()->getTextureList()->at(j)->unbind();
+                }
+            }
+            gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getVertexArray()->unbind();
         }
     }
 }

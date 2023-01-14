@@ -32,6 +32,8 @@ private:
     Camera* camera;
     float lastX, lastY;
     bool firstMouse;
+
+    float t;
     
 public:
     Game(GLFWwindow* window, unsigned int width, unsigned int height);
@@ -45,6 +47,7 @@ public:
     void start();
     void processInput(float dt);
     void update(float dt);
+    void render(float dt);
     void clear();
 
     inline GLFWwindow* getWindow() {

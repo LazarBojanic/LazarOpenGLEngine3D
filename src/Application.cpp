@@ -105,6 +105,9 @@ void Application::run() {
 
         Game::getInstance()->update(deltaTime);
 
+        Game::getInstance()->render(deltaTime);
+
+
         glfwPollEvents();
         glfwSwapBuffers(this->window);
     }

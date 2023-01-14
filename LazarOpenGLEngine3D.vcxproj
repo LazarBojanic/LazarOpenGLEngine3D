@@ -522,6 +522,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\models\backpack\backpack.mtl" />
+    <None Include="assets\shaders\betterBackpackFragmentShader.glsl" />
+    <None Include="assets\shaders\betterBackpackVertexShader.glsl" />
     <None Include="assets\shaders\cubeLightingFragmentShader.glsl" />
     <None Include="assets\shaders\cubeLightingTexturedFragmentShader.glsl" />
     <None Include="assets\shaders\cubeLightingVertexShader.glsl" />
@@ -700,6 +702,8 @@
     <Image Include="assets\models\backpack\backpackSpecular.jpg" />
     <Image Include="assets\textures\awesomeface.png" />
     <Image Include="assets\textures\bluRayLogo.png" />
+    <Image Include="assets\textures\cubeDiffuse.png" />
+    <Image Include="assets\textures\cubeSpecular.png" />
     <Image Include="assets\textures\dvdLogo.png" />
     <Image Include="assets\textures\laser.png" />
     <Image Include="assets\textures\score.png" />
