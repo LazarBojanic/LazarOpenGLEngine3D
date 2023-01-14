@@ -102,14 +102,24 @@ void Game::initResources() {
 	DrawData* backpackDrawData = ResourceManager::getInstance()->addDrawData("backpackDrawData", backpackMesh, backpackShader, cubeMaterial, light, backpackTextureList);
 	GameObjectManager::getInstance()->addGameObject("backpackGameObject", "backpack", backpackDrawData, 5.0f, 2.5f, 5.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
 
-
 	/*Model* ironManModel = ResourceManager::getInstance()->addModel(workingDirectory + "\\assets\\models\\ironMan\\ironMan.obj", "ironManModel");
 	Mesh* ironManMesh = ResourceManager::getInstance()->addMesh(nullptr, ironManModel, "ironManMesh", 0, 3, 1, 3, 2, 2, 3, 3);
 	Shader* ironManShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\ironManVertexShader.glsl", workingDirectory + "\\assets\\shaders\\ironManFragmentShader.glsl", "ironManShader");
 	DrawData* ironManDrawData = ResourceManager::getInstance()->addDrawData("ironManDrawData", ironManMesh, ironManShader, cubeMaterial, light, nullptr);
 	GameObjectManager::getInstance()->addGameObject("ironManGameObject", "ironMan", ironManDrawData, -10.0f, 5.0f, -10.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);*/
 
-
+	SkyboxPrimitive* skyboxPrimitive = new SkyboxPrimitive(false);
+	Mesh* skyboxMesh = ResourceManager::getInstance()->addMesh(skyboxPrimitive, nullptr, "skyboxMesh", 0, 3, -1, 0, -1, 0, -1, 0);
+	Shader* skyboxShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\skyboxVertexShader.glsl", workingDirectory + "\\assets\\shaders\\skyboxFragmentShader.glsl", "skyboxShader");
+	std::vector<std::string>* skyboxFacePaths = new std::vector<std::string>();
+	skyboxFacePaths->push_back(workingDirectory + "\\assets\\textures\\skybox\\right.jpg");
+	skyboxFacePaths->push_back(workingDirectory + "\\assets\\textures\\skybox\\left.jpg");
+	skyboxFacePaths->push_back(workingDirectory + "\\assets\\textures\\skybox\\top.jpg");
+	skyboxFacePaths->push_back(workingDirectory + "\\assets\\textures\\skybox\\bottom.jpg");
+	skyboxFacePaths->push_back(workingDirectory + "\\assets\\textures\\skybox\\front.jpg");
+	skyboxFacePaths->push_back(workingDirectory + "\\assets\\textures\\skybox\\back.jpg");
+	CubeMap* skyboxCubeMap = ResourceManager::getInstance()->addCubeMap(skyboxFacePaths, "skyboxCubeMap");
+	Skybox* skybox = ResourceManager::getInstance()->addSkybox(skyboxMesh, skyboxShader, skyboxCubeMap, "skybox");
 }
 void Game::start() {
 	initVariables();
@@ -135,6 +145,7 @@ void Game::update(float dt) {
 }
 void Game::render(float dt) {
 	Renderer::getInstance()->colorBackground(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
+	Renderer::getInstance()->drawSkybox("skybox");
 	Renderer::getInstance()->drawAll(*this->camera, true);
 }
 void Game::clear() {

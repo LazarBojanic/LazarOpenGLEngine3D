@@ -9,14 +9,22 @@ VertexBuffer::VertexBuffer(float* data, unsigned int dataSize, unsigned int* ind
 	if (indexed) {
 		this->indexBuffer = new IndexBuffer(indices, indicesSize);
 	}
-	glEnableVertexAttribArray(positionAttributeNumber);
-	glVertexAttribPointer(positionAttributeNumber, positionDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(colorAttributeNumber);
-	glVertexAttribPointer(colorAttributeNumber, colorDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)(positionDimensions * sizeof(float)));
-	glEnableVertexAttribArray(textureAttributeNumber);
-	glVertexAttribPointer(textureAttributeNumber, textureDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)((positionDimensions + colorDimensions) * sizeof(float)));
-	glEnableVertexAttribArray(normalAttributeNumber);
-	glVertexAttribPointer(normalAttributeNumber, normalDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)((positionDimensions + colorDimensions + textureDimensions) * sizeof(float)));
+	if (positionAttributeNumber >= 0) {
+		glEnableVertexAttribArray(positionAttributeNumber);
+		glVertexAttribPointer(positionAttributeNumber, positionDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)0);
+	}
+	if (colorAttributeNumber >= 0) {
+		glEnableVertexAttribArray(colorAttributeNumber);
+		glVertexAttribPointer(colorAttributeNumber, colorDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)(positionDimensions * sizeof(float)));
+	}
+	if (textureAttributeNumber >= 0) {
+		glEnableVertexAttribArray(textureAttributeNumber);
+		glVertexAttribPointer(textureAttributeNumber, textureDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)((positionDimensions + colorDimensions) * sizeof(float)));
+	}
+	if (normalAttributeNumber >= 0) {
+		glEnableVertexAttribArray(normalAttributeNumber);
+		glVertexAttribPointer(normalAttributeNumber, normalDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)((positionDimensions + colorDimensions + textureDimensions) * sizeof(float)));
+	}
 }
 VertexBuffer::VertexBuffer(Primitive* primitive, unsigned int positionAttributeNumber, unsigned int positionDimensions, unsigned int colorAttributeNumber, unsigned int colorDimensions, unsigned int textureAttributeNumber, unsigned int textureDimensions, unsigned int normalAttributeNumber, unsigned int normalDimensions, bool indexed){
 	glGenBuffers(1, &this->vboID);
@@ -25,14 +33,22 @@ VertexBuffer::VertexBuffer(Primitive* primitive, unsigned int positionAttributeN
 	if (indexed) {
 		this->indexBuffer = new IndexBuffer(primitive->getIndices(), primitive->getIndicesSize());
 	}
-	glEnableVertexAttribArray(positionAttributeNumber);
-	glVertexAttribPointer(positionAttributeNumber, positionDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(colorAttributeNumber);
-	glVertexAttribPointer(colorAttributeNumber, colorDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)(positionDimensions * sizeof(float)));
-	glEnableVertexAttribArray(textureAttributeNumber);
-	glVertexAttribPointer(textureAttributeNumber, textureDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)((positionDimensions + colorDimensions) * sizeof(float)));
-	glEnableVertexAttribArray(normalAttributeNumber);
-	glVertexAttribPointer(normalAttributeNumber, normalDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)((positionDimensions + colorDimensions + textureDimensions) * sizeof(float)));
+	if (positionAttributeNumber >= 0) {
+		glEnableVertexAttribArray(positionAttributeNumber);
+		glVertexAttribPointer(positionAttributeNumber, positionDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)0);
+	}
+	if (colorAttributeNumber >= 0) {
+		glEnableVertexAttribArray(colorAttributeNumber);
+		glVertexAttribPointer(colorAttributeNumber, colorDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)(positionDimensions * sizeof(float)));
+	}
+	if (textureAttributeNumber >= 0) {
+		glEnableVertexAttribArray(textureAttributeNumber);
+		glVertexAttribPointer(textureAttributeNumber, textureDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)((positionDimensions + colorDimensions) * sizeof(float)));
+	}
+	if (normalAttributeNumber >= 0) {
+		glEnableVertexAttribArray(normalAttributeNumber);
+		glVertexAttribPointer(normalAttributeNumber, normalDimensions, GL_FLOAT, GL_FALSE, (positionDimensions + colorDimensions + textureDimensions + normalDimensions) * sizeof(float), (void*)((positionDimensions + colorDimensions + textureDimensions) * sizeof(float)));
+	}
 }
 
 
@@ -56,11 +72,6 @@ VertexBuffer::VertexBuffer(std::vector<GeometryVertex> vertices, std::vector<uns
 	glVertexAttribIPointer(5, 4, GL_INT, sizeof(GeometryVertex), (void*)offsetof(GeometryVertex, boneIds));
 	glEnableVertexAttribArray(6);
 	glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(GeometryVertex), (void*)offsetof(GeometryVertex, weights));
-	
-
-
-
-	
 
 }
 

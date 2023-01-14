@@ -1,6 +1,7 @@
 #include "Model.hpp"
 
 Model::Model(std::string name, std::string path) {
+    HRESULT guidResult = CoCreateGuid(&this->id);
     this->name = name;
     this->geometries = new std::vector<Geometry*>();
 	loadModel(path);

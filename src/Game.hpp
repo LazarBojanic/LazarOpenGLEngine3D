@@ -7,6 +7,7 @@
 #include "Triangle.hpp"
 #include "Quad.hpp"
 #include "Cube.hpp"
+#include "SkyboxPrimitive.hpp"
 #include "Camera.hpp"
 
 enum GameState {

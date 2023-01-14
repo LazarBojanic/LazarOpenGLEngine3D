@@ -2,41 +2,37 @@
 
 #include "GLData.hpp"
 
-class Texture{
+class CubeMap {
 private:
 	GUID id;
-	std::string path;
-    std::string name;
-	std::string type;
-	unsigned int textureID;
+	unsigned int cubeMapId;
+	std::vector<std::string>* facePaths;
+	std::string name;
 	unsigned int width;
 	unsigned int height;
-    unsigned int wrap_S;
-    unsigned int wrap_T;
-    unsigned int filterMin;
-    unsigned int filterMag;
-    GLenum format;
+	unsigned int wrap_S;
+	unsigned int wrap_T;
+	unsigned int wrap_R;
+	unsigned int filterMin;
+	unsigned int filterMag;
+	GLenum format;
 public:
-    Texture();
-    Texture(std::string textureFilePath, std::string name, std::string type);
-    ~Texture();
-    void generate(unsigned char* data);
-    void bind(unsigned int textureChannel);
-    void unbind();
+	CubeMap(std::vector<std::string>* facePaths, std::string name);
+	~CubeMap();
+	void bind(unsigned int textureChannel);
+	void unbind();
+	void generate(std::vector<std::string>* facePaths);
 	inline GUID getId() {
 		return this->id;
 	}
-	inline std::string getPath() {
-		return this->path;
+	inline unsigned int getCubeMapId() {
+		return this->cubeMapId;
+	}
+	inline std::vector<std::string>* getFacePaths() {
+		return this->facePaths;
 	}
 	inline std::string getName() {
 		return this->name;
-	}
-	inline std::string getType() {
-		return this->type;
-	}
-	inline unsigned int getTextureID() {
-		return this->textureID;
 	}
 	inline unsigned int getWidth() {
 		return this->width;
@@ -49,6 +45,9 @@ public:
 	}
 	inline unsigned int getWrap_T() {
 		return this->wrap_T;
+	}
+	inline unsigned int getWrap_R() {
+		return this->wrap_R;
 	}
 	inline unsigned int getFilterMin() {
 		return this->filterMin;

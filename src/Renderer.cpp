@@ -81,6 +81,20 @@ void Renderer::drawAll(Camera& camera, bool scaled) {
         draw(*gameObjectList->at(i), camera, scaled);
     }
 }
+void Renderer::drawSkybox(Camera& camera, std::string skyboxName) {
+    Skybox* skybox = ResourceManager::getInstance()->getSkyboxByName(skyboxName);
+    glm::mat4 view = camera.getView();
+    glm::mat4 projection = camera.getProjection();
+    skybox->getShader()->setMatrix4f("uView", view, true);
+    skybox->getShader()->setMatrix4f("uProjection", projection, true);
+    glDepthMask(GL_FALSE);
+    skybox->getMesh()->getVertexArray()->bind();
+    skybox->getCubeMap()->bind(0);
+    glDrawArrays(GL_TRIANGLES, 0, skybox->getMesh()->getPrimitive()->getUnindexedVertexCount());
+    glDepthMask(GL_TRUE);
+    skybox->getMesh()->getVertexArray()->unbind();
+    skybox->getCubeMap()->unbind();
+}
 void Renderer::colorBackground(glm::vec4 color) {
     glClearColor(color.x, color.y, color.z, color.w);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

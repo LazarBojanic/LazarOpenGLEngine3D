@@ -84,6 +84,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Skybox.hpp" />
+    <ClInclude Include="src\CubeMap.hpp" />
     <ClInclude Include="src\Geometry.hpp" />
     <ClInclude Include="libraries\include\assimp\config.h" />
     <ClInclude Include="libraries\include\dlg\dlg.h" />
@@ -533,6 +535,8 @@
     <None Include="assets\shaders\lightFragmentShader.glsl" />
     <None Include="assets\shaders\lightVertexShader.glsl" />
     <None Include="assets\shaders\backpackFragmentShader.glsl" />
+    <None Include="assets\shaders\skyboxFragmentShader.glsl" />
+    <None Include="assets\shaders\skyboxVertexShader.glsl" />
     <None Include="libraries\include\glm\detail\func_common.inl" />
     <None Include="libraries\include\glm\detail\func_common_simd.inl" />
     <None Include="libraries\include\glm\detail\func_exponential.inl" />
@@ -672,6 +676,8 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Skybox.cpp" />
+    <ClCompile Include="src\CubeMap.cpp" />
     <ClCompile Include="src\Geometry.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Light.cpp" />
@@ -690,6 +696,7 @@
     <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\SkyboxPrimitive.hpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
@@ -701,18 +708,23 @@
     <Image Include="assets\models\backpack\backpackRoughness.jpg" />
     <Image Include="assets\models\backpack\backpackSpecular.jpg" />
     <Image Include="assets\textures\awesomeface.png" />
-    <Image Include="assets\textures\bluRayLogo.png" />
     <Image Include="assets\textures\cubeDiffuse.png" />
     <Image Include="assets\textures\cubeSpecular.png" />
-    <Image Include="assets\textures\dvdLogo.png" />
-    <Image Include="assets\textures\laser.png" />
-    <Image Include="assets\textures\score.png" />
+    <Image Include="assets\textures\skybox\back.jpg" />
+    <Image Include="assets\textures\skybox\bottom.jpg" />
+    <Image Include="assets\textures\skybox\front.jpg" />
+    <Image Include="assets\textures\skybox\left.jpg" />
+    <Image Include="assets\textures\skybox\right.jpg" />
+    <Image Include="assets\textures\skybox\top.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\bleep.wav" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="assets\models\backpack\source_attribution.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="assets\models\backpack\backpack.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

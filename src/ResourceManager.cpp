@@ -10,6 +10,7 @@ ResourceManager::ResourceManager() {
     this->lightList = new std::vector<Light*>();
     this->textureList = new std::vector<Texture*>();
     this->drawDataList = new std::vector<DrawData*>();
+    this->cubeMapList = new std::vector<CubeMap*>();
 }
 ResourceManager::~ResourceManager() {
     
@@ -73,6 +74,24 @@ Texture* ResourceManager::addTexture(std::string texturePath, std::string name, 
     return nullptr;
 }
 
+CubeMap* ResourceManager::addCubeMap(std::vector<std::string>* facePaths, std::string name) {
+    CubeMap* cubeMap = new CubeMap(facePaths, name);
+    if (std::find(this->cubeMapList->begin(), this->cubeMapList->end(), cubeMap) == this->cubeMapList->end()) {
+        this->cubeMapList->push_back(cubeMap);
+        return cubeMap;
+    }
+    return nullptr;
+}
+
+Skybox* ResourceManager::addSkybox(Mesh* mesh, Shader* shader, CubeMap* cubeMap, std::string name) {
+    Skybox* skybox = new Skybox(mesh, shader, cubeMap, name);
+    if (std::find(this->skyboxList->begin(), this->skyboxList->end(), cubeMap) == this->skyboxList->end()) {
+        this->skyboxList->push_back(skybox);
+        return skybox;
+    }
+    return nullptr;
+}
+
 DrawData* ResourceManager::addDrawData(std::string name, Mesh* mesh, Shader* shader, Material* material, Light* light, std::vector<Texture*>* textureList){
     DrawData* drawData = new DrawData(name, mesh, shader, material, light, textureList);
     if (std::find(this->drawDataList->begin(), this->drawDataList->end(), drawData) == this->drawDataList->end()) {
@@ -132,6 +151,22 @@ Texture* ResourceManager::getTextureByName(std::string name) {
     }
     return nullptr;
 }
+CubeMap* ResourceManager::getCubeMapByName(std::string name) {
+    for (int i = 0; i < this->cubeMapList->size(); i++) {
+        if (this->cubeMapList->at(i)->getName() == name) {
+            return this->cubeMapList->at(i);
+        }
+    }
+    return nullptr;
+}
+Skybox* ResourceManager::getSkyboxByName(std::string name) {
+    for (int i = 0; i < this->skyboxList->size(); i++) {
+        if (this->skyboxList->at(i)->getName() == name) {
+            return this->skyboxList->at(i);
+        }
+    }
+    return nullptr;
+}
 DrawData* ResourceManager::getDrawDataByName(std::string name){
     for (int i = 0; i < this->drawDataList->size(); i++) {
         if (this->drawDataList->at(i)->getName() == name) {
@@ -146,6 +181,8 @@ void ResourceManager::clear(bool reinitialize) {
     delete this->materialList;
     delete this->lightList;
     delete this->textureList;
+    delete this->cubeMapList;
+    delete this->skyboxList;
     delete this->drawDataList;
     if (reinitialize) {
         this->meshList = new std::vector<Mesh*>();
@@ -153,6 +190,8 @@ void ResourceManager::clear(bool reinitialize) {
         this->materialList = new std::vector<Material*>();
         this->lightList = new std::vector<Light*>();
         this->textureList = new std::vector<Texture*>();
+        this->cubeMapList = new std::vector<CubeMap*>();
+        this->skyboxList = new std::vector<Skybox*>();
         this->drawDataList = new std::vector<DrawData*>();
     }
 }
