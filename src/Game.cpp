@@ -125,7 +125,7 @@ void Game::initResources() {
 	Skybox* skybox = ResourceManager::getInstance()->addSkybox(skyboxMesh, skyboxShader, skyboxCubeMap, "skybox");
 
 	
-	const int lengthX = 75, lengthZ = 75;
+	const int lengthX = 200, lengthZ = 200;
 	float cubeSizeX = 0.5f;
 	float cubeSizeY = 10.0f;
 	float cubeSizeZ = 0.5f;

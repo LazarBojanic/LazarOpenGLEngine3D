@@ -1,1 +1,2 @@
 D:\CPP\LazarOpenGLEngine3D\x64\Release\LazarOpenGLEngine3D.exe
+C:\CPP\LazarOpenGLEngine3D\x64\Release\LazarOpenGLEngine3D.exe
