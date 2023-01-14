@@ -58,12 +58,14 @@ GameObject::~GameObject(){
 
 void GameObject::updateShader() {
 	if (this->drawData->getShader() != nullptr && this->drawData->getLight() != nullptr) {
+		this->drawData->getShader()->setFloat("uTime", glfwGetTime(), true);
 		this->drawData->getShader()->setVector3f("uLightPos", this->drawData->getLight()->position, true);
 		this->drawData->getShader()->setVector3f("uLight.position", this->drawData->getLight()->position, true);
 		this->drawData->getShader()->setVector3f("uLight.ambient", this->drawData->getLight()->ambient, true);
 		this->drawData->getShader()->setVector3f("uLight.diffuse", this->drawData->getLight()->diffuse, true);
 		this->drawData->getShader()->setVector3f("uLight.specular", this->drawData->getLight()->specular, true);
 		if (this->drawData->getMaterial() != nullptr) {
+			this->drawData->getShader()->setVector3f("uMaterial.ambient", this->drawData->getMaterial()->ambient, true);
 			this->drawData->getShader()->setVector3f("uMaterial.diffuse", this->drawData->getMaterial()->diffuse, true);
 			this->drawData->getShader()->setVector3f("uMaterial.specular", this->drawData->getMaterial()->specular, true);
 			this->drawData->getShader()->setFloat("uMaterial.shininess", this->drawData->getMaterial()->shininess, true);

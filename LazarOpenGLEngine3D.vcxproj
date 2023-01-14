@@ -557,6 +557,8 @@
     <None Include="assets\shaders\lightFragmentShader.glsl" />
     <None Include="assets\shaders\lightVertexShader.glsl" />
     <None Include="assets\shaders\backpackFragmentShader.glsl" />
+    <None Include="assets\shaders\quadFragmentShader.glsl" />
+    <None Include="assets\shaders\quadVertexShader.glsl" />
     <None Include="assets\shaders\skyboxFragmentShader.glsl" />
     <None Include="assets\shaders\skyboxVertexShader.glsl" />
     <None Include="libraries\include\glm\detail\func_common.inl" />
@@ -739,6 +741,7 @@
     <Image Include="assets\textures\skybox\left.jpg" />
     <Image Include="assets\textures\skybox\right.jpg" />
     <Image Include="assets\textures\skybox\top.jpg" />
+    <Image Include="assets\textures\waterNormal.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\bleep.wav" />

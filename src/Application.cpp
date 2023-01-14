@@ -86,7 +86,7 @@ void Application::initWindow() {
     glfwSwapInterval(1);
     glfwSetWindowPos(this->window, 200, 200);
     glfwSetInputMode(this->window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-    //glEnable(GL_CULL_FACE);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
