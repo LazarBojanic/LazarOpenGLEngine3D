@@ -19,10 +19,8 @@ glm - mathematics library,
 irrKlang - sound.
 
 Instructions:
-    - If you're cloning, copy DLLs from the "dlls" folder in the repository to x64/Debug or x64/Release depending on the desired configuration.
-        Download the "libraries" folder from the repository and place it in the project's root folder next to "assets", "src"...
-        Build the project in Visual Studio. Then you can either run it from there, or just run the generated .exe file.
-    - Else, Download the latest release from releases.
+- If you're cloning, copy DLLs from the "dlls" folder in the repository to x64/Debug or x64/Release depending on the desired configuration. Download the "libraries" folder from the repository and place it in the project's root folder next to "assets", "src" etc. Build the project in Visual Studio. Then you can either run it from there, or just run the generated .exe file.
+- Else, Download the latest release from releases.
 
 Controls:
 - WASD - movement
