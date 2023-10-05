@@ -11,35 +11,29 @@
 #include "Camera.hpp"
 #include <FastNoise/FastNoise.h>
 
-enum GameState {
-    SCREEN_SAVER,
-    TRANSITION_TO_ACTIVE,
-    ACTIVE,
-    WIN,
-    LOSS
-};
 
-class Game {
+
+class Game {  
 private:
+    Game(GLFWwindow* window, unsigned int width, unsigned int height);
+    ~Game();
+
     std::string workingDirectory;
     GLFWwindow* window;
     irrklang::ISoundEngine* soundEngine;
     std::string windowTitle;
     static Game* instance;
-    GameState gameState;
     bool* keys;
     int keysSize = 1024;
     unsigned int width, height;
-    double startTime;
     Camera* camera;
     float lastX, lastY;
     bool firstMouse;
-
     float t;
     
+    
 public:
-    Game(GLFWwindow* window, unsigned int width, unsigned int height);
-    ~Game();
+    
     static Game* getInstance(GLFWwindow* window, unsigned int width, unsigned int height);
     static Game* getInstance();
     void updateWindowSize(int width, int height);
@@ -64,9 +58,6 @@ public:
     }
     inline bool getFirstMouse() {
         return this->firstMouse;
-    }
-    inline GameState getGameState() {
-        return this->gameState;
     }
     inline bool* getKeys() {
         return this->keys;

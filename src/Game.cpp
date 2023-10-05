@@ -5,12 +5,10 @@ Game* Game::instance;
 Game::Game(GLFWwindow* window, unsigned int width, unsigned int height) {
 	this->workingDirectory = std::filesystem::current_path().generic_string();
 	this->window = window;
-	this->gameState = SCREEN_SAVER;
 	this->width = width;
 	this->height = height;
 	this->keys = new bool[1024];
 	initKeys();
-	this->startTime = glfwGetTime();
 	this->soundEngine = irrklang::createIrrKlangDevice();
 }
 Game::~Game() {
