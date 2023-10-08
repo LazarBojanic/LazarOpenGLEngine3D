@@ -1,0 +1,2071 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/bojan/CPlusPlusProjects/LazarOpenGLEngine3D/libraries/include/assimp/types.h"
+                },
+                "region": {
+                  "startLine": 361,
+                  "startColumn": 13,
+                  "endLine": 361,
+                  "endColumn": 22
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "aiString::Append",
+                  "decoratedName": "?Append@aiString@@QEAAXPEBD@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/bojan/CPlusPlusProjects/LazarOpenGLEngine3D/libraries/include/assimp/types.h"
+                },
+                "region": {
+                  "startLine": 365,
+                  "startColumn": 36,
+                  "endLine": 365,
+                  "endColumn": 42
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "aiString::Append",
+                  "decoratedName": "?Append@aiString@@QEAAXPEBD@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.37.32824.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/bojan/CPlusPlusProjects/LazarOpenGLEngine3D/libraries/include/assimp/types.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "6e7280f2903d9c94071d82f849d0769693ee9161d0d4e4bd2877b2a33945a1d1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/src/mesh.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "9ed4a1f25110fa7e3d3340db395d9fd9d7ab5cabdf491035e0d45eb013634ede"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/src/mesh.hpp"
+          },
+          "hashes": {
+            "sha-256": "2ac94e98f1323d0b66fca297726651dacff3fd0ce3149db009f437d3906fd562"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/src/gldata.hpp"
+          },
+          "hashes": {
+            "sha-256": "25c44ae2d0a912128813462c0dfe651109b1e6fced221695181faa07e618f08e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glad/glad.h"
+          },
+          "hashes": {
+            "sha-256": "04d354339eb4c9beeb0c5a7f031672af86bf90d2405228c445ed4c144d49031c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/khr/khrplatform.h"
+          },
+          "hashes": {
+            "sha-256": "5ee5d5c2c6b2abd028cec8dc1a24e995bb47b075654a6fc55f3a1293de36943f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glfw/glfw3.h"
+          },
+          "hashes": {
+            "sha-256": "5bf391bd940ff6644746857eafa442f150e3fe01a0dc010a444d766fccfce4a1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/irrklang.h"
+          },
+          "hashes": {
+            "sha-256": "8d1880ad062870cf493b905bc8b4f1a149f4f041d4a547985d21d369d350e19b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_irrklangtypes.h"
+          },
+          "hashes": {
+            "sha-256": "4a074a0772a9de1481164a322cd04c77182101661b5a45c06eae98837d12d725"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_vec3d.h"
+          },
+          "hashes": {
+            "sha-256": "86849368abd78c94877965560caec1340f8db5203977f07c04c34c36b603ae2a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_irefcounted.h"
+          },
+          "hashes": {
+            "sha-256": "abd4e471d95da10c4f5324b2d4857dcb1b9d26f44c61130e210915643e3fc6ef"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_ivirtualrefcounted.h"
+          },
+          "hashes": {
+            "sha-256": "f134f7bb38176f021bd67df5171161d2ca923af3af6d1ce638cce57b6ad28341"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_esoundoutputdrivers.h"
+          },
+          "hashes": {
+            "sha-256": "d3805e7d7c47296333143fd8681a50b996f19e3a2c5f8f1210355f27fe84dc34"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_esoundengineoptions.h"
+          },
+          "hashes": {
+            "sha-256": "ea7596aeea9ae9405ce71bac9ee1bd8d80caeebc80dc47bfdfaec7703ad2922e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_estreammodes.h"
+          },
+          "hashes": {
+            "sha-256": "d584dd5053535b00c4fda7db7880651f950483ab65ccd2ee30e5ac1efe4faae3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_saudiostreamformat.h"
+          },
+          "hashes": {
+            "sha-256": "e30440a5898f9cbf001b615200c5cd471881cc9f2142381b920399c9348281e9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_isoundengine.h"
+          },
+          "hashes": {
+            "sha-256": "a0042733f05e5922713677b1870095dad5c4e4585592317622b5fa0fdec3da7b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_isoundsource.h"
+          },
+          "hashes": {
+            "sha-256": "d6473335c673ff2c31da1d021d09658cb875988e96917617b25c4bf1954f2647"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_isound.h"
+          },
+          "hashes": {
+            "sha-256": "def00c1fa0ac15e3038133c399ce561e2937cc307fd86fdbda41d1b440a0eb0c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_isoundeffectcontrol.h"
+          },
+          "hashes": {
+            "sha-256": "335808fadaf71c45e70f98c41c29dc1cbf012aeb6ebe6c659b32faf27b807220"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_ifilefactory.h"
+          },
+          "hashes": {
+            "sha-256": "ce00a660a346ba3fb175214da323769b528db8aa3c7ae0b0be701c12030c4d92"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_isoundmixedoutputreceiver.h"
+          },
+          "hashes": {
+            "sha-256": "a2162985bbab5e257cc73b879c90e0e0835f19ff64069072128efd82b9e99651"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_iaudiostream.h"
+          },
+          "hashes": {
+            "sha-256": "930dcd6bb2e70888fdcdfc6be6f5bca3f480c64265013cda8909191b277b2e1c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_iaudiostreamloader.h"
+          },
+          "hashes": {
+            "sha-256": "50e614c3fb22a0afd76fc980e006f25278ed6c5fad1330679b68937ea09aafc1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_ifilereader.h"
+          },
+          "hashes": {
+            "sha-256": "9d20bc25812589965bafbebb734c6e46011a30dcd965fbb55e516524dbb832a1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_isoundstopeventreceiver.h"
+          },
+          "hashes": {
+            "sha-256": "f4a53b4f1fe5c66cbeaa6b6da8f46f6db592b41a24fe1b59c85f80371a7f61a6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_isounddevicelist.h"
+          },
+          "hashes": {
+            "sha-256": "74b8c27dc171e1c4af86106686edb476561301e56814a8b6000bf9a87f363f84"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/irrklang/ik_iaudiorecorder.h"
+          },
+          "hashes": {
+            "sha-256": "3b091db562ca0076190e955868f9d41f06dd4b780cac7fc22e1f15203830ba99"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/glm.hpp"
+          },
+          "hashes": {
+            "sha-256": "a60e914477f5850be5df4564dfc5a74e659f0b20042595760c680223fb19ec71"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/_fixes.hpp"
+          },
+          "hashes": {
+            "sha-256": "6fc9790fefc3bf84901fac960297c31e231e8d062b1a719750bcdae61abca254"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/setup.hpp"
+          },
+          "hashes": {
+            "sha-256": "bbb0f036c33b0efec3ce60044dce73b0c09b5506b8110fb392ab62d0f8601e29"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/simd/platform.h"
+          },
+          "hashes": {
+            "sha-256": "2d172348af79a755ae878f09bf19ac2202974f18dab22acd7520104414fdcde3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/fwd.hpp"
+          },
+          "hashes": {
+            "sha-256": "804cd91cb5260d9a3f33166c6834329c2e226b112ef6db22a0d655ab6dd4fd4f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/qualifier.hpp"
+          },
+          "hashes": {
+            "sha-256": "38eeeb81a7a992d7469467e3833accf208f16a9c91e26b82e859e50972f10318"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/vec2.hpp"
+          },
+          "hashes": {
+            "sha-256": "08e7ea130089684f5bb0c3facd6437831959d5bc0b375f949d1c8f28d4f8afa8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_bool2.hpp"
+          },
+          "hashes": {
+            "sha-256": "08bc020cccad86af4294e2e1cdac3ffb2033041358d4102e281130588432788c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_vec2.hpp"
+          },
+          "hashes": {
+            "sha-256": "41c11ba64bf0b6f82a474dee65fb96dac50ec504a997b0d0103eb1b08a884c8c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_vec2.inl"
+          },
+          "hashes": {
+            "sha-256": "4f537da648857d68202b64fc9b1e467731089551a8fe1fbe72f776d484020f51"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/compute_vector_relational.hpp"
+          },
+          "hashes": {
+            "sha-256": "ff168fc500c89f8d41b336b61e2b288e0a756a6aa67b03cde527f619baa73a82"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_bool2_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "e2f84fd2b920227c511ebc2afd798e9002c21272e4c0aff9793bcad6c84c6716"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_float2.hpp"
+          },
+          "hashes": {
+            "sha-256": "cbb12f8f18196f7b7e47c4ba64d11bc2ffaf18fcf13294b733d7814223652174"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_float2_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "d9855e815a007eecfeabb34fe85009b5a70c2b21a9aad6e96689059faf12693e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_double2.hpp"
+          },
+          "hashes": {
+            "sha-256": "aa65d51f6f502e7be3c03f23d614e58b3c3620a68f3a76a1ddafc54db2d9e654"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_double2_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "97825cffc45a58054c9f6dfc07ccbc40bb0cd4c47183a8b4e7bd29a2e737ab10"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_int2.hpp"
+          },
+          "hashes": {
+            "sha-256": "0b22b6950e3274a9c285fbf6a7d85a7521c956bda32e44c4a883ccf30d26cb1c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_int2_sized.hpp"
+          },
+          "hashes": {
+            "sha-256": "4bcf7b8241e0063e2536bbc019083e1f253c47a734bcd4738cebf5a620470503"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/scalar_int_sized.hpp"
+          },
+          "hashes": {
+            "sha-256": "19ec6f0609602ec5e59a8008770706adc1168e768decb2c0219e6d8638fded5c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_uint2.hpp"
+          },
+          "hashes": {
+            "sha-256": "3d098c2039dbc9ba6d63512a1b5127075557602baa3e9f0f57152226bd859ea1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_uint2_sized.hpp"
+          },
+          "hashes": {
+            "sha-256": "dd246da5ae6ffa6f38d9ae8d4988535395c732e2467278ae882e3c9d3c01d587"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/scalar_uint_sized.hpp"
+          },
+          "hashes": {
+            "sha-256": "4cf39d073cfb89e468d54d186811d1e24692893bef7bf7b8416b1a2ffbb42f57"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/vec3.hpp"
+          },
+          "hashes": {
+            "sha-256": "fe0cd0d3de3cfcb701aeaf8f1ab38fe4d88870db78eab3ce0ff519df9153fc24"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_bool3.hpp"
+          },
+          "hashes": {
+            "sha-256": "a828c03d2b6e9f68d4b859c4465cf1a0f2b42c94825e80643ac77fba99fde1b8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_vec3.hpp"
+          },
+          "hashes": {
+            "sha-256": "d77e115b9020391bfb48620a8160c939cfdeed6ed5f76f46dc7b4e0fbcfb4537"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_vec3.inl"
+          },
+          "hashes": {
+            "sha-256": "5ac2332075a4692dac544f1558b797c04c731de2d9ef3302287f2aa39fa8a55f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_bool3_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "7aa0a1650188f00e603af5d837b84a092c480e6a395e782d619c4762c7de753d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_float3.hpp"
+          },
+          "hashes": {
+            "sha-256": "0ea127ffc477a43a39ca0737ae9062363541dcf4fb39540d0d2447ad3b8a16c9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_float3_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "3928df5009a88ba934f4e4fba3b38c3d1d1cea4a203a8b7fd6552000703d5fc4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_double3.hpp"
+          },
+          "hashes": {
+            "sha-256": "640fd2e9cb876b076381b2564a6dd6dc564cb28aa334c0726a0b9d5cf38d6b84"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_double3_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "0cf3c9415fa477eb52840778be7f7ee8d104c3fd911fc5b72b56e84a0a220fac"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_int3.hpp"
+          },
+          "hashes": {
+            "sha-256": "0732541c4b296456a1be9999253f2e4c7b68f0f4dd997e974816cbaeb667d2bf"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_int3_sized.hpp"
+          },
+          "hashes": {
+            "sha-256": "5591ca8630ebabaca6252e8131e8f0bad51e68c70bd3978ae96752316ac34d9c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_uint3.hpp"
+          },
+          "hashes": {
+            "sha-256": "7719bc51395424bbd73f9bec3e43fe341495f924c8a97bcdf3a1163e19d29a32"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_uint3_sized.hpp"
+          },
+          "hashes": {
+            "sha-256": "0f6d956d610a36f228c7a6c2d2f29fbf7a877f37377d0ef5ddea1b1e2d6139d4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/vec4.hpp"
+          },
+          "hashes": {
+            "sha-256": "77ffbc1bf2fe8d6ca9ea7f11d7728bc1b779afa1634ad0dfbfdccb5b9a270d13"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_bool4.hpp"
+          },
+          "hashes": {
+            "sha-256": "754ecb017dfebaa17a185533d282c30e400cfa161233af835ae38f17703770d5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_vec4.hpp"
+          },
+          "hashes": {
+            "sha-256": "4e51a9652a024720210ae356c47a6f411f078b995cdbe5653e9cc27f4df37ef1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_vec4.inl"
+          },
+          "hashes": {
+            "sha-256": "3cee7227d7ab4325f8c6dfb02a80be30878af92b617efe7aaec12743f2b97721"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_bool4_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "93cb3a0613e0dec131e9f572f392e9c0799b03ed4bb84a63c81c10ada416964c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_float4.hpp"
+          },
+          "hashes": {
+            "sha-256": "cc41791cc7bbced0d798a58ba796a2ebdc5f10af483986773d95a55be95c3fe7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_float4_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "11dbb5651fb744c866cb8deadf84c03a6c1f2b901f62ad9f1f26edef998a217b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_double4.hpp"
+          },
+          "hashes": {
+            "sha-256": "6f48af6fa7e368e8848ce7b040a6efe05ac80e087dc6f91fad9d58e2ed90ef6d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_double4_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "cde72699e11ccc7b28955065217387d3f9d7d6087ee2992fc7c48e9daaa08a3e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_int4.hpp"
+          },
+          "hashes": {
+            "sha-256": "8eb57ddad25682eb4617a62fea5629f2923c20f2cdaa7c0f1f9337044afdcade"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_int4_sized.hpp"
+          },
+          "hashes": {
+            "sha-256": "733d4313b73eb482e5ae40807e9a14f7992599a47f3c689b1664be97c08a18b3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_uint4.hpp"
+          },
+          "hashes": {
+            "sha-256": "c2fefc4791975a7799147d5c0f2626816020489d574c03b85a35e1c45aec5c34"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_uint4_sized.hpp"
+          },
+          "hashes": {
+            "sha-256": "f520cfd07ccc383185ad6644ba2b6b5133b98240d8b4baf1880e4928951365a0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/mat2x2.hpp"
+          },
+          "hashes": {
+            "sha-256": "6056a3c939a3b2e6723fbda0bc2e40a88a376ae026db9542188863187d91dc46"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double2x2.hpp"
+          },
+          "hashes": {
+            "sha-256": "e28536ec12657a2e585bb6017ec113904b9f6c804cbaf68c16a9682397a0b823"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat2x2.hpp"
+          },
+          "hashes": {
+            "sha-256": "946a1580d3371d06b5fc4444b1e8d94516c701f9372e9ebeddeaf868c975898d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat2x2.inl"
+          },
+          "hashes": {
+            "sha-256": "353cf0ca8242144d769c586a5a37ea13069deb8f0364067eef6258250f60df33"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/matrix.hpp"
+          },
+          "hashes": {
+            "sha-256": "23e083028b3194de3dcd7d89223d45c52c659fb40c7a4a58339692bbb821ec01"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/mat2x3.hpp"
+          },
+          "hashes": {
+            "sha-256": "adeaedc3219cb10fa58aa30196491783faa4f86b5ef06407926ac9eb0e89b858"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double2x3.hpp"
+          },
+          "hashes": {
+            "sha-256": "c11a0748fa8c7786ac25361e61a85022f7eded975d73080e1d8761ab41013bb1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat2x3.hpp"
+          },
+          "hashes": {
+            "sha-256": "cdb5e5b247d53d7e3614b7d9ebf4c9975c9b8ffdfef055b3604248be83986160"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat2x3.inl"
+          },
+          "hashes": {
+            "sha-256": "dd2ba32110e514514a071be9d8af9cd4a104710eb78a18273783740aa1e6993d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double2x3_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "1ba3ed6f786496481c3f972119fc2e1cbf68f1aa758e6a8b74001efbea5b36d0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float2x3.hpp"
+          },
+          "hashes": {
+            "sha-256": "7a677179835b2a26da137f7dd42512db7bda0e4182f1865f6e9f30835c02ac0b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float2x3_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "ea9b5d97edd6a1d9be9552b2da1bc88657e0b52f35a2c8f8b05d21d6b39f93aa"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/mat2x4.hpp"
+          },
+          "hashes": {
+            "sha-256": "37d8f5a57c2885d495185153ad13b6b5a1da35294e48f934729f09dda7876203"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double2x4.hpp"
+          },
+          "hashes": {
+            "sha-256": "ec639b0b93a6ec60c8de7095e2e5452eeb15dc8fd40f8c271925a96d2feb23ac"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat2x4.hpp"
+          },
+          "hashes": {
+            "sha-256": "7196fb6ca4922bd73938f3202d1c5795ed2bd4c7c792a2ae8408bb579d460212"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat2x4.inl"
+          },
+          "hashes": {
+            "sha-256": "03137081a35a05fe635841aa0cd73b668279d4a8fdec920049d5c8c86eb38084"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double2x4_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "281b2a8761ccd5759d2fd152282858429db4e45b665ab106a7d87682a55e89b6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float2x4.hpp"
+          },
+          "hashes": {
+            "sha-256": "605920fe8064ea495dac25bd67324df9e48b014b18ab6f5957290dddeaccc399"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float2x4_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "05b75e5b02168e44b199d3d47434840a0f0c852e2bae1e57ad4a15e4413b3422"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/mat3x2.hpp"
+          },
+          "hashes": {
+            "sha-256": "9bc06112c9f23e61895c8a755bfcfd87e6a130336fdaf3b8e26963dd5fe670c8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double3x2.hpp"
+          },
+          "hashes": {
+            "sha-256": "4be9c05f29a7d77e6a79266fd923420f30851ffb48a1cb7c09174654b5f29789"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat3x2.hpp"
+          },
+          "hashes": {
+            "sha-256": "3a686f9a945896c879ad4d40dc107d35a5da34dae23427c6e02d5c7c30109660"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat3x2.inl"
+          },
+          "hashes": {
+            "sha-256": "8d92f493626947ecb2e6ae626a9d4c5dd000556f2d244bfbd6fb9f702431e311"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double3x2_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "0ef483e736066641b1f404d6167f083efd7ac59ebdf8a25256e8ec96d90f2806"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float3x2.hpp"
+          },
+          "hashes": {
+            "sha-256": "02a7ac14ec45a771a0a9bb1512cb3f54e62f3e694318f625d47880e546a69203"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float3x2_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "f9fbabe399b19161caaa361ae1c215b1955263cc914190300b64d9ce92d9ebab"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/mat3x3.hpp"
+          },
+          "hashes": {
+            "sha-256": "4da5a7d6ec599625d15f6e79e24a86aec6c395c66a88cf26650c9e908c8a8df9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double3x3.hpp"
+          },
+          "hashes": {
+            "sha-256": "430b06751247f8d8654a7163e26cc337f507316fbf5f10e8c2bf517c2aaa5ca8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat3x3.hpp"
+          },
+          "hashes": {
+            "sha-256": "98d23285fa6f089eb4289c6100137f9e3dcb0d9258f2b09ff8f7c0ab218198d9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat3x3.inl"
+          },
+          "hashes": {
+            "sha-256": "a5c46968594f73463df0eadc2eacf279962da6284d209bd95a709cb9ac3b72af"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double3x3_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "176aabc4e86027253dd5543ddd9684dbcbad1fea33c3c5ccc0b473f491b95580"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float3x3.hpp"
+          },
+          "hashes": {
+            "sha-256": "299e7945455a373d8d49dda9d1cfec0eb4b48eff8f1c14c156ba88fbdde4eee0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float3x3_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "896dd61706db0a36b0e58e880f48566d29a58ffac1da85f69aa4a4a260bf1454"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/mat3x4.hpp"
+          },
+          "hashes": {
+            "sha-256": "15d1f563d4584fec99a384514a6e07022499828201110dbf215a26c140ab77c9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double3x4.hpp"
+          },
+          "hashes": {
+            "sha-256": "62527ff366e80a4c954c8724695bc09a202e60fc478250f4870c87998b00c9ab"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat3x4.hpp"
+          },
+          "hashes": {
+            "sha-256": "3610e3994ae92343e68afe3be25240a07de8384e200b619ff7c57630a00a369f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat3x4.inl"
+          },
+          "hashes": {
+            "sha-256": "a03235ddf08df119efa8c8b9fcc343e3d3109168d171960e87efea82e24535f9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double3x4_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "ae712fc20285c97f9433d88dab2915ac39a38f5e59ee62ad7c30c5ec0092129a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float3x4.hpp"
+          },
+          "hashes": {
+            "sha-256": "cd9bceec04a4fdade2fc8940468e256e4871a5629824a0a390986524be26fc4d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float3x4_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "96aa315929994b7d2fae34f6c33eb6df4ae614b50fe03fedc9c7df91c337d8d2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/mat4x2.hpp"
+          },
+          "hashes": {
+            "sha-256": "9e773ef2f92febf5fc5d92b4b60e35fbe69a6876f9f7611f662c1169f62ff13b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double4x2.hpp"
+          },
+          "hashes": {
+            "sha-256": "b61b99842606f38bb7127750cd7eb313a9333fce80980220bfde8e81df119762"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat4x2.hpp"
+          },
+          "hashes": {
+            "sha-256": "0b8558216ad73e33a9f81e27c7e7ae2533aa7cac5fa4bd1df7f9192853749a9a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat4x2.inl"
+          },
+          "hashes": {
+            "sha-256": "2398a7611d09ddcb31118d5ba4bd14e43f736a4fc96ce3f3990047d3a7b7321f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double4x2_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "996b6d3f29d0fc6f7cf9f0f9981b4cc519fff55341423fbf261c8c1a204b42a9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float4x2.hpp"
+          },
+          "hashes": {
+            "sha-256": "3d4b080dda4dbe1350d0ab96a18dbf297de911b9710257dd272a5049ca999e02"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float4x2_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "bc4f715f93951b2154a15d906557f7474673411590f61c2f520e2cbae6f67917"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/mat4x3.hpp"
+          },
+          "hashes": {
+            "sha-256": "738acb70ca0e61e503e3944fc7cb0f9e0e92fb77b592f59da61f0b29084fb074"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double4x3.hpp"
+          },
+          "hashes": {
+            "sha-256": "021dbc9cc77be8a0dff9f84a5103bfdccb013ea0a134b2bbeab97fad44314f2a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat4x3.hpp"
+          },
+          "hashes": {
+            "sha-256": "91163024d07d4d493afa9251f32c190b8b510af423a2681dd30de34087b18011"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat4x3.inl"
+          },
+          "hashes": {
+            "sha-256": "593c8ddfed736810a0a527f9fef428c42e9ac9ceb2c41593610742bc9e690067"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double4x3_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "3b47d8d4e2b86551fabd9d85aba2cc60488255f7fcfcf7cf5b3ad793fb8f1319"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float4x3.hpp"
+          },
+          "hashes": {
+            "sha-256": "22116ae630cd2be2baad2c7f545814f6b21bb3bf9dc8913d848c61f54ac9b666"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float4x3_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "426099fdd6b1a040ccae7e31d3adb240d798efefd2492e611b3180495a49fd48"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/mat4x4.hpp"
+          },
+          "hashes": {
+            "sha-256": "5d8bac395211111db631fa4c19358ab740b07b40c4ed671949d0bacaa05b41c2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double4x4.hpp"
+          },
+          "hashes": {
+            "sha-256": "26040ba340dcb95f4d48f3e0ccc8828af925be7c04c171702282a7139e04b5c4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat4x4.hpp"
+          },
+          "hashes": {
+            "sha-256": "3c9a7babf858367b8ab70eeb81877760b6cf6e7755c3db606cca2e97673f35dc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_mat4x4.inl"
+          },
+          "hashes": {
+            "sha-256": "99e745c336972833c3b8fabf44c4fde69290b361294a6a65667f86382f4fe8bf"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double4x4_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "7669392ddeb68c4cc3bd7d4f6517e74e7900a49e6a98fc68c2b7a486daa801bb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float4x4.hpp"
+          },
+          "hashes": {
+            "sha-256": "e8c9c29e09ed93683aed373ce03c9ef7af9e4f0e63f2b66ad6d74c4a2c4fb177"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float4x4_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "89c47a65ef88bb4bdb4b09a9981ff8249465fffb429c47693bc7fac0a2857fbd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/func_matrix.inl"
+          },
+          "hashes": {
+            "sha-256": "3e40ff85473a7dd2049239aa8ae7050df7545c4ceb8208f1e7bbb2f03be78ba8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/geometric.hpp"
+          },
+          "hashes": {
+            "sha-256": "38d156e97a440c26888b98a84732299218707f1d09a3d8915f413325a6384cc1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/func_geometric.inl"
+          },
+          "hashes": {
+            "sha-256": "490ee8efe78ffea91c863458a8f862056dabc9ba2e1000827806101b90d20310"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/exponential.hpp"
+          },
+          "hashes": {
+            "sha-256": "5f5d347f4b73b9753203502e588aa0c8affae0eaebe737a9b02da56ac49d5674"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_vec1.hpp"
+          },
+          "hashes": {
+            "sha-256": "a1545eccffd1680b8fdcbdcf730d79ccea7f3484b7a78ee055d2e090dc338400"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_vec1.inl"
+          },
+          "hashes": {
+            "sha-256": "f124b670b49ed4e2c3e9842ad3c52962f2d0c0722bccbfb5b7fdc516acebd364"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/func_exponential.inl"
+          },
+          "hashes": {
+            "sha-256": "0264b95a89c569be0a7c8fba007aacb851063d61f3345e7863e60c2049ca681f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/vector_relational.hpp"
+          },
+          "hashes": {
+            "sha-256": "d31e49c0b04d7904882183f538bb49ab4f8827583053a5cea482facea451e37e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/func_vector_relational.inl"
+          },
+          "hashes": {
+            "sha-256": "c9c60151b8b877d573b9fdb07f29364070c3e9f6736b39186bca6cc6b8112a5b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/_vectorize.hpp"
+          },
+          "hashes": {
+            "sha-256": "119aa7332b6801c70f27460d5a0ec3f8baeb5099d269ad85077c367e3b18bd06"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/common.hpp"
+          },
+          "hashes": {
+            "sha-256": "f3512ae64c0991372daad9cff5a761a97b8d3a1a82fa3132aa3f501661e51fd1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/func_common.inl"
+          },
+          "hashes": {
+            "sha-256": "ff5ee8894d641a60e1b55f3130dff5de0d9369a368a76fefd369d8cf75ea93d8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/compute_common.hpp"
+          },
+          "hashes": {
+            "sha-256": "604a836664c4d29dc4f963feae571705d3a76432849e1dffc9e320e83264b8aa"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_double2x2_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "2b795b1e984fa3b7d24e0b95aa61c0597c239cb5d5187cb6691bddefc9664fa3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float2x2.hpp"
+          },
+          "hashes": {
+            "sha-256": "bf4587b54860ca193dcb1a2fdcc327f70a771812fb7834d265c40b5b8a8e885c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_float2x2_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "52a85595bf0ac4b3a5035de32e7f207c5997846e368962100f2e11e5e60d6bab"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/trigonometric.hpp"
+          },
+          "hashes": {
+            "sha-256": "bbd62e937699757aac3a38c8f00d8362f22e6243814713577875b0923b7b0163"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/func_trigonometric.inl"
+          },
+          "hashes": {
+            "sha-256": "338418b118bdb6af143fe8633299b0781885c87136610b6af4cb47df83fb5ed5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/packing.hpp"
+          },
+          "hashes": {
+            "sha-256": "1210b6194da61a9b13b287c191a2d89242ebfa3518feab1fe9a3a49069c0f083"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/func_packing.inl"
+          },
+          "hashes": {
+            "sha-256": "579fb9b927f3b435350d63400e21da5457343bc3726e95d40d46c3203425eab4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_half.hpp"
+          },
+          "hashes": {
+            "sha-256": "24173e7aaebf52860dfa8448c90db1f3cb3fcb9a56dc7126988165ae4c8ddc90"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_half.inl"
+          },
+          "hashes": {
+            "sha-256": "910739a7048639738f4b87a0ed95c1c3e800551c44316a4e2366a097dca52a00"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/integer.hpp"
+          },
+          "hashes": {
+            "sha-256": "98abbde1905926b960ca16bca288bd1a5444f8acf126a04c7d08b04128648a7c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/func_integer.inl"
+          },
+          "hashes": {
+            "sha-256": "161a37183e7d111564d59ae8e93d3e1d9c875813af4ed89af476bfc60ea97efe"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/matrix_transform.hpp"
+          },
+          "hashes": {
+            "sha-256": "8a77c7a08b5521ed8580267db0d342832c0e357da8e54e0a6408d97287ce76fd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_projection.hpp"
+          },
+          "hashes": {
+            "sha-256": "5d51a7f0e6c62ea4592e5590d89576efeed9d1d3e361de7f91af16af24066a9c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/constants.hpp"
+          },
+          "hashes": {
+            "sha-256": "de780b2dbc014b22f11d747a57ea294be5f378053d3e502d1b5518c70316e3c8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/scalar_constants.hpp"
+          },
+          "hashes": {
+            "sha-256": "f7e8c57f48b3f8beb53e13601f42f2ad65c2f2ec4693e2e9869f6e72643a2053"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/scalar_constants.inl"
+          },
+          "hashes": {
+            "sha-256": "84781fb1a61773b6d115e473d86636903b07b03218073d1fd7a73d056f617bad"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/constants.inl"
+          },
+          "hashes": {
+            "sha-256": "a81eb19f67054bcbd4d4ecaf5f6983f01ad7c849784f84537e097e9cd9224808"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_projection.inl"
+          },
+          "hashes": {
+            "sha-256": "98f2dbdef968478aeda1a7a9c42b595b1057c30b97691f527dbbfdb806c69081"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_clip_space.hpp"
+          },
+          "hashes": {
+            "sha-256": "2614b00b9559eb2afcf70b6ded62c8fe239f540764ca226110e3cd76f1c39b3d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_clip_space.inl"
+          },
+          "hashes": {
+            "sha-256": "d69309e11bbe4cca69069a87346c3e7b326791d60305c5a4b7e34485ab7b825b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_transform.hpp"
+          },
+          "hashes": {
+            "sha-256": "9913b3aca3817a34daf0f1c3cb7ef62737af0f6e29aef5d851c37eec2a6c14c7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/matrix_transform.inl"
+          },
+          "hashes": {
+            "sha-256": "a767002867b0bd37290566db2257345e674caa5ee2b655ce719f8027f4e37e10"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/matrix_transform.inl"
+          },
+          "hashes": {
+            "sha-256": "c39b77df42c51b443c400397992853d6ce221ad3d7a12a81aac8ca6f7fef1691"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/type_ptr.hpp"
+          },
+          "hashes": {
+            "sha-256": "7d0d2eaf0695be88fcd8210c5e227ee233b1d2fc9f96d3def1fe4ab67b01b045"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/quaternion.hpp"
+          },
+          "hashes": {
+            "sha-256": "9e8c97ce43770801569459ab254d42b9700600223e3a58335a10a072f1445ed5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_relational.hpp"
+          },
+          "hashes": {
+            "sha-256": "8a2a257e7d7b7d5544a28da2730f6f9fc7c87a3611695415931a15848016eeb2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_relational.inl"
+          },
+          "hashes": {
+            "sha-256": "395e5b0ce1a28bf72ef5657f9d14022623724df05b5680026f3092edaf211f55"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_float.hpp"
+          },
+          "hashes": {
+            "sha-256": "a62772f6d894faf1b10bfe5468fe32accdfecae65e88b1d03150d1f60896ad1d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_common.hpp"
+          },
+          "hashes": {
+            "sha-256": "72105dcca27ac574ae30a1c395b073885426aab59a44ff94bfec089d8e0afd74"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_geometric.hpp"
+          },
+          "hashes": {
+            "sha-256": "9494d3e6f5ee18e6802db263e85c9a2e69ac9c628e003c1346869c932aae13dd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_geometric.inl"
+          },
+          "hashes": {
+            "sha-256": "33b4c75a6fc13f4b14a9b8079493be933654751ff1015b059944d7d49476bb6b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_common.inl"
+          },
+          "hashes": {
+            "sha-256": "0a4f382d22caf6049f2bd2233be096ba78bca6dbe2b615ed32653d165a02817d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_float.hpp"
+          },
+          "hashes": {
+            "sha-256": "e09777cc9d5ddfacc2430b20396eff6334c1f33e4ab85c30a0d773d3346f30d1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_quat.hpp"
+          },
+          "hashes": {
+            "sha-256": "339ac772b0b8ce90dd0335f3321050920e30d52b57f38384fcf73520d08104a9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_relational.hpp"
+          },
+          "hashes": {
+            "sha-256": "8f945bcf8fe0759f66d077b2f6231d24c4426c9226d45a56ea1b993241db67f7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_relational.inl"
+          },
+          "hashes": {
+            "sha-256": "6f4d1f0ca1cc58eaac8b660a5626cb9fcd7415d638aabe0860dd01302236445d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/detail/type_quat.inl"
+          },
+          "hashes": {
+            "sha-256": "c79f4520d5618289435f6b37609a51b553e5928ff83fb7dca1c939de2c053797"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_float_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "87e39971534ea53f2df2b02e8b5287a8985e911708c06ea1382a15d412412027"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_double.hpp"
+          },
+          "hashes": {
+            "sha-256": "5dc2dec7cfe4a93367446444d5c32c1d7049659ffcb9aa6e542aaafc88d80fff"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_double_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "58870286e18d6b15f86dc70cdd7b27159e64e3079647052ee49657f066e1cf2e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_trigonometric.hpp"
+          },
+          "hashes": {
+            "sha-256": "a80990e7828978f9d257f29a9d235dcff57eb2b44d561b5e803ddce03ab6a0e8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_trigonometric.inl"
+          },
+          "hashes": {
+            "sha-256": "05337ba75b016580979abefc941e08c1099a0994c593af2dd2fd12bb9263916c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_transform.hpp"
+          },
+          "hashes": {
+            "sha-256": "30fcf6ff83cb49f5b4be682d1c7ebeb0da22c398dfff64a3ad3f2e51df808db1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/quaternion_transform.inl"
+          },
+          "hashes": {
+            "sha-256": "d713382c01a0b18b4cee856ba1ff9ec3f660a25d0518c81aa0b03a56f31dcaca"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/quaternion.inl"
+          },
+          "hashes": {
+            "sha-256": "5516202af05a46baaedf642631fc6f2e0bdec27773024515c504e11dbe1fa4b8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/epsilon.hpp"
+          },
+          "hashes": {
+            "sha-256": "7bd3acd70818a52fc711f85923990c30fc6affd1899736a5fc7b91705baa9367"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/epsilon.inl"
+          },
+          "hashes": {
+            "sha-256": "a24dc6c2947721cf4fc89de604563b5fe9e85e1de2674908721ffe5d249aff70"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/vec1.hpp"
+          },
+          "hashes": {
+            "sha-256": "be8642cdef56b328a5ca6439f398e92a53e82c61f74445edd55708c8fd214ad7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_bool1.hpp"
+          },
+          "hashes": {
+            "sha-256": "8cf8fe4886a0bbec143c2901f300fd56617d1df73b0c6043d55d87a342b1e3a5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_bool1_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "856be7dd822b1d0dbdb6e83e93041d1ed5e3d6f0fa97b801e99e93dfafc3c0bb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_float1.hpp"
+          },
+          "hashes": {
+            "sha-256": "368abb2fc79f3d2706e5baa82a40b8a988b2ca3ac840dd5eff2634ce750cb722"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_float1_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "093d2164294135ea0a77ff7365791e2d413b02cda9a6155e56cf4ab0e482ab98"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_double1.hpp"
+          },
+          "hashes": {
+            "sha-256": "caed423426fef4ef71c10a0c4a4f5147169932ea42e01695479ab4ca893e2a80"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_double1_precision.hpp"
+          },
+          "hashes": {
+            "sha-256": "8b8248eef014f277d138a4453fcce73f74615c6ca6a3328e692b764cc5b2b677"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_int1.hpp"
+          },
+          "hashes": {
+            "sha-256": "474e2cccc75553cd0b116b2fde5da1b45cd2362cb9a489384edb5de9731ac101"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_int1_sized.hpp"
+          },
+          "hashes": {
+            "sha-256": "d422a72eb2a5bcff804548650ba39662602d966fc6c58f7eeb8b124de5c96b60"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_uint1.hpp"
+          },
+          "hashes": {
+            "sha-256": "8d7220735f0fc85477e6f0e78fe1a0e75d605973e3cd6cfd14fcdceaee539899"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/ext/vector_uint1_sized.hpp"
+          },
+          "hashes": {
+            "sha-256": "692bf3b97887dcfae9a8ea6ca6a63ece46e03667f35ee2440f2a7ce9abb8d656"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/type_ptr.inl"
+          },
+          "hashes": {
+            "sha-256": "b9f59c25fbf9633f74921e87d4f3af6313be6d28afa26a4683e9cd33a059f3bd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/random.hpp"
+          },
+          "hashes": {
+            "sha-256": "1a4eb6920eebf4070403b3c05416b1f146b086887d4f38c7d0318dd649be0e85"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/glm/gtc/random.inl"
+          },
+          "hashes": {
+            "sha-256": "1007bdcd368edb2c35f07e28767b0ce3465d56ad4a55b37c09f52786320d639f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/src/primitive.hpp"
+          },
+          "hashes": {
+            "sha-256": "ec348e24bc66a6b5cbeee80972b42a71df9f618d09464ea3bff7ed24056ec668"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/src/model.hpp"
+          },
+          "hashes": {
+            "sha-256": "09b383bb0c47b1b9b8184fb8f41791bf46d23d7e647d2f58f288bd7381cedbe5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/importer.hpp"
+          },
+          "hashes": {
+            "sha-256": "21579eb1e03cc57f7cfb55ff3863f76676cd2ffe0701681443712eb94fac54fb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/defs.h"
+          },
+          "hashes": {
+            "sha-256": "cf4dc429a2f17190cbe9f046f8efc0f1e0e897c94f03f5f2fb38d5b05b22ca92"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/config.h"
+          },
+          "hashes": {
+            "sha-256": "a74feb7d626016d099227682d8064087a39d80446367bf8ef7e6765f4baa436e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/vector2.h"
+          },
+          "hashes": {
+            "sha-256": "2f97497733bac35d020dfead2ee9c553154b2e8503e2145474dda4b7d1f34b11"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/vector3.h"
+          },
+          "hashes": {
+            "sha-256": "e3ddda227517d3ba6b139bb14488fb09b61694fc3cedc8a65a79a8593be58cf3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/color4.h"
+          },
+          "hashes": {
+            "sha-256": "fb153961bd245747f2e2748675909c614c6f516ad4f6fa5a1e00523586a04641"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/matrix3x3.h"
+          },
+          "hashes": {
+            "sha-256": "1ddcd891ce5e7abb47c31c07146a0b55e2104f1c4ba154e8b7c13e6accb81224"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/matrix4x4.h"
+          },
+          "hashes": {
+            "sha-256": "1558edc8931ee5d0a5241a1321789a309a98909fa3c1482db785ca9649327911"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/quaternion.h"
+          },
+          "hashes": {
+            "sha-256": "d867b5a74f8dc5a4fbea3e148b742fb5cc4bc4ed7d5f76c9f3a1a2726f809a3b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/vector2.inl"
+          },
+          "hashes": {
+            "sha-256": "b91050c3846eb12dda636efa845f1c03f1de3accb66e80da3a24772c4069326c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/vector3.inl"
+          },
+          "hashes": {
+            "sha-256": "17a372068ac0cdef03ee8da5f488b40b1ba31f311d18afe52d38c06b2ed22a03"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/color4.inl"
+          },
+          "hashes": {
+            "sha-256": "45b1dc2bf83a2690582e089363509370da03cc0f3b02e7aafa9ee7fabb74804c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/matrix3x3.inl"
+          },
+          "hashes": {
+            "sha-256": "94823dfe931de9ed7026a20f9b0a8f6b1bbea73e20a5704a158d67d91eb4b70a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/matrix4x4.inl"
+          },
+          "hashes": {
+            "sha-256": "dc24150d60474c5d3c96ac088be4d60a3ca2d56484c554113b1383c8f5736d79"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/mathfunctions.h"
+          },
+          "hashes": {
+            "sha-256": "f974204eff402b396d0a9ddb517c49466a376436749869e64bd3dddb3a23d95e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/quaternion.inl"
+          },
+          "hashes": {
+            "sha-256": "34357d7c5544467374534943e963f4ee125ae859e6d96b6d3ebf8ec8b15457bc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/scene.h"
+          },
+          "hashes": {
+            "sha-256": "6575ecb0afca838d8b796f224b416485a5b25f4569935243d113f105aa0ba75e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/texture.h"
+          },
+          "hashes": {
+            "sha-256": "c0450a22d6ae4fbf2b31737542af7b3052110a9237ec39924ac1779920d8b2c8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/compiler/pushpack1.h"
+          },
+          "hashes": {
+            "sha-256": "1fd97bc2b008a19e0dc71ce698c90c6d019609049eafcfa76c19d47cf30fa285"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/compiler/poppack1.h"
+          },
+          "hashes": {
+            "sha-256": "c95570a6fc936d7d2adaeebb1e6056a5320201fe8129cb153b00ad66eeaa504a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/mesh.h"
+          },
+          "hashes": {
+            "sha-256": "98c6477175a11d58ce0261eb6e8a66e653f6cfc16c89fe9f64629661d87daaaa"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/aabb.h"
+          },
+          "hashes": {
+            "sha-256": "e00cb7a35d0761c61c5448f1dba2f20e521460ca3462770c68c157b7aafc254f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/light.h"
+          },
+          "hashes": {
+            "sha-256": "3d9df1efb275ddf4bd513d01619263e61003b1669a1392e68d82ad34c76a2525"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/camera.h"
+          },
+          "hashes": {
+            "sha-256": "265420dd6b0b8aa577a6478a45ca0fcbae9f6ac4c198ba24473846634eb26bf4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/material.h"
+          },
+          "hashes": {
+            "sha-256": "9cc45c4fdd62358b2f4fc9708c0e4397c166866ee458f9bd2c5cdd5cbc0d92db"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/material.inl"
+          },
+          "hashes": {
+            "sha-256": "90bdfc449672e43561e7bcb885abd2c01102c44d22dfaf398d53b76093e4b89d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/anim.h"
+          },
+          "hashes": {
+            "sha-256": "642ae281551b32f5a5b1d3c4125cc122608a42b989e69074dd469f90447d7b49"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/metadata.h"
+          },
+          "hashes": {
+            "sha-256": "8c5460dcd7d9aba2232ff5f28d4ea9f340066752e042c042e79133edf690aac3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/libraries/include/assimp/postprocess.h"
+          },
+          "hashes": {
+            "sha-256": "95e6d48de285bd4d27677bde2e443009493c33100694c11a218ea9f25ccf3e86"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/src/geometry.hpp"
+          },
+          "hashes": {
+            "sha-256": "5a130f7af636e1e7a60017099f7cb0d2b8526bc084853496e70329e845444b67"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/src/texture.hpp"
+          },
+          "hashes": {
+            "sha-256": "9142ef10f064cb033eb67f3eff931cea16e94ab180a6bec64bc59b093664fa09"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/src/geometryvertex.hpp"
+          },
+          "hashes": {
+            "sha-256": "a7d3d31ac0ca3b4de4d8c33c0e0dc106b3c42fd0e4aa0fa7cdbc1ea7869553d0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/src/vertexbuffer.hpp"
+          },
+          "hashes": {
+            "sha-256": "6f4b9fccf86c2eb53a1831786d7af4bc7682f58b6ba9b33d43e5d717285fcd38"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/src/indexbuffer.hpp"
+          },
+          "hashes": {
+            "sha-256": "7989e0d2282cd805639a311f1730c0d74a1fc1c65f7f17732c39574b71c733e3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/bojan/cplusplusprojects/lazaropenglengine3d/src/vertexarray.hpp"
+          },
+          "hashes": {
+            "sha-256": "0469ce197ebb6de5610a7fd4f27425a5d571a8232cbae685793fdae224022964"
+          }
+        }
+      ]
+    }
+  ]
+}

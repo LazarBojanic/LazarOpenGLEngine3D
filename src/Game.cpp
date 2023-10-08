@@ -122,8 +122,9 @@ void Game::initResources() {
 	CubeMap* skyboxCubeMap = ResourceManager::getInstance()->addCubeMap(skyboxFacePaths, "skyboxCubeMap");
 	Skybox* skybox = ResourceManager::getInstance()->addSkybox(skyboxMesh, skyboxShader, skyboxCubeMap, "skybox");
 
-	
+
 	const int lengthX = 75, lengthZ = 75;
+	float noiseSize = lengthX * lengthZ;
 	float cubeSizeX = 0.5f;
 	float cubeSizeY = 10.0f;
 	float cubeSizeZ = 0.5f;
@@ -132,17 +133,16 @@ void Game::initResources() {
 	float posX = 0.0f, posZ = 0.0f;
 	auto node = FastNoise::New<FastNoise::FractalFBm>();
 
-
 	node->SetSource(FastNoise::New<FastNoise::Simplex>());
 	node->SetGain(FastNoise::New<FastNoise::Value>());
 
-	float noise[lengthX * lengthZ];
+	float* noise = new float[noiseSize];
 
 	node->GenUniformGrid2D(noise, 0, 0, lengthX, lengthZ, 0.02f, 1337);
 
-	for (int i = 0; i < sizeof(noise) / sizeof(float); i++) {
+	for (int i = 0; i < noiseSize; i++) {
 		glm::vec3 color = GLData::colorIntToVec3(GLData::interpolate(0x633310, 0x06c238, noise[i]));
-		Shader* tempShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\cubeLightingVertexShader.glsl", workingDirectory + "\\assets\\shaders\\cubeLightingFragmentShader.glsl", "cubeShader" + i);
+		Shader* tempShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\cubeLightingVertexShader.glsl", workingDirectory + "\\assets\\shaders\\cubeLightingFragmentShader.glsl" , "cubeNoiseShader");
 		cubeDrawData->setShader(*tempShader);
 		cubeDrawData->getShader()->setVector3f("uCubeColor", color, true);
 		height = noise[i];
@@ -156,6 +156,7 @@ void Game::initResources() {
 			posZ += cubeSizeZ;
 		}
 	}
+	delete[] noise;
 }
 void Game::start() {
 	initVariables();
