@@ -767,6 +767,14 @@
     <Font Include="assets\fonts\Antonio-Regular.ttf" />
     <Font Include="assets\fonts\Lora-Regular.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="libraries\lib\assimp-vc143-mtd.lib" />
+    <Library Include="libraries\lib\FastNoise.lib" />
+    <Library Include="libraries\lib\FastNoiseD.lib" />
+    <Library Include="libraries\lib\freetype.lib" />
+    <Library Include="libraries\lib\glfw3.lib" />
+    <Library Include="libraries\lib\irrKlang.lib" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
