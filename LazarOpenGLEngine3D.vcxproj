@@ -549,6 +549,8 @@
     <ClInclude Include="src\VertexBuffer.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
     <None Include="assets\models\backpack\backpack.mtl" />
     <None Include="assets\shaders\betterBackpackFragmentShader.glsl" />
     <None Include="assets\shaders\betterBackpackVertexShader.glsl" />
@@ -565,6 +567,12 @@
     <None Include="assets\shaders\quadVertexShader.glsl" />
     <None Include="assets\shaders\skyboxFragmentShader.glsl" />
     <None Include="assets\shaders\skyboxVertexShader.glsl" />
+    <None Include="dlls\assimp-vc143-mtd.dll" />
+    <None Include="dlls\FastNoise.dll" />
+    <None Include="dlls\FastNoiseD.dll" />
+    <None Include="dlls\ikpFlac.dll" />
+    <None Include="dlls\ikpMP3.dll" />
+    <None Include="dlls\irrKlang.dll" />
     <None Include="libraries\include\glm\detail\func_common.inl" />
     <None Include="libraries\include\glm\detail\func_common_simd.inl" />
     <None Include="libraries\include\glm\detail\func_exponential.inl" />
@@ -746,12 +754,18 @@
     <Image Include="assets\textures\skybox\right.jpg" />
     <Image Include="assets\textures\skybox\top.jpg" />
     <Image Include="assets\textures\waterNormal.jpg" />
+    <Image Include="LazarOpenGLEngine3D-1.gif" />
+    <Image Include="LazarOpenGLEngine3D-2.gif" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\bleep.wav" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="assets\models\backpack\source_attribution.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\Antonio-Regular.ttf" />
+    <Font Include="assets\fonts\Lora-Regular.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

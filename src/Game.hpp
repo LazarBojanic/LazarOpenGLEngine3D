@@ -10,7 +10,7 @@
 #include "SkyboxPrimitive.hpp"
 #include "Camera.hpp"
 #include <FastNoise/FastNoise.h>
-#define FASTNOISE_USE_SHARED_PTR 1
+
 class Game {  
 private:
     Game(GLFWwindow* window, unsigned int width, unsigned int height);

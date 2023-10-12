@@ -22,18 +22,31 @@ GameObject* GameObjectManager::addGameObject(GameObject* gameObject) {
     return gameObject;
 }
 
-GameObject* GameObjectManager::addGameObject(std::string name, std::string tag, DrawData* drawData, float positionX, float positionY, float positionZ, float sizeX, float sizeY, float sizeZ, float scaleX, float scaleY, float scaleZ, float rotationX, float rotationY, float rotationZ, float speedX, float speedY, float speedZ, bool isHit) {
-    DrawData* gameObjectDrawData = new DrawData(*drawData);
-    GameObject* gameObject = new GameObject(name, tag, drawData, positionX, positionY, positionZ, sizeX, sizeY, sizeZ, scaleX, scaleY, scaleZ, rotationX, rotationY, rotationZ, speedX, speedY, speedZ, isHit);
+GameObject* GameObjectManager::addGameObject(std::string name, std::string tag, DrawData& drawData, float positionX, float positionY, float positionZ, float sizeX, float sizeY, float sizeZ, float scaleX, float scaleY, float scaleZ, float rotationX, float rotationY, float rotationZ, float speedX, float speedY, float speedZ, bool isHit) {
+    GameObject* gameObject;
+    std::string drawDataName = drawData.getName();
+    DrawData* existingDrawData = ResourceManager::getInstance()->getDrawDataByName(drawDataName);
+    if (existingDrawData == nullptr) {
+        existingDrawData = ResourceManager::getInstance()->addDrawData(drawDataName, drawData.getMesh(), drawData.getShader(), drawData.getMaterial(), drawData.getLight(), drawData.getTextureList());
+        gameObject = new GameObject(name, tag, existingDrawData, positionX, positionY, positionZ, sizeX, sizeY, sizeZ, scaleX, scaleY, scaleZ, rotationX, rotationY, rotationZ, speedX, speedY, speedZ, isHit);
+    }
+    else {
+        gameObject = new GameObject(name, tag, &drawData, positionX, positionY, positionZ, sizeX, sizeY, sizeZ, scaleX, scaleY, scaleZ, rotationX, rotationY, rotationZ, speedX, speedY, speedZ, isHit);
+    }
     this->gameObjectList->push_back(gameObject);
     return gameObject;
+
 }
 
 GameObject* GameObjectManager::addGameObject(std::string name, std::string tag, Mesh* mesh, Shader* shader, Material* material, Light* light, std::vector<Texture*>* textureList, float positionX, float positionY, float positionZ, float sizeX, float sizeY, float sizeZ, float scaleX, float scaleY, float scaleZ, float rotationX, float rotationY, float rotationZ, float speedX, float speedY, float speedZ, bool isHit) {
-    DrawData* drawData = new DrawData(name + "DrawData", mesh, shader, material, light, textureList);
-    GameObject* gameObject = new GameObject(name, tag, drawData, positionX, positionY, positionZ, sizeX, sizeY, sizeZ, scaleX, scaleY, scaleZ, rotationX, rotationY, rotationZ, speedX, speedY, speedZ, isHit);
-    this->gameObjectList->push_back(gameObject);
-    return gameObject;
+        std::string drawDataName = name + "DrawData";
+        DrawData* drawData = ResourceManager::getInstance()->getDrawDataByName(drawDataName);
+        if (drawData == nullptr) {
+            drawData = ResourceManager::getInstance()->addDrawData(drawDataName, drawData->getMesh(), drawData->getShader(), drawData->getMaterial(), drawData->getLight(), drawData->getTextureList());
+        }
+        GameObject* gameObject = new GameObject(name, tag, drawData, positionX, positionY, positionZ, sizeX, sizeY, sizeZ, scaleX, scaleY, scaleZ, rotationX, rotationY, rotationZ, speedX, speedY, speedZ, isHit);
+        this->gameObjectList->push_back(gameObject);
+        return gameObject;
 }
 
 GameObject* GameObjectManager::getGameObjectByName(std::string name) {

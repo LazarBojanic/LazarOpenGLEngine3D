@@ -87,9 +87,9 @@ void Game::initResources() {
 	DrawData* waterDrawData = ResourceManager::getInstance()->addDrawData("waterDrawData", waterMesh, waterShader, waterMaterial, light, nullptr);
 
 
-	GameObjectManager::getInstance()->addGameObject("lightGameObject", "light", lightDrawData, 2.5f, 35.0f, 2.5f, 1.0f, 1.0f, 1.0f, 10.0f, 10.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
-	GameObjectManager::getInstance()->addGameObject("boxGameObject", "box", boxDrawData, -10.0f, 0.0f, -10.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
-	GameObjectManager::getInstance()->addGameObject("waterGameObject", "water", waterDrawData, 0.0f, -15.0f, 0.0f, 1.0f, 1.0f, 1.0f, 100.0f, 100.0f, 1.0f, 90.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+	GameObjectManager::getInstance()->addGameObject("lightGameObject", "light", *lightDrawData, 2.5f, 35.0f, 2.5f, 1.0f, 1.0f, 1.0f, 10.0f, 10.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+	GameObjectManager::getInstance()->addGameObject("boxGameObject", "box", *boxDrawData, -10.0f, 0.0f, -10.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+	GameObjectManager::getInstance()->addGameObject("waterGameObject", "water", *waterDrawData, 0.0f, -15.0f, 0.0f, 1.0f, 1.0f, 1.0f, 100.0f, 100.0f, 1.0f, 90.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
 
 
 	Model* backpackModel = ResourceManager::getInstance()->addModel(workingDirectory + "\\assets\\models\\backpack\\backpack.obj", "backpackModel");
@@ -107,7 +107,7 @@ void Game::initResources() {
 	backpackTextureList->push_back(backpackRoughness);
 	backpackTextureList->push_back(backpackSpecular);
 	DrawData* backpackDrawData = ResourceManager::getInstance()->addDrawData("backpackDrawData", backpackMesh, backpackShader, cubeMaterial, light, backpackTextureList);
-	GameObjectManager::getInstance()->addGameObject("backpackGameObject", "backpack", backpackDrawData, -5.0f, 2.5f, -5.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+	GameObjectManager::getInstance()->addGameObject("backpackGameObject", "backpack", *backpackDrawData, -5.0f, 2.5f, -5.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
 
 	SkyboxPrimitive* skyboxPrimitive = new SkyboxPrimitive(false);
 	Mesh* skyboxMesh = ResourceManager::getInstance()->addSkyboxMesh(skyboxPrimitive, "skyboxMesh", 0, 3);
@@ -149,7 +149,7 @@ void Game::initResources() {
 		height += 1.0;
 		height /= 2.0;
 		height *= heightMultiplier;
-		GameObjectManager::getInstance()->addGameObject("blockGameObject", "block", cubeDrawData, posX, height, posZ, 1.0f, 1.0f, 1.0f, cubeSizeX, cubeSizeY, cubeSizeZ, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+		GameObjectManager::getInstance()->addGameObject("blockGameObject", "block", *cubeDrawData, posX, height, posZ, 1.0f, 1.0f, 1.0f, cubeSizeX, cubeSizeY, cubeSizeZ, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
 		posX += cubeSizeX;
 		if (i % lengthZ == 0) {
 			posX = 0.0f;

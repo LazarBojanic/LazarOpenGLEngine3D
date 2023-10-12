@@ -12,7 +12,6 @@
 #include "Generators/DomainWarpFractal.h"
 #include "Generators/Modifiers.h"
 #include "Generators/Blends.h"
-#define FASTNOISE_USE_SHARED_PTR 1
 namespace FastNoise
 {
     /// <summary>
