@@ -69,7 +69,9 @@ VertexBuffer::VertexBuffer(std::vector<GeometryVertex> vertices, std::vector<uns
 }
 
 VertexBuffer::~VertexBuffer() {
-	delete this->indexBuffer;
+	if (this->indexBuffer != nullptr) {
+		delete this->indexBuffer;
+	}
 }
 void VertexBuffer::bind() {
 	glBindBuffer(GL_ARRAY_BUFFER, this->vboID);

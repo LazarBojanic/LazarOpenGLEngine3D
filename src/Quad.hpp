@@ -11,9 +11,9 @@ public:
 
 		   //positions             colors               texture coordinates
 			-0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 0.0f,    0.0f, 0.0f,    -1.0f, -1.0f, 1.0f, //bottom left
-			 0.5f, -0.5f, 0.0f,    0.0f, 1.0f, 0.0f,    1.0f, 0.0f,    1.0f, -1.0f, 1.0f, //bottom right
-			 0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,    1.0f, 1.0f,    1.0f, 1.0f, 1.0f, //top right
-			-0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 0.0f,	0.0f, 1.0f,    -1.0f, 1.0f, 1.0f //top left
+			 0.5f, -0.5f, 0.0f,    0.0f, 1.0f, 0.0f,    1.0f, 0.0f,     1.0f, -1.0f, 1.0f, //bottom right
+			 0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,    1.0f, 1.0f,     1.0f,  1.0f, 1.0f, //top right
+			-0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 0.0f,	0.0f, 1.0f,    -1.0f,  1.0f, 1.0f //top left
 			};
 			this->unindexedVertexCount = 6;
 			this->dataCount = 44;
@@ -26,31 +26,15 @@ public:
 			this->indicesSize = 6 * sizeof(unsigned int);
 		}
 		else {
-			/*this->data = new float[132] {
-
-		   //positions             colors               texture coordinates
-			-0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 0.0f,    0.0f, 0.0f,    -1.0f, 0.0f, 0.0f, //bottom left
-			0.5f, -0.5f, 0.0f,    0.0f, 1.0f, 0.0f,    1.0f, 0.0f,    1.0f, 0.0f, 0.0f, //bottom right
-			0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,    1.0f, 1.0f,    1.0f, 0.0f, 0.0f, //top right
-			-0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 0.0f,	0.0f, 1.0f,    -1.0f, 0.0f, 0.0f, //top left
-			-0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 0.0f,    0.0f, 0.0f,    -1.0f, -1.0f, 0.0f, //bottom left
-			0.5f, -0.5f, 0.0f,    0.0f, 1.0f, 0.0f,    1.0f, 0.0f,    1.0f, -1.0f, 0.0f, //bottom right
-			0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,    1.0f, 1.0f,     0.0f, 1.0f, 0.0f, //top right
-			-0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 0.0f,	0.0f, 1.0f,     0.0f, 1.0f, 0.0f, //top left
-			-0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 0.0f,    0.0f, 0.0f,    -1.0f, 0.0f, 1.0f, //bottom left
-			 0.5f, -0.5f, 0.0f,    0.0f, 1.0f, 0.0f,    1.0f, 0.0f,    1.0f, 0.0f, 1.0f, //bottom right
-			 0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,    1.0f, 1.0f,     0.0f, 0.0f, 1.0f, //top right
-			-0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 0.0f,	0.0f, 1.0f,     0.0f, 0.0f, 1.0f //top left
-			};*/
 			this->data = new float[66] {
 
 		   //positions             colors               texture coordinates
-			-0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 0.0f,    0.0f, 0.0f,    -1.0f, -1.0f, 1.0f, //bottom left
-			 0.5f, -0.5f, 0.0f,    0.0f, 1.0f, 0.0f,    1.0f, 0.0f,    1.0f, -1.0f, 1.0f, //bottom right
-			 0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,    1.0f, 1.0f,    1.0f, 1.0f, 1.0f, //top right
-			0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,    1.0f, 1.0f,    1.0f, 1.0f, 1.0f, //top right
-			-0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 0.0f,	0.0f, 1.0f,    -1.0f, 1.0f, 1.0f, //top left
-			-0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 0.0f,    0.0f, 0.0f,    -1.0f, -1.0f, 1.0f, //bottom left
+			-0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 0.0f,    0.0f, 0.0f,    -1.0f, -1.0f,  1.0f, //bottom left
+			 0.5f, -0.5f, 0.0f,    0.0f, 1.0f, 0.0f,    1.0f, 0.0f,     1.0f, -1.0f,  1.0f, //bottom right
+			 0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,    1.0f, 1.0f,     1.0f,  1.0f,  1.0f, //top right
+			 0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,    1.0f, 1.0f,     1.0f,  1.0f,  1.0f, //top right
+			-0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 0.0f,	0.0f, 1.0f,    -1.0f,  1.0f,  1.0f, //top left
+			-0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 0.0f,    0.0f, 0.0f,    -1.0f, -1.0f,  1.0f, //bottom left
 			};
 			this->unindexedVertexCount = 6;
 			this->dataCount = 66;
