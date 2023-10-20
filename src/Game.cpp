@@ -45,8 +45,8 @@ void Game::initVariables() {
 }
 void Game::initResources() {
 	this->camera = new Camera(glm::vec3(0.0f, 0.0f, 3.0f), this->width, this->height, 0.1f, 100.0f);
-	Quad* quad = new Quad(false);
-	Cube* cube = new Cube(false);
+	Quad* quad = new Quad(true);
+	Cube* cube = new Cube(true);
 
 	Mesh* lightMesh = ResourceManager::getInstance()->addMesh(cube, nullptr, "lightMesh", 0, 3, 1, 3, 2, 2, 3, 3);
 	Mesh* cubeMesh = ResourceManager::getInstance()->addMesh(cube, nullptr, "cubeMesh", 0, 3, 1, 3, 2, 2, 3, 3);
