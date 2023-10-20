@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GLData.hpp"
+#include "Util.hpp"
 #define MAX_BONE_INFLUENCE 4
 
 struct GeometryVertex {

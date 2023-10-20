@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GLData.hpp"
+#include "Util.hpp"
 #include "Mesh.hpp"
 #include "Shader.hpp"
 #include "Material.hpp"

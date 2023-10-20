@@ -141,7 +141,7 @@ void Game::initResources() {
 	node->GenUniformGrid2D(noise, 0, 0, lengthX, lengthZ, 0.02f, 1337);
 
 	for (int i = 0; i < noiseSize; i++) {
-		glm::vec3 color = GLData::colorIntToVec3(GLData::interpolate(0x633310, 0x06c238, noise[i]));
+		glm::vec3 color = Util::colorIntToVec3(Util::interpolate(0x633310, 0x06c238, noise[i]));
 		Shader* tempShader = ResourceManager::getInstance()->addShader(workingDirectory + "\\assets\\shaders\\cubeLightingVertexShader.glsl", workingDirectory + "\\assets\\shaders\\cubeLightingFragmentShader.glsl" , "cubeNoiseShader");
 		cubeDrawData->setShader(*tempShader);
 		cubeDrawData->getShader()->setVector3f("uCubeColor", color, true);

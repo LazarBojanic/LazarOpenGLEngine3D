@@ -4,7 +4,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include "Geometry.hpp"
-#include "GLData.hpp"
+#include "Util.hpp"
 
 class Model {
 private:

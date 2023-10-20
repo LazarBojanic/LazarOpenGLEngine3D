@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GlData.hpp"
+#include "Util.hpp"
 
 class Shader{
 private:

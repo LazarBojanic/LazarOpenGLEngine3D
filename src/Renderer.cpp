@@ -73,6 +73,7 @@ void Renderer::draw(GameObject& gameObject, Camera& camera, bool scaled){
             gameObject.getDrawData()->getMesh()->getModel()->getGeometries()->at(i)->getVertexArray()->unbind();
         }
     }
+    gameObject.getDrawData()->getShader()->unbind();
 }
 
 void Renderer::drawAll(Camera& camera, bool scaled) {
